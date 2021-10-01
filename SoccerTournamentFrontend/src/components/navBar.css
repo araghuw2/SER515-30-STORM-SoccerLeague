@@ -1,5 +1,5 @@
 .navBarItems {
-  background: linear-gradient(50deg, rgb(110, 94, 254) 0%, rgb(199, 198, 219));
+  background-color: black;
   height: 80;
   display: flex;
   justify-content: center;
