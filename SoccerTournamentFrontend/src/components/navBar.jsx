@@ -9,7 +9,7 @@ class NavBar extends Component {
     return (
       <React.Fragment>
         <nav className="navBarItems">
-          <h1 className="navbar-logo">React</h1>
+          <h1 className="navbar-logo">Soccer Tournament</h1>
 
           <ul className="nav-menu">
             {menuItems.map((item, index) => {
