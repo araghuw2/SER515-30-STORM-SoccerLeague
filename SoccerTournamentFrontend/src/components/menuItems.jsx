@@ -30,8 +30,8 @@ export const menuItems = [
   },
 
   {
-    title: "Register",
-    url: "#",
+    title: "SignUp",
+    url: "/signup",
     cName: "nav-links",
   },
 ];
