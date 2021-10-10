@@ -12,8 +12,8 @@ import com.asu.soccer.tournament.SoccerTournament.player.service.PlayerService;
 @RestController
 public class PlayerResourceImpl implements PlayerResource {
 
-	@Autowired(required=true)
-	PlayerService playerService;
+//	@Autowired
+//	PlayerService playerService;
 
 	@Override
 	@GetMapping("/players")

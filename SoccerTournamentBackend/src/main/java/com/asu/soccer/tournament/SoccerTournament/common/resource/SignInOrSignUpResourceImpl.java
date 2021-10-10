@@ -23,7 +23,7 @@ class SignInOrSignUpResourceImpl implements SignInOrSignUpResource {
 	}
 	
 	@Override
-	@PostMapping("/signup")
+	@PostMapping("/signin")
 	public UserEntity signIn(UserEntity user) {
 		return null;
 	}
