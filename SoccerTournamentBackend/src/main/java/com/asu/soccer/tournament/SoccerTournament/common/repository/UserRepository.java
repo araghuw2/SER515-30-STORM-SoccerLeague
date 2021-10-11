@@ -5,7 +5,5 @@ import com.asu.soccer.tournament.SoccerTournament.common.entity.UserEntity;
 
 
 public interface UserRepository extends PagingAndSortingRepository<UserEntity,Long>{
-	
-	UserEntity findByEmail(String email);
 	UserEntity findById(String id);
 }
