@@ -22,6 +22,9 @@ public class TeamEntity {
     private String team_name;
 	
 	@Column(nullable=false)
+    private String email;
+
+	@Column(nullable=false)
     private String reg_date;
 
 	@Column(nullable=false)
@@ -39,6 +42,14 @@ public class TeamEntity {
 	@Column(nullable=false)
     private Integer user_details_id; //Coach
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public long getId() {
 		return id;
 	}

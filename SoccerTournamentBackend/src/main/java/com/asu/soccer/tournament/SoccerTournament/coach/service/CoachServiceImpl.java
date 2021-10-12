@@ -10,8 +10,8 @@ import com.asu.soccer.tournament.SoccerTournament.common.repository.UserReposito
 @Service
 public class CoachServiceImpl implements CoachService {
 	
-	@Autowired(required=true)
-    UserRepository usersRepository;
+//	@Autowired(required=true)
+//    UserRepository usersRepository;
 	
 	@Override
 	public SuccessErrorModel createTeam(TeamEntity team) {

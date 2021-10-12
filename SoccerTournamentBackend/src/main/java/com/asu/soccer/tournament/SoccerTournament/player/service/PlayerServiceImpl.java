@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.asu.soccer.tournament.SoccerTournament.common.entity.PlayerEntity;
 import com.asu.soccer.tournament.SoccerTournament.common.repository.UserRepository;
+import com.asu.soccer.tournament.SoccerTournament.player.repository.PlayerRepository;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
 
 	@Autowired
-    UserRepository usersRepository;
+	PlayerRepository playerRepository;
 	
 	@Override
 	public List<PlayerEntity> getAllPlayers() {
