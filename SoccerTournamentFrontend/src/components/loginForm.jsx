@@ -1,7 +1,12 @@
 import react from "react";
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import Joi from "joi";
 import { isValidElement } from "react";
+import { signIn, signOut } from '../actions'
+import axios from 'axios';
+import { menuItems } from "./menuItems";
+import { NavLink } from "react-router-dom";
 
 class LoginForm extends Component {
   state = {
@@ -42,6 +47,8 @@ class LoginForm extends Component {
       account["password"]="";
       this.setState({account:account});
     }
+    
+    this.props.signIn(this.state.account)
 
     console.log("Submitteed");
   };
@@ -87,9 +94,31 @@ class LoginForm extends Component {
           </div>
           <button className="btn btn-primary m-2">Login</button>
         </form>
+        {
+          this.props.sign_in_error?
+          <div> Wrong Credentials! Please try again</div>
+          :
+          null
+        }
+        <NavLink to={menuItems[5].url}>
+                  {menuItems[5].title}
+        </NavLink>
       </div>
     );
   }
 }
 
-export default LoginForm;
+const mapStateToProps = (state) => {
+  return { 
+      role: state.auth.role,
+      reg_date: state.auth.reg_date,
+      email: state.auth.email,
+      gender: state.auth.gender,
+      first_name: state.auth.first_name,
+      last_name: state.auth.last_name,
+      withdraw_flag: state.auth.withdraw_flag,
+      sign_in_error: state.auth.sign_in_error
+  }
+}
+
+export default connect(mapStateToProps, {signIn})(LoginForm);

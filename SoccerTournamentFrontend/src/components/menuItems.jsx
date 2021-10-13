@@ -24,7 +24,7 @@ export const menuItems = [
   },
 
   {
-    title: "SignIn",
+    title: "SignIn/SignUp",
     url: "/login",
     cName: "nav-links",
   },
@@ -32,6 +32,18 @@ export const menuItems = [
   {
     title: "SignUp",
     url: "/signup",
+    cName: "nav-links",
+  },
+
+  {
+    title: "SignOut",
+    url: "/signout",
+    cName: "nav-links",
+  },
+
+  {
+    title: "MyProfile",
+    url: "/myprofile",
     cName: "nav-links",
   },
 ];
