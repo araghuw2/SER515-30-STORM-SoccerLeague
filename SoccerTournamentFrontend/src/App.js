@@ -8,6 +8,7 @@ import Video from "./components/video";
 import SignUp from "./components/SignUp";
 import "./App.css";
 import Footer from "./components/footer";
+import MyProfile from "./components/myProfile";
 
 class App extends Component {
   render() {
@@ -22,6 +23,8 @@ class App extends Component {
               <Route path="/video" component={Video} />
               <Route path="/login" component={LoginForm} />
               <Route path="/signup" component={SignUp}/>
+              <Route path="/myprofile" component={MyProfile}/>
+              <Route path="/signout" component={Home}/>
             </Switch>
           </div>
           <Footer />
