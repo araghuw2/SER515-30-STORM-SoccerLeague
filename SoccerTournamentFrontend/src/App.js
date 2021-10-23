@@ -6,6 +6,7 @@ import Home from "./components/home";
 import News from "./components/news";
 import Video from "./components/video";
 import CreateTeam from "./components/createTeam";
+import SignUp from "./components/SignUp";
 import "./App.css";
 import Footer from "./components/footer";
 
@@ -22,6 +23,7 @@ class App extends Component {
               <Route path="/video" component={Video} />
               <Route path="/login" component={LoginForm} />
               <Route path="/createteam" component={CreateTeam} />
+              <Route path="/signup" component={SignUp}/>
             </Switch>
           </div>
           <Footer />
