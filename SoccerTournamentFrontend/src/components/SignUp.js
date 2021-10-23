@@ -1,5 +1,6 @@
-import react from "react";
-import React, { Component } from "react";
+import React from "react";
+import { connect } from 'react-redux';
+import { signUp } from '../actions'
 
 class SignUp extends React.Component {
   state = {
@@ -61,6 +62,7 @@ class SignUp extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault(); //For stopping the whole reload of page
     const error = this.validate();
+
     console.log(error);
 
     //if (error) return;
@@ -77,8 +79,16 @@ class SignUp extends React.Component {
       this.setState({account:account});
     }
 
+    this.props.signUp(this.state.account)
+
     console.log("Submitteed");
   };
+
+  // handleChangePassword = (e) => {
+  //   const account = { ...this.state.account };
+  //   account.password = e.currentTarget.value;
+  //   this.setState({ account });
+  // };
 
   render() {
     return (
@@ -86,7 +96,7 @@ class SignUp extends React.Component {
         <form onSubmit={this.handleSubmit}>
             <div className="form-group">
                 <label><b>First Name*</b></label>
-                <input type="text" className="form-control" />
+                <input type="text" className="form-control"  />
                 <div className="text-danger">{this.state.error.firstname}</div>
             </div>
 
@@ -193,5 +203,17 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp;
+const mapStateToProps = (state) => {
+  return { 
+      role: state.auth.role,
+      reg_date: state.auth.reg_date,
+      email: state.auth.email,
+      gender: state.auth.gender,
+      first_name: state.auth.first_name,
+      last_name: state.auth.last_name,
+      withdraw_flag: state.auth.withdraw_flag,
+      sign_in_error: state.auth.sign_in_error
+  }
+}
 
+export default connect(mapStateToProps, {signUp})(SignUp);
