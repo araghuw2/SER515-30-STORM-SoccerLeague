@@ -28,6 +28,11 @@ export const menuItems = [
     url: "/login",
     cName: "nav-links",
   },
+  {
+    title: "CreateTeam",
+    url: "/createteam",
+    cName: "nav-links",
+  },
 
   {
     title: "Register",
