@@ -4,7 +4,7 @@ import { signUp } from '../actions'
 
 class SignUp extends React.Component {
   state = {
-    account: { firstname: "", lastname: "", email: "", password: "", confirmpassword:"", gender:"", role:""},
+    account: { first_name: "", last_name: "", email: "", password: "", confirmpassword:"", gender:"", role:""},
     error: {},
   };
   
@@ -12,15 +12,15 @@ class SignUp extends React.Component {
     let account = this.state.account;
     let isValid = true;
     let error = {};
-    if(!account["firstname"])
+    if(!account["first_name"])
     {
       isValid = false;
-      error["firstname"] = "Firstname is mandatory";
+      error["first_name"] = "Firstname is mandatory";
     }
-    if(!account["lastname"])
+    if(!account["last_name"])
     {
       isValid = false;
-      error["lastname"] = "Lastname is mandatory";
+      error["last_name"] = "Lastname is mandatory";
     }
     if(!account["email"])
     {
@@ -69,8 +69,8 @@ class SignUp extends React.Component {
     if(error)
     {
       let account = {};
-      account["firstname"]="";
-      account["lastname"]="";
+      account["first_name"]="";
+      account["last_name"]="";
       account["email"]="";
       account["password"]="";
       account["confirmpassword"]="";
@@ -84,11 +84,47 @@ class SignUp extends React.Component {
     console.log("Submitteed");
   };
 
-  // handleChangePassword = (e) => {
-  //   const account = { ...this.state.account };
-  //   account.password = e.currentTarget.value;
-  //   this.setState({ account });
-  // };
+  handleChangeFirstName = (e) => {
+    const account = { ...this.state.account };
+    account.first_name = e.currentTarget.value;
+    this.setState({ account });
+  };
+
+  handleChangeLastName = (e) => {
+    const account = { ...this.state.account };
+    account.last_name = e.currentTarget.value;
+    this.setState({ account });
+  };
+
+  handleChangeEmail = (e) => {
+    const account = { ...this.state.account };
+    account.email = e.currentTarget.value;
+    this.setState({ account });
+  };
+
+  handleChangePassword = (e) => {
+    const account = { ...this.state.account };
+    account.password = e.currentTarget.value;
+    this.setState({ account });
+  };
+
+  handleChangeConfirmPassword = (e) => {
+    const account = { ...this.state.account };
+    account.confirmPassword = e.currentTarget.value;
+    this.setState({ account });
+  };
+
+  handleChangeGender = (e) => {
+    const account = { ...this.state.account };
+    account.gender = e.currentTarget.value;
+    this.setState({ account });
+  };
+
+  handleChangeRole = (e) => {
+    const account = { ...this.state.account };
+    account.role = e.currentTarget.value;
+    this.setState({ account });
+  };
 
   render() {
     return (
@@ -96,31 +132,31 @@ class SignUp extends React.Component {
         <form onSubmit={this.handleSubmit}>
             <div className="form-group">
                 <label><b>First Name*</b></label>
-                <input type="text" className="form-control"  />
-                <div className="text-danger">{this.state.error.firstname}</div>
+                <input type="text" className="form-control" onChange={this.handleChangeFirstName} />
+                <div className="text-danger">{this.state.error.first_name}</div>
             </div>
 
             <div className="form-group">
                 <label><b>Last Name*</b></label>
-                <input type="text" className="form-control"  />
-                <div className="text-danger">{this.state.error.lastname}</div>
+                <input type="text" className="form-control" onChange={this.handleChangeLastName} />
+                <div className="text-danger">{this.state.error.last_name}</div>
             </div>
 
             <div className="form-group">
                 <label><b>Email Address*</b></label>
-                <input type="email" className="form-control" />
+                <input type="email" className="form-control" onChange={this.handleChangeEmail}/>
                 <div className="text-danger">{this.state.error.email}</div>
             </div>
 
             <div className="form-group">
                 <label><b>Password*</b></label>
-                <input type="password" className="form-control"  />
+                <input type="password" className="form-control" onChange={this.handleChangePassword} />
                 <div className="text-danger">{this.state.error.password}</div>
             </div>
 
             <div className="form-group">
                 <label><b>Confirm Password*</b></label>
-                <input type="password" className="form-control"  />
+                <input type="password" className="form-control" onChange={this.handleChangeConfirmPassword} />
                 <div className="text-danger">{this.state.error.confirmpassword}</div>
             </div>
             <label><b> Gender*</b> </label>
@@ -131,7 +167,7 @@ class SignUp extends React.Component {
                 value="male"
                 name="gender"
                 type="radio"
-                onChange={this.handleChange}
+                onChange={this.handleChangeGender}
               />
               Male
               </label>
@@ -142,7 +178,7 @@ class SignUp extends React.Component {
                 value="female"
                 name="gender"
                 type="radio"
-                onChange={this.handleChange}
+                onChange={this.handleChangeGender}
               />
               Female 
               </label>
@@ -154,7 +190,7 @@ class SignUp extends React.Component {
                 value="prefer not to say"
                 name="gender"
                 type="radio"
-                onChange={this.handleChange}
+                onChange={this.handleChangeGender}
               />
               Prefer not to say
               </label>
@@ -167,7 +203,7 @@ class SignUp extends React.Component {
                 value="coach"
                 name="role"
                 type="radio"
-                onChange={this.handleChange}
+                onChange={this.handleChangeRole}
               />
               Coach
               </label>
@@ -178,7 +214,7 @@ class SignUp extends React.Component {
                 value="referee"
                 name="role"
                 type="radio"
-                onChange={this.handleChange}
+                onChange={this.handleChangeRole}
               />
               Referee
               </label>
@@ -190,7 +226,7 @@ class SignUp extends React.Component {
                 value="field site manager"
                 name="gender"
                 type="radio"
-                onChange={this.handleChange}
+                onChange={this.handleChangeRole}
               />
               Field Site Manager
               </label>
