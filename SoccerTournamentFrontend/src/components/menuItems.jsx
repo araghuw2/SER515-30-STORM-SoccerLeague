@@ -16,6 +16,11 @@ export const menuItems = [
     url: "/videos",
     cName: "nav-links",
   },
+  {
+    title:"Rules",
+    url: "/rules",
+    cName: "nav-links",
+  },
 
   {
     title: "Players",
@@ -29,6 +34,7 @@ export const menuItems = [
     cName: "nav-links",
   },
 
+  
   {
     title: "SignUp",
     url: "/signup",

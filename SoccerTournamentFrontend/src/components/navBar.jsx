@@ -16,13 +16,13 @@ class NavBar extends Component {
           {
             this.props.isSignedIn==true?
               <li>
-                <NavLink className={menuItems[7].cName} to={menuItems[7].url}>
-                  {menuItems[7].title}
+                <NavLink className={menuItems[8].cName} to={menuItems[8].url}>
+                  {menuItems[8].title}
                 </NavLink>
               </li>
               : null
           }
-            { menuItems.slice(0,4).map((item, index) => {
+            { menuItems.slice(0,5).map((item, index) => {
               return (
                 <li key={index}>
                   <NavLink className={item.cName} to={item.url}>
@@ -34,14 +34,14 @@ class NavBar extends Component {
             {
             this.props.isSignedIn==true?
               <li>
-                <NavLink onClick={this.props.signOut} className={menuItems[6].cName} to={menuItems[6].url}>
-                  {menuItems[6].title}
+                <NavLink onClick={this.props.signOut} className={menuItems[7].cName} to={menuItems[7].url}>
+                  {menuItems[7].title}
                 </NavLink>
               </li>
               :
               <li>
-                <NavLink className={menuItems[4].cName} to={menuItems[4].url}>
-                  {menuItems[4].title}
+                <NavLink className={menuItems[5].cName} to={menuItems[5].url}>
+                  {menuItems[5].title}
                 </NavLink>
               </li>             
           }
