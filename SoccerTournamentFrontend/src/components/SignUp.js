@@ -65,7 +65,6 @@ class SignUp extends React.Component {
 
     console.log(error);
 
-    //if (error) return;
     if(error)
     {
       let account = {};
