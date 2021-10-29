@@ -12,8 +12,8 @@ export const menuItems = [
   },
 
   {
-    title: "Videos",
-    url: "/videos",
+    title: "AboutUS",
+    url: "/aboutus",
     cName: "nav-links",
   },
   {

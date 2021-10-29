@@ -7,9 +7,11 @@ import News from "./components/news";
 import Video from "./components/video";
 import Rules from "./components/rules";
 import SignUp from "./components/SignUp";
+import ViewTeamDeatils from "./components/viewTeamDetails";
 import "./App.css";
 import Footer from "./components/footer";
 import MyProfile from "./components/myProfile";
+import AboutUs from "./components/aboutUs";
 
 class App extends Component {
   render() {
@@ -23,10 +25,13 @@ class App extends Component {
               <Route path="/news" component={News} />
               <Route path="/video" component={Video} />
               <Route path="/rules" component={Rules}/>
+              <Route path="/aboutus" component={AboutUs} />
               <Route path="/login" component={LoginForm} />
               <Route path="/signup" component={SignUp}/>
               <Route path="/myprofile" component={MyProfile}/>
+              <Route path="/viewteamdetails" component={ViewTeamDeatils}/>
               <Route path="/signout" component={Home}/>
+              <Route path="/" component={Home} />
             </Switch>
           </div>
           <Footer />
