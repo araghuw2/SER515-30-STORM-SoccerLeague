@@ -1,15 +1,16 @@
+import react from "react";
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import Joi from "joi";
+import { isValidElement } from "react";
+import { signIn } from '../actions'
+import axios from 'axios';
 import history from '../history'
 
 class MyProfile extends Component {
 
   createNewTeam = () => {
     history.push('/createNewTeam');
-  };
-
-  viewTeamDetails = () => {
-    history.push('/viewteamdetails');
   };
   
   render() {
@@ -43,7 +44,6 @@ class MyProfile extends Component {
         <br/>
         <h3>
             <button onClick={() => this.createNewTeam()}>Create New Team</button>
-            <button onClick={() => this.viewTeamDetails()}>View Team Details</button>
         </h3>
       </div>
     );

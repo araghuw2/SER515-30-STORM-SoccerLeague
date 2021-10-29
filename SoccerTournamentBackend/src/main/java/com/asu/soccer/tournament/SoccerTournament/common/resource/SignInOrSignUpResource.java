@@ -9,7 +9,7 @@ import com.asu.soccer.tournament.SoccerTournament.common.entity.UserEntity;
 
 interface SignInOrSignUpResource {
 	
-	public ResponseEntity<UserEntity> signUp(UserEntity user);
+	public List<String> signUp(UserEntity user);
 	public ResponseEntity<UserEntity> signIn(HashMap<String, String> hm);
 	
 }

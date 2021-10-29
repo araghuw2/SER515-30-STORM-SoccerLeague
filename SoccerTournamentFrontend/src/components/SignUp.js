@@ -1,10 +1,9 @@
-import React from "react";
-import { connect } from 'react-redux';
-import { signUp } from '../actions'
+import react from "react";
+import React, { Component } from "react";
 
 class SignUp extends React.Component {
   state = {
-    account: { first_name: "", last_name: "", email: "", password: "", confirmpassword:"", gender:"", role:""},
+    account: { firstname: "", lastname: "", email: "", password: "", confirmpassword:"", gender:"", role:""},
     error: {},
   };
   
@@ -12,15 +11,15 @@ class SignUp extends React.Component {
     let account = this.state.account;
     let isValid = true;
     let error = {};
-    if(!account["first_name"])
+    if(!account["firstname"])
     {
       isValid = false;
-      error["first_name"] = "Firstname is mandatory";
+      error["firstname"] = "Firstname is mandatory";
     }
-    if(!account["last_name"])
+    if(!account["lastname"])
     {
       isValid = false;
-      error["last_name"] = "Lastname is mandatory";
+      error["lastname"] = "Lastname is mandatory";
     }
     if(!account["email"])
     {
@@ -62,14 +61,14 @@ class SignUp extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault(); //For stopping the whole reload of page
     const error = this.validate();
-
     console.log(error);
 
+    //if (error) return;
     if(error)
     {
       let account = {};
-      account["first_name"]="";
-      account["last_name"]="";
+      account["firstname"]="";
+      account["lastname"]="";
       account["email"]="";
       account["password"]="";
       account["confirmpassword"]="";
@@ -78,51 +77,7 @@ class SignUp extends React.Component {
       this.setState({account:account});
     }
 
-    this.props.signUp(this.state.account)
-
     console.log("Submitteed");
-  };
-
-  handleChangeFirstName = (e) => {
-    const account = { ...this.state.account };
-    account.first_name = e.currentTarget.value;
-    this.setState({ account });
-  };
-
-  handleChangeLastName = (e) => {
-    const account = { ...this.state.account };
-    account.last_name = e.currentTarget.value;
-    this.setState({ account });
-  };
-
-  handleChangeEmail = (e) => {
-    const account = { ...this.state.account };
-    account.email = e.currentTarget.value;
-    this.setState({ account });
-  };
-
-  handleChangePassword = (e) => {
-    const account = { ...this.state.account };
-    account.password = e.currentTarget.value;
-    this.setState({ account });
-  };
-
-  handleChangeConfirmPassword = (e) => {
-    const account = { ...this.state.account };
-    account.confirmPassword = e.currentTarget.value;
-    this.setState({ account });
-  };
-
-  handleChangeGender = (e) => {
-    const account = { ...this.state.account };
-    account.gender = e.currentTarget.value;
-    this.setState({ account });
-  };
-
-  handleChangeRole = (e) => {
-    const account = { ...this.state.account };
-    account.role = e.currentTarget.value;
-    this.setState({ account });
   };
 
   render() {
@@ -131,31 +86,31 @@ class SignUp extends React.Component {
         <form onSubmit={this.handleSubmit}>
             <div className="form-group">
                 <label><b>First Name*</b></label>
-                <input type="text" className="form-control" onChange={this.handleChangeFirstName} />
-                <div className="text-danger">{this.state.error.first_name}</div>
+                <input type="text" className="form-control" />
+                <div className="text-danger">{this.state.error.firstname}</div>
             </div>
 
             <div className="form-group">
                 <label><b>Last Name*</b></label>
-                <input type="text" className="form-control" onChange={this.handleChangeLastName} />
-                <div className="text-danger">{this.state.error.last_name}</div>
+                <input type="text" className="form-control"  />
+                <div className="text-danger">{this.state.error.lastname}</div>
             </div>
 
             <div className="form-group">
                 <label><b>Email Address*</b></label>
-                <input type="email" className="form-control" onChange={this.handleChangeEmail}/>
+                <input type="email" className="form-control" />
                 <div className="text-danger">{this.state.error.email}</div>
             </div>
 
             <div className="form-group">
                 <label><b>Password*</b></label>
-                <input type="password" className="form-control" onChange={this.handleChangePassword} />
+                <input type="password" className="form-control"  />
                 <div className="text-danger">{this.state.error.password}</div>
             </div>
 
             <div className="form-group">
                 <label><b>Confirm Password*</b></label>
-                <input type="password" className="form-control" onChange={this.handleChangeConfirmPassword} />
+                <input type="password" className="form-control"  />
                 <div className="text-danger">{this.state.error.confirmpassword}</div>
             </div>
             <label><b> Gender*</b> </label>
@@ -166,7 +121,7 @@ class SignUp extends React.Component {
                 value="male"
                 name="gender"
                 type="radio"
-                onChange={this.handleChangeGender}
+                onChange={this.handleChange}
               />
               Male
               </label>
@@ -177,7 +132,7 @@ class SignUp extends React.Component {
                 value="female"
                 name="gender"
                 type="radio"
-                onChange={this.handleChangeGender}
+                onChange={this.handleChange}
               />
               Female 
               </label>
@@ -189,7 +144,7 @@ class SignUp extends React.Component {
                 value="prefer not to say"
                 name="gender"
                 type="radio"
-                onChange={this.handleChangeGender}
+                onChange={this.handleChange}
               />
               Prefer not to say
               </label>
@@ -202,7 +157,7 @@ class SignUp extends React.Component {
                 value="coach"
                 name="role"
                 type="radio"
-                onChange={this.handleChangeRole}
+                onChange={this.handleChange}
               />
               Coach
               </label>
@@ -213,7 +168,7 @@ class SignUp extends React.Component {
                 value="referee"
                 name="role"
                 type="radio"
-                onChange={this.handleChangeRole}
+                onChange={this.handleChange}
               />
               Referee
               </label>
@@ -225,7 +180,7 @@ class SignUp extends React.Component {
                 value="field site manager"
                 name="gender"
                 type="radio"
-                onChange={this.handleChangeRole}
+                onChange={this.handleChange}
               />
               Field Site Manager
               </label>
@@ -238,17 +193,5 @@ class SignUp extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { 
-      role: state.auth.role,
-      reg_date: state.auth.reg_date,
-      email: state.auth.email,
-      gender: state.auth.gender,
-      first_name: state.auth.first_name,
-      last_name: state.auth.last_name,
-      withdraw_flag: state.auth.withdraw_flag,
-      sign_in_error: state.auth.sign_in_error
-  }
-}
+export default SignUp;
 
-export default connect(mapStateToProps, {signUp})(SignUp);

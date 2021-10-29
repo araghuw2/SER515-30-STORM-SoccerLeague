@@ -22,8 +22,9 @@ public class SignInOrSignUpServiceImpl implements SignInOrSignUpService {
 
 
 	@Override
-	public UserEntity signUp(UserEntity user) {
-		return usersRepository.save(user);
+	public List<String> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

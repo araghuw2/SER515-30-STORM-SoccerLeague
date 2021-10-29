@@ -6,7 +6,7 @@ import com.asu.soccer.tournament.SoccerTournament.common.entity.UserEntity;
 
 public interface SignInOrSignUpService {
 
-	public UserEntity signUp(UserEntity user);
+	public List<String> getAll();
 	
 	public UserEntity signIn(String username, String password);
 	

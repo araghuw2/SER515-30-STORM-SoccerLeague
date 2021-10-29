@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.asu.soccer.tournament.SoccerTournament.common.entity.PlayerEntity;
 import com.asu.soccer.tournament.SoccerTournament.common.entity.UserEntity;
 import com.asu.soccer.tournament.SoccerTournament.common.service.SignInOrSignUpService;
-import com.asu.soccer.tournament.SoccerTournament.player.service.PlayerService;
 
 
 @RestController
@@ -25,12 +23,13 @@ class SignInOrSignUpResourceImpl implements SignInOrSignUpResource {
 	@Autowired(required=true)
 	SignInOrSignUpService signInOrSignUpService;
 
+
 	@Override
-	@PostMapping("/signup")
-	@CrossOrigin(origins = "http://localhost:3000")
-	public ResponseEntity<UserEntity> signUp(@RequestBody UserEntity user) {
-		UserEntity user1 = signInOrSignUpService.signUp(user);
-        return new ResponseEntity<UserEntity>(user1, HttpStatus.OK);
+	@GetMapping("/signup")
+	public List<String> signUp(UserEntity user) {
+//		PlayerEntity playerEntity = playerRepository.findById(1);
+//		System.out.println(playerEntity.getYellow_cards());
+		return signInOrSignUpService.getAll();
 	}
 	
 	@Override
