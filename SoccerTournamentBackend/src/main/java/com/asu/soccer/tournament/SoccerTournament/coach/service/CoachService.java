@@ -10,5 +10,4 @@ import com.asu.soccer.tournament.SoccerTournament.common.entity.TeamEntity;
 public interface CoachService {
 	
 	public TeamEntity createTeam(List<PlayerEntity> playerEntities, int coachId, String teamName);
-	
 }

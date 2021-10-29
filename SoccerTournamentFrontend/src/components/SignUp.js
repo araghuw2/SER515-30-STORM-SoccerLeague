@@ -1,6 +1,5 @@
 import react from "react";
 import React, { Component } from "react";
-//import Popup from 'reactjs-popup';
 
 class SignUp extends React.Component {
   state = {

@@ -12,8 +12,13 @@ export const menuItems = [
   },
 
   {
-    title: "Videos",
-    url: "/videos",
+    title: "AboutUS",
+    url: "/aboutus",
+    cName: "nav-links",
+  },
+  {
+    title:"Rules",
+    url: "/rules",
     cName: "nav-links",
   },
 
@@ -24,14 +29,27 @@ export const menuItems = [
   },
 
   {
-    title: "SignIn",
+    title: "SignIn/SignUp",
     url: "/login",
     cName: "nav-links",
   },
 
+  
   {
     title: "SignUp",
     url: "/signup",
+    cName: "nav-links",
+  },
+
+  {
+    title: "SignOut",
+    url: "/signout",
+    cName: "nav-links",
+  },
+
+  {
+    title: "MyProfile",
+    url: "/myprofile",
     cName: "nav-links",
   },
 ];
