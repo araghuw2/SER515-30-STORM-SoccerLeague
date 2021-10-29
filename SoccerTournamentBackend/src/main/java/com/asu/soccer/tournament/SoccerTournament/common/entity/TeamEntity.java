@@ -16,34 +16,34 @@ public class TeamEntity {
 	
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	
-	@Column(nullable=false)
+	@Column
     private String team_name;
 	
-	@Column(nullable=false)
+	@Column
     private String reg_date;
 
-	@Column(nullable=false)
+	@Column
     private Integer games_lost;
 	
-	@Column(nullable=false)
+	@Column
     private Integer games_won;
 	
-	@Column(nullable=false)
+	@Column
     private Integer games_drawn;
 	
-	@Column(nullable=false)
+	@Column
     private Integer total_games;
 	
-	@Column(nullable=false)
+	@Column
     private Integer user_details_id; //Coach
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
