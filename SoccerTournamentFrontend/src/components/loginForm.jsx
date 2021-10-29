@@ -1,10 +1,7 @@
-import react from "react";
+
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import Joi from "joi";
-import { isValidElement } from "react";
-import { signIn, signOut } from '../actions'
-import axios from 'axios';
+import { signIn } from '../actions'
 import { menuItems } from "./menuItems";
 import { NavLink } from "react-router-dom";
 
