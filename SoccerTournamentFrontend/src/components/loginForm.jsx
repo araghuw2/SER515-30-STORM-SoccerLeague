@@ -100,8 +100,8 @@ class LoginForm extends Component {
           :
           null
         }
-        <NavLink to={menuItems[5].url}>
-                  {menuItems[5].title}
+        <NavLink to={menuItems[6].url}>
+                  {menuItems[6].title}
         </NavLink>
       </div>
     );

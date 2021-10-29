@@ -12,6 +12,10 @@ class MyProfile extends Component {
   createNewTeam = () => {
     history.push('/createNewTeam');
   };
+
+  generateSchedule = () => {
+    history.push('/generateSchedule');
+  };
   
   render() {
     return (
@@ -43,7 +47,13 @@ class MyProfile extends Component {
         </table>
         <br/>
         <h3>
+        {
+        this.props.role=="TournamentManager"?
+            <button onClick={() => this.generateSchedule()}>Generate Schedule</button>
+        :
             <button onClick={() => this.createNewTeam()}>Create New Team</button>
+
+        }
         </h3>
       </div>
     );
