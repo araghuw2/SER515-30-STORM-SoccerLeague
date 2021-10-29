@@ -2,50 +2,52 @@ import react from "react";
 import React, { Component } from "react";
 import Joi from "joi";
 import "./createTeam.css"
+import { registerTeam } from '../actions'
+import { connect } from "react-redux";
 
 class CreateTeam extends Component {
+
   state = {
-    team_details: { team_name: "", coach_id: "" ,
-    player_details:[
-      {name:"",email:"",age:"",gender:""},
-      {name:"",email:"",age:"",gender:""},
-      {name:"",email:"",age:"",gender:""},
-      {name:"",email:"",age:"",gender:""},
-      {name:"",email:"",age:"",gender:""},
-      {name:"",email:"",age:"",gender:""},
-      {name:"",email:"",age:"",gender:""},
-      {name:"",email:"",age:"",gender:""},
-      {name:"",email:"",age:"",gender:""},
-      {name:"",email:"",age:"",gender:""},
-    ],
+    teamDetail: { team_name: "", coachID: "" ,
+    playerList:[],
   },
     error: {},
   };
+
+   
 
   validate = () => { };
 
   handleSubmit = (e) => {
     e.preventDefault(); //For stopping the whole reload of page
-    const error = this.validate();
+    /*const error = this.validate();
     console.log(error);
 
-    if (error) return;
+    //if (error) return;
+    if(error)
+    {
+      let temp_teamDetail = { team_name: "", coachID: "" ,
+      playerList:[],
+    };
+      this.setState({teamDetail:temp_teamDetail});
+    }*/
+    
+    this.props.registerTeam(this.state.teamDetail);
 
-
-    console.log("Submitted");
+    console.log("New Team details submitted");
   };
 
   handleChange = (e) => {
-    const team_details = { ...this.state.team_details };
-    team_details.team_name = e.currentTarget.value;
-    this.setState({ team_details });
+    const teamDetail = { ...this.state.teamDetail };
+    teamDetail.team_name = e.currentTarget.value;
+    this.setState({ teamDetail });
   };
 
   setPlayerDetail = (e,index) => {
-    let team_details = {...this.state.team_details}
-    let player_details = {...team_details.player_details}
+    let teamDetail = {...this.state.teamDetail}
+    let playerList = {...teamDetail.playerList}
 
-    let the_player = {...player_details[index]}
+    let the_player = {...playerList[index]}
 
     let key = e.target.id;
     let val = e.target.value;
@@ -54,10 +56,10 @@ class CreateTeam extends Component {
       ...the_player,
       [key] : val
     }
-    player_details[index] = the_player;
-    team_details.player_details = player_details;
+    playerList[index] = the_player;
+    teamDetail.playerList = playerList;
 
-    this.setState({ team_details });
+    this.setState({ teamDetail });
   }
 
   render() {
@@ -68,7 +70,7 @@ class CreateTeam extends Component {
             <label htmlFor="teamname">Team Name</label>
             <input
               autoFocus
-              value={this.state.team_details.team_name}
+              value={this.state.teamDetail.team_name}
               onChange={this.handleChange}
               id="teamname"
               type="text"
@@ -259,4 +261,10 @@ class CreateTeam extends Component {
   }
 }
 
-export default CreateTeam;
+const mapStateToProps = (state) => {
+  return { 
+      
+  }
+}
+
+export default connect(mapStateToProps,{registerTeam})(CreateTeam);

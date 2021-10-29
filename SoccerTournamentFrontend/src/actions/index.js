@@ -13,6 +13,17 @@ export const signIn = formValues => async (dispatch, getState) => {
     }
 }
 
+export const registerTeam = formValues => async (dispatch, getState) => {
+    try {
+        const response = await axios.post('http://localhost:8080/createteam_placeholder', {...formValues });
+        if (response.status == 200) {
+            dispatch({ type: "REGISTERED", payload: response.data });
+        }
+    } catch (error) {
+       // dispatch({ type: "SIGN_IN_ERROR" });
+    }
+}
+
 export const signOut = () => {
     return {
         type: "SIGN_OUT"
