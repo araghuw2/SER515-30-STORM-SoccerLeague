@@ -34,11 +34,11 @@ export const menuItems = [
     cName: "nav-links",
   },
   
-  {
-    title: "CreateTeam",
-    url: "/createteam",
-    cName: "nav-links",
-  },
+  // {
+  //   title: "CreateTeam",
+  //   url: "/createteam",
+  //   cName: "nav-links",
+  // },
 
   
   {
