@@ -43,3 +43,14 @@ export const signOut = () => {
         type: "SIGN_OUT"
     };
 };
+
+export const viewTeam = formValues => async (dispatch, getState) => {
+    try {
+        const response = await axios.post('http://localhost:8080/view/team', {...formValues });
+        if (response.status == 200) {
+            dispatch({ type: "VIEW_TEAM", payload: response.data });
+        }
+    } catch (error) {
+       // dispatch({ type: "SIGN_IN_ERROR" });
+    }
+}

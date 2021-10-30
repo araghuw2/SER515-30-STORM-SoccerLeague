@@ -30,6 +30,18 @@ export default (state = INITIAL_STATE, action) => {
             }
          };
 
+    case "VIEW_TEAM": 
+    /* when user signs out, we want to clear the email property, we dont want to carry the value around */
+        return {
+            ...state, 
+            team_details: {
+                team_name: action.payload.team_name,
+                coach_id: action.payload.coach_id,
+                player_details: action.payload.player_details,
+                team_id: action.payload.team_id,
+            }
+         };
+
 
     default: 
         return state;

@@ -1,6 +1,4 @@
-import react from "react";
 import React, { Component } from "react";
-import Joi from "joi";
 import "./createTeam.css"
 import { registerTeam } from '../actions'
 import { connect } from "react-redux";

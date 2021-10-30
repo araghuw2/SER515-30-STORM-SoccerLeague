@@ -3,10 +3,6 @@ import React from "react";
 import { connect } from 'react-redux';
 
 class ViewTeamDetails extends React.Component {
-  state = {
-    account: { username: "", password: "" },
-    error: {},
-  };
   
   render() {
     return (
@@ -16,11 +12,21 @@ class ViewTeamDetails extends React.Component {
             </h2>
         <table>
         <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Name</th>
+                <th>Email</th>
                 <th>Age</th>
                 <th>Gender</th>
             </tr>
+            { this.props.playerDetails.map((item, index) => {
+              return (
+                <tr key={index}>
+                  <td>{item.name}</td>
+                  <td>{item.email}</td>
+                  <td>{item.age}</td>
+                  <td>{item.gender}</td>
+                </tr>
+              );
+            })}
         </table>
         <br/>
       </div>
@@ -29,11 +35,11 @@ class ViewTeamDetails extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { 
-        gender: state.auth.gender,
-        first_name: state.auth.first_name,
-        last_name: state.auth.last_name,
-        age: state.auth.age
+    return {
+        teamName: state.team.team_name,
+        coachId: state.team.coach_id,
+        playerDetails: state.team.player_details,
+        teamId: state.team.team_id,
     }
   }
   
