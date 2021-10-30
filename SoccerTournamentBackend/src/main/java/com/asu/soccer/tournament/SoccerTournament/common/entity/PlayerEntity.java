@@ -16,22 +16,22 @@ public class PlayerEntity {
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(nullable=false)
+	@Column
     private String team_details_id;
 	
-	@Column(nullable=false)
-    private String yellow_cards;
+	@Column
+    private Integer yellow_cards;
 
-	@Column(nullable=false)
+	@Column
     private Integer red_cards;
 	
-	@Column(nullable=false)
+	@Column
     private Integer subs;
 	
-	@Column(nullable=false)
+	@Column
     private Integer games_played;
 	
-	@Column(nullable=false)
+	@Column
     private Integer user_details_id;
 
 	public long getId() {
@@ -50,11 +50,11 @@ public class PlayerEntity {
 		this.team_details_id = team_details_id;
 	}
 
-	public String getYellow_cards() {
+	public Integer getYellow_cards() {
 		return yellow_cards;
 	}
 
-	public void setYellow_cards(String yellow_cards) {
+	public void setYellow_cards(Integer yellow_cards) {
 		this.yellow_cards = yellow_cards;
 	}
 
