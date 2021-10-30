@@ -13,37 +13,37 @@ public class UserEntity {
 	
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	
-	@Column(nullable=false)
+	@Column
     private String role;
     
-	@Column(nullable=false)
+	@Column
     private String reg_date;
 	
-	@Column(nullable=false)
+	@Column
     private String email;
 	
-	@Column(nullable=false)
+	@Column
     private String password;
 	
-	@Column(nullable=false)
+	@Column
     private String gender;
 	
-	@Column(nullable=false)
+	@Column
     private String first_name;
 
-	@Column(nullable=false)
+	@Column
     private String last_name;
 	
-	@Column(nullable=false)
+	@Column
     private String withdraw_flag;
 
 	public long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
