@@ -9,11 +9,9 @@ import Rules from "./components/rules";
 import SignUp from "./components/SignUp";
 import ViewTeamDeatils from "./components/viewTeamDetails";
 import CreateTeam from "./components/createTeam";
-import SignUp from "./components/SignUp";
 import "./App.css";
 import Footer from "./components/footer";
 import MyProfile from "./components/myProfile";
-import CreateTeam from "./components/createTeam";
 import AboutUs from "./components/aboutUs";
 
 class App extends Component {
