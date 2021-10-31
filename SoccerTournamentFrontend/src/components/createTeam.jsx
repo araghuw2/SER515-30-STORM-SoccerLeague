@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 class CreateTeam extends Component {
 
   state = {
-    teamDetail: { team_name: "", coachID: "" ,
+    teamDetail: { team_name: "", coach_id: "" ,
     playerList:[],
   },
     error: {},
@@ -26,7 +26,7 @@ class CreateTeam extends Component {
     //if (error) return;
     if(error)
     {
-      let temp_teamDetail = { team_name: "", coachID: "" ,
+      let temp_teamDetail = { team_name: "", coach_id: "" ,
       playerList:[],
     };
       this.setState({teamDetail:temp_teamDetail});
