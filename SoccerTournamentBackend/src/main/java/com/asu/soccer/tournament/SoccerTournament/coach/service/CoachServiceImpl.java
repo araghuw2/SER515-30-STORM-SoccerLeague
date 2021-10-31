@@ -68,6 +68,36 @@ public class CoachServiceImpl implements CoachService {
 		return teamEntity;
 		
 	}
+	
+	@Override
+	public TeamCreateModel viewTeam(String coachId) {
+		
+		TeamEntity teamEntity = teamRepository.findByCoachId(Integer.parseInt(coachId));
+		Long teamId = teamEntity.getId();
+		
+		List<PlayerEntity> players = playerRepository.findByTeamDetailsId(teamId);
+		List<PlayerModel> playerModelList = new ArrayList<PlayerModel>();
+		
+		for(PlayerEntity player : players) {
+			UserEntity userEntity = userRepository.findByUserId(player.getId());
+			PlayerModel playerModel = new PlayerModel();
+			playerModel.setAge(12);
+			playerModel.setEmail(userEntity.getEmail());
+			playerModel.setGender(userEntity.getGender());
+			playerModel.setPlayerName(userEntity.getFirst_name().concat(userEntity.getLast_name()));
+			
+			playerModelList.add(playerModel);
+		}
+		
+		TeamCreateModel teamCreateModel = new TeamCreateModel();
+		
+		teamCreateModel.setCoach_id(Integer.parseInt(coachId));
+		teamCreateModel.setPlayerList(playerModelList);
+		teamCreateModel.setTeam_name(teamEntity.getTeam_name());
+		
+		return teamCreateModel;
+		
+	}
 
 //	@Autowired(required=true)
 //    UserRepository usersRepository;
