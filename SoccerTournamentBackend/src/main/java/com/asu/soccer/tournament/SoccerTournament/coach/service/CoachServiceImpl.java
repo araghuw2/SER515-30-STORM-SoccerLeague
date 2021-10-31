@@ -2,27 +2,39 @@ package com.asu.soccer.tournament.SoccerTournament.coach.service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.asu.soccer.tournament.SoccerTournament.common.entity.PlayerEntity;
 import com.asu.soccer.tournament.SoccerTournament.common.entity.TeamEntity;
+import com.asu.soccer.tournament.SoccerTournament.common.entity.UserEntity;
 import com.asu.soccer.tournament.SoccerTournament.common.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.asu.soccer.tournament.SoccerTournament.common.entity.TeamEntity;
+import com.asu.soccer.tournament.SoccerTournament.common.model.PlayerModel;
 import com.asu.soccer.tournament.SoccerTournament.common.model.SuccessErrorModel;
+import com.asu.soccer.tournament.SoccerTournament.common.model.TeamCreateModel;
 import com.asu.soccer.tournament.SoccerTournament.common.repository.UserRepository;
+import com.asu.soccer.tournament.SoccerTournament.player.repository.PlayerRepository;
 
 @Service
 public class CoachServiceImpl implements CoachService {
 	
 	@Autowired
 	TeamRepository teamRepository;
+	
+	@Autowired
+	PlayerRepository playerRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 
 	@Override
 	public TeamEntity createTeam(List<PlayerEntity> playerEntities, int coachId, String teamName) {

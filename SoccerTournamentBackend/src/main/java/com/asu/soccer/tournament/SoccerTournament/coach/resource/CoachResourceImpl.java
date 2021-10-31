@@ -57,4 +57,11 @@ public class CoachResourceImpl implements CoachResource {
 		return successErrorModel;
 	}
 	
+	@Override
+	@GetMapping(path = "view/team", produces=MediaType.APPLICATION_JSON_VALUE)
+	public TeamCreateModel viewTeam(String coachId) {
+		
+		return coachService.viewTeam(coachId);
+	}
+	
 }
