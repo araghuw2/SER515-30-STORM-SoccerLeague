@@ -35,7 +35,14 @@ export const signUp = formValues => async (dispatch, getState) => {
 
 export const registerTeam = formValues => async (dispatch, getState) => {
     try {
-        const response = await axios.post('http://localhost:8080/createteam_placeholder', {...formValues });
+        const json = JSON.stringify(formValues);
+        const response = await axios.post('http://localhost:8080/create/team', json, {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            'Content-Type': 'application/json'
+          }
+        });
+
         if (response.status == 200) {
             dispatch({ type: "REGISTERED", payload: response.data });
         }
@@ -43,9 +50,3 @@ export const registerTeam = formValues => async (dispatch, getState) => {
        // dispatch({ type: "SIGN_IN_ERROR" });
     }
 }
-
-export const signOut = () => {
-    return {
-        type: "SIGN_OUT"
-    };
-};

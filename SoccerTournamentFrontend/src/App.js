@@ -30,7 +30,7 @@ class App extends Component {
               <Route path="/login" component={LoginForm} />
               <Route path="/signup" component={SignUp}/>
               <Route path="/myprofile" component={MyProfile}/>
-              <Route path="/createteam" component={CreateTeam} />
+              <Route path="/createNewTeam" component={CreateTeam} />
               <Route path="/viewteamdetails" component={ViewTeamDeatils}/>
               <Route path="/signout" component={Home}/>
               <Route path="/" component={Home} />

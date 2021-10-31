@@ -82,16 +82,16 @@ class CreateTeam extends Component {
                 <fieldset>
                   <legend> Player 1 </legend>
                   <label htmlFor="PlayerName"> Name </label>
-                  <input id="name" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,0)}/>
+                  <input id="playerName" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,0)}/>
                   <label htmlFor="PlayerEmail"> Email </label>
                   <input id="email" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,0)}/>
                   <label htmlFor="PlayerAge"> Age </label>
-                  <input id="age" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,0)}/>
+                  <input id="age" type="number" className="form-control" onChange={(e) => this.setPlayerDetail(e,0)}/>
                   <label htmlFor="PlayerGender"> Gender </label>
                   <div> &nbsp;&nbsp;
-                    <input type="radio" value="Male" id="gender" onChange={(e) => this.setPlayerDetail(e,0)}/> Male&nbsp;
-                    <input type="radio" value="Female" id="gender" onChange={(e) => this.setPlayerDetail(e,0)}/> Female&nbsp;
-                    <input type="radio" value="Other" id="gender" onChange={(e) => this.setPlayerDetail(e,0)} /> Other&nbsp;
+                    <input type="radio"  value="Male" name="GenderRadio"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,0)}/> Male&nbsp;
+                    <input type="radio"  value="Female" name="GenderRadio"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,0)}/> Female&nbsp;
+                    <input type="radio"  value="Other" name="GenderRadio"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,0)} /> Other&nbsp;
                   </div>
                   <br/>
                 </fieldset>
@@ -99,16 +99,16 @@ class CreateTeam extends Component {
                 <fieldset>
                   <legend> Player 3 </legend>
                   <label htmlFor="PlayerName"> Name </label>
-                  <input id="name" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,2)}/>
+                  <input id="playerName" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,2)}/>
                   <label htmlFor="PlayerEmail"> Email </label>
                   <input id="email" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,2)}/>
                   <label htmlFor="PlayerAge"> Age </label>
-                  <input id="age" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,2)}/>
+                  <input id="age" type="number" className="form-control" onChange={(e) => this.setPlayerDetail(e,2)}/>
                   <label htmlFor="PlayerGender"> Gender </label>
                   <div>&nbsp;&nbsp;
-                    <input type="radio" value="Male" id="gender" onChange={(e) => this.setPlayerDetail(e,2)} /> Male&nbsp;
-                    <input type="radio" value="Female" id="gender" onChange={(e) => this.setPlayerDetail(e,2)} /> Female&nbsp;
-                    <input type="radio" value="Other" id="gender" onChange={(e) => this.setPlayerDetail(e,2)} /> Other&nbsp;
+                    <input type="radio" value="Male"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,2)} /> Male&nbsp;
+                    <input type="radio" value="Female"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,2)} /> Female&nbsp;
+                    <input type="radio" value="Other"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,2)} /> Other&nbsp;
                   </div>
                   <br/>
                 </fieldset>
@@ -116,16 +116,16 @@ class CreateTeam extends Component {
                 <fieldset>
                   <legend> Player 5 </legend>
                   <label htmlFor="PlayerName"> Name </label>
-                  <input id="name" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,4)}/>
+                  <input id="playerName" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,4)}/>
                   <label htmlFor="PlayerEmail"> Email </label>
                   <input id="email" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,4)}/>
                   <label htmlFor="PlayerAge"> Age </label>
-                  <input id="age" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,4)}/>
+                  <input id="age" type="number" className="form-control" onChange={(e) => this.setPlayerDetail(e,4)}/>
                   <label htmlFor="PlayerGender"> Gender </label>
                   <div>&nbsp;&nbsp;
-                    <input type="radio" value="Male" id="gender" onChange={(e) => this.setPlayerDetail(e,4)} />Male&nbsp;
-                    <input type="radio" value="Female" id="gender" onChange={(e) => this.setPlayerDetail(e,4)} />Female&nbsp;
-                    <input type="radio" value="Other" id="gender" onChange={(e) => this.setPlayerDetail(e,4)} />Other&nbsp;
+                    <input type="radio" value="Male"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,4)} />Male&nbsp;
+                    <input type="radio" value="Female"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,4)} />Female&nbsp;
+                    <input type="radio" value="Other"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,4)} />Other&nbsp;
                   </div>
                   <br/>
                 </fieldset>
@@ -133,16 +133,16 @@ class CreateTeam extends Component {
                 <fieldset>
                   <legend> Player 7 </legend>
                   <label htmlFor="PlayerName"> Name </label>
-                  <input id="name" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,6)}/>
+                  <input id="playerName" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,6)}/>
                   <label htmlFor="PlayerEmail"> Email </label>
                   <input id="email" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,6)}/>
                   <label htmlFor="PlayerAge"> Age </label>
-                  <input id="age" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,6)}/>
+                  <input id="age" type="number" className="form-control" onChange={(e) => this.setPlayerDetail(e,6)}/>
                   <label htmlFor="PlayerGender"> Gender </label>
                   <div>&nbsp;&nbsp;
-                    <input type="radio" value="Male" id="gender"  onChange={(e) => this.setPlayerDetail(e,6)}/> Male&nbsp;
-                    <input type="radio" value="Female" id="gender"  onChange={(e) => this.setPlayerDetail(e,6)}/> Female&nbsp;
-                    <input type="radio" value="Other" id="gender" onChange={(e) => this.setPlayerDetail(e,6)} /> Other&nbsp;
+                    <input type="radio" value="Male"  name="GenderRadio" id="gender"  onChange={(e) => this.setPlayerDetail(e,6)}/> Male&nbsp;
+                    <input type="radio" value="Female"  name="GenderRadio" id="gender"  onChange={(e) => this.setPlayerDetail(e,6)}/> Female&nbsp;
+                    <input type="radio" value="Other"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,6)} /> Other&nbsp;
                   </div>
                   <br/>
                 </fieldset>
@@ -150,16 +150,16 @@ class CreateTeam extends Component {
                 <fieldset>
                   <legend> Player 9 </legend>
                   <label htmlFor="PlayerName"> Name </label>
-                  <input id="name" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,8)}/>
+                  <input id="playerName" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,8)}/>
                   <label htmlFor="PlayerEmail"> Email </label>
                   <input id="email" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,8)}/>
                   <label htmlFor="PlayerAge"> Age </label>
-                  <input id="age" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,8)}/>
+                  <input id="age" type="number" className="form-control" onChange={(e) => this.setPlayerDetail(e,8)}/>
                   <label htmlFor="PlayerGender"> Gender </label>
                   <div>&nbsp;&nbsp;
-                    <input type="radio" value="Male" id="gender" onChange={(e) => this.setPlayerDetail(e,8)} /> Male&nbsp;
-                    <input type="radio" value="Female" id="gender" onChange={(e) => this.setPlayerDetail(e,8)} /> Female&nbsp;
-                    <input type="radio" value="Other" id="gender" onChange={(e) => this.setPlayerDetail(e,8)} /> Other&nbsp;
+                    <input type="radio" value="Male"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,8)} /> Male&nbsp;
+                    <input type="radio" value="Female"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,8)} /> Female&nbsp;
+                    <input type="radio" value="Other"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,8)} /> Other&nbsp;
                   </div>
                   <br/>
                 </fieldset>
@@ -169,16 +169,16 @@ class CreateTeam extends Component {
               <fieldset>
                   <legend> Player 2 </legend>
                   <label htmlFor="Player1Name"> Name </label>
-                  <input id="name" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,1)}/>
+                  <input id="playerName" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,1)}/>
                   <label htmlFor="Player1Email"> Email </label>
                   <input id="email" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,1)}/>
                   <label htmlFor="Player1Age"> Age </label>
-                  <input id="age" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,1)}/>
+                  <input id="age" type="number" className="form-control" onChange={(e) => this.setPlayerDetail(e,1)}/>
                   <label htmlFor="PlayerGender"> Gender </label>
                   <div>&nbsp;&nbsp;
-                    <input type="radio" value="Male" id="gender"  onChange={(e) => this.setPlayerDetail(e,1)}/> Male&nbsp;
-                    <input type="radio" value="Female" id="gender"  onChange={(e) => this.setPlayerDetail(e,1)}/> Female&nbsp;
-                    <input type="radio" value="Other" id="gender" onChange={(e) => this.setPlayerDetail(e,1)} /> Other&nbsp;
+                    <input type="radio" value="Male"  name="GenderRadio" id="gender"  onChange={(e) => this.setPlayerDetail(e,1)}/> Male&nbsp;
+                    <input type="radio" value="Female"  name="GenderRadio" id="gender"  onChange={(e) => this.setPlayerDetail(e,1)}/> Female&nbsp;
+                    <input type="radio" value="Other"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,1)} /> Other&nbsp;
                   </div>
                   <br/>
                 </fieldset>
@@ -186,16 +186,16 @@ class CreateTeam extends Component {
                 <fieldset>
                   <legend> Player 4 </legend>
                   <label htmlFor="Player1Name"> Name </label>
-                  <input id="name" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,3)}/>
+                  <input id="playerName" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,3)}/>
                   <label htmlFor="Player1Email"> Email </label>
                   <input id="email" type="text" className="form-control onChange={(e) => this.setPlayerDetail(e,3)}"/>
                   <label htmlFor="Player1Age"> Age </label>
-                  <input id="age" type="text" className="form-control onChange={(e) => this.setPlayerDetail(e,3)}"/>
+                  <input id="age" type="number" className="form-control onChange={(e) => this.setPlayerDetail(e,3)}"/>
                   <label htmlFor="PlayerGender"> Gender </label>
                   <div>&nbsp;&nbsp;
-                    <input type="radio" value="Male" id="gender" onChange={(e) => this.setPlayerDetail(e,3)} /> Male&nbsp;
-                    <input type="radio" value="Female" id="gender" onChange={(e) => this.setPlayerDetail(e,3)} /> Female&nbsp;
-                    <input type="radio" value="Other" id="gender" onChange={(e) => this.setPlayerDetail(e,3)} /> Other&nbsp;
+                    <input type="radio" value="Male"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,3)} /> Male&nbsp;
+                    <input type="radio" value="Female"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,3)} /> Female&nbsp;
+                    <input type="radio" value="Other"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,3)} /> Other&nbsp;
                   </div>
                   <br/>
                 </fieldset>
@@ -203,16 +203,16 @@ class CreateTeam extends Component {
                 <fieldset>
                   <legend> Player 6 </legend>
                   <label htmlFor="Player1Name"> Name </label>
-                  <input id="name" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,5)}/>
+                  <input id="playerName" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,5)}/>
                   <label htmlFor="Player1Email"> Email </label>
                   <input id="email" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,5)}/>
                   <label htmlFor="Player1Age"> Age </label>
-                  <input id="age" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,5)}/>
+                  <input id="age" type="number" className="form-control" onChange={(e) => this.setPlayerDetail(e,5)}/>
                   <label htmlFor="PlayerGender"> Gender </label>
                   <div>&nbsp;&nbsp;
-                    <input type="radio" value="Male" id="gender" onChange={(e) => this.setPlayerDetail(e,5)} /> Male&nbsp;
-                    <input type="radio" value="Female" id="gender" onChange={(e) => this.setPlayerDetail(e,5)} /> Female&nbsp;
-                    <input type="radio" value="Other" id="gender" onChange={(e) => this.setPlayerDetail(e,5)} /> Other&nbsp;
+                    <input type="radio" value="Male"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,5)} /> Male&nbsp;
+                    <input type="radio" value="Female"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,5)} /> Female&nbsp;
+                    <input type="radio" value="Other"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,5)} /> Other&nbsp;
                   </div>
                   <br/>
                 </fieldset>
@@ -220,16 +220,16 @@ class CreateTeam extends Component {
                 <fieldset>
                   <legend> Player 8 </legend>
                   <label htmlFor="Player1Name"> Name </label>
-                  <input id="name" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,7)}/>
+                  <input id="playerName" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,7)}/>
                   <label htmlFor="Player1Email"> Email </label>
                   <input id="email" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,7)}/>
                   <label htmlFor="Player1Age"> Age </label>
-                  <input id="age" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,7)}/>
+                  <input id="age" type="number" className="form-control" onChange={(e) => this.setPlayerDetail(e,7)}/>
                   <label htmlFor="PlayerGender"> Gender </label>
                   <div>&nbsp;&nbsp;
-                    <input type="radio" value="Male" id="gender"  onChange={(e) => this.setPlayerDetail(e,7)}/> Male&nbsp;
-                    <input type="radio" value="Female" id="gender" onChange={(e) => this.setPlayerDetail(e,7)} /> Female&nbsp;
-                    <input type="radio" value="Other" id="gender" onChange={(e) => this.setPlayerDetail(e,7)} /> Other&nbsp;
+                    <input type="radio" value="Male"  name="GenderRadio" id="gender"  onChange={(e) => this.setPlayerDetail(e,7)}/> Male&nbsp;
+                    <input type="radio" value="Female"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,7)} /> Female&nbsp;
+                    <input type="radio" value="Other"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,7)} /> Other&nbsp;
                   </div>
                   <br/>
                 </fieldset>
@@ -237,16 +237,16 @@ class CreateTeam extends Component {
                 <fieldset>
                   <legend> Player 10 </legend>
                   <label htmlFor="PlayerName"> Name </label>
-                  <input id="name" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,9)}/>
+                  <input id="playerName" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,9)}/>
                   <label htmlFor="PlayerEmail"> Email </label>
                   <input id="email" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,9)}/>
                   <label htmlFor="PlayerAge"> Age </label>
-                  <input id="age" type="text" className="form-control" onChange={(e) => this.setPlayerDetail(e,9)}/>
+                  <input id="age" type="number" className="form-control" onChange={(e) => this.setPlayerDetail(e,9)}/>
                   <label htmlFor="PlayerGender"> Gender </label>
                   <div>&nbsp;&nbsp;
-                    <input type="radio" value="Male" id="gender" onChange={(e) => this.setPlayerDetail(e,9)} /> Male&nbsp;
-                    <input type="radio" value="Female" id="gender" onChange={(e) => this.setPlayerDetail(e,9)} /> Female&nbsp;
-                    <input type="radio" value="Other" id="gender" onChange={(e) => this.setPlayerDetail(e,9)} /> Other&nbsp;
+                    <input type="radio" value="Male"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,9)} /> Male&nbsp;
+                    <input type="radio" value="Female"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,9)} /> Female&nbsp;
+                    <input type="radio" value="Other"  name="GenderRadio" id="gender" onChange={(e) => this.setPlayerDetail(e,9)} /> Other&nbsp;
                   </div>
                   <br/>
                 </fieldset>

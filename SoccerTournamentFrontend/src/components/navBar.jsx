@@ -16,8 +16,8 @@ class NavBar extends Component {
           {
             this.props.isSignedIn==true?
               <li>
-                <NavLink className={menuItems[8].cName} to={menuItems[8].url}>
-                  {menuItems[8].title}
+                <NavLink className={menuItems[9].cName} to={menuItems[9].url}>
+                  {menuItems[9].title}
                 </NavLink>
               </li>
               : null
@@ -34,8 +34,8 @@ class NavBar extends Component {
             {
             this.props.isSignedIn==true?
               <li>
-                <NavLink onClick={this.props.signOut} className={menuItems[7].cName} to={menuItems[7].url}>
-                  {menuItems[7].title}
+                <NavLink onClick={this.props.signOut} className={menuItems[8].cName} to={menuItems[8].url}>
+                  {menuItems[8].title}
                 </NavLink>
               </li>
               :
