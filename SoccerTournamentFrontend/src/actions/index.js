@@ -29,7 +29,16 @@ export const signUp = formValues => async (dispatch, getState) => {
 
 export const registerTeam = formValues => async (dispatch, getState) => {
     try {
-        const response = await axios.post('http://localhost:8080/create/team', {...formValues });
+        const result = Object.values(formValues.playerList);
+        formValues.coach_id = "1";
+        formValues.playerList = result;
+        const response = await axios.post('http://localhost:8080/create/team', formValues, {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            'Content-Type': 'application/json'
+          }
+        });
+
         if (response.status == 200) {
             dispatch({ type: "REGISTERED", payload: response.data });
         }
