@@ -1,10 +1,5 @@
-import react from "react";
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import Joi from "joi";
-import { isValidElement } from "react";
-import { signIn } from '../actions'
-import axios from 'axios';
 import history from '../history'
 
 class MyProfile extends Component {
@@ -13,8 +8,13 @@ class MyProfile extends Component {
     history.push('/createNewTeam');
   };
 
+<<<<<<< HEAD
   generateSchedule = () => {
     history.push('/generateSchedule');
+=======
+  viewTeam = () => {
+    history.push('/viewteamdetails');
+>>>>>>> ca029a8f30a88e40781f8edd9e99157d4e7b6947
   };
   
   render() {
@@ -54,6 +54,10 @@ class MyProfile extends Component {
             <button onClick={() => this.createNewTeam()}>Create New Team</button>
 
         }
+        </h3>
+
+        <h3>
+            <button onClick={() => this.viewTeam()}>View My Team</button>
         </h3>
       </div>
     );

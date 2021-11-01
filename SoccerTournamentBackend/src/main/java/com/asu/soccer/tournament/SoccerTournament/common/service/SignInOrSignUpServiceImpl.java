@@ -13,7 +13,6 @@ public class SignInOrSignUpServiceImpl implements SignInOrSignUpService {
 
 	@Autowired
     UserRepository usersRepository;
-
 	
 	@Override
 	public UserEntity signIn(String username, String password) {
@@ -22,9 +21,8 @@ public class SignInOrSignUpServiceImpl implements SignInOrSignUpService {
 
 
 	@Override
-	public List<String> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public UserEntity signUp(UserEntity user) {
+		return usersRepository.save(user);
 	}
 	
 }

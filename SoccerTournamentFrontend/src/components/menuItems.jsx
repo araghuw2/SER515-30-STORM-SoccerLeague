@@ -27,14 +27,11 @@ export const menuItems = [
     url: "/players",
     cName: "nav-links",
   },
-
   {
     title: "SignIn/SignUp",
     url: "/login",
     cName: "nav-links",
   },
-
-  
   {
     title: "SignUp",
     url: "/signup",

@@ -15,12 +15,6 @@ export const signIn = (formValues) => async (dispatch, getState) => {
   }
 };
 
-export const signOut = () => {
-    return {
-        type: "SIGN_OUT"
-    };
-};
-
 export const signUp = formValues => async (dispatch, getState) => {
     try {
         const response = await axios.post('http://localhost:8080/signup', {...formValues });
@@ -30,5 +24,33 @@ export const signUp = formValues => async (dispatch, getState) => {
         }
     } catch (error) {
         dispatch({ type: "SIGN_UP_ERROR" });
+    }
+}
+
+export const registerTeam = formValues => async (dispatch, getState) => {
+    try {
+        const response = await axios.post('http://localhost:8080/create/team', {...formValues });
+        if (response.status == 200) {
+            dispatch({ type: "REGISTERED", payload: response.data });
+        }
+    } catch (error) {
+       // dispatch({ type: "SIGN_IN_ERROR" });
+    }
+}
+
+export const signOut = () => {
+    return {
+        type: "SIGN_OUT"
+    };
+};
+
+export const viewTeam = formValues => async (dispatch, getState) => {
+    try {
+        const response = await axios.post('http://localhost:8080/view/team', {...formValues });
+        if (response.status == 200) {
+            dispatch({ type: "VIEW_TEAM", payload: response.data });
+        }
+    } catch (error) {
+       // dispatch({ type: "SIGN_IN_ERROR" });
     }
 }
