@@ -58,12 +58,12 @@ public class PlayerServiceImpl implements PlayerService {
 		//userEntity.setReg_date(formattedDate);
 		
 		
-		long id = (long)(Math.random() * 100000);
+	    Integer id = (int)(Math.random() * 100000);
 		while(userRepository.findById(id) != null)
 		{
-			id = (long)(Math.random() * 100000);
+			id = (int)(Math.random() * 100000);
 		}
-		userEntity.setId((int)id);
+		userEntity.setId(id);
 		
 		UserEntity createdUser = userRepository.save(userEntity);
 		

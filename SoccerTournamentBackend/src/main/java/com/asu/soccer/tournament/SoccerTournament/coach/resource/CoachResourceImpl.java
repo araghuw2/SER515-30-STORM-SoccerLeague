@@ -3,7 +3,9 @@ package com.asu.soccer.tournament.SoccerTournament.coach.resource;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,7 +63,7 @@ public class CoachResourceImpl implements CoachResource {
 	
 	@Override
 	@GetMapping(path = "view/team", produces=MediaType.APPLICATION_JSON_VALUE)
-	public TeamCreateModel viewTeam(String coachId) {
+	public TeamCreateModel viewTeam(@Param("coachId") String coachId) {
 		
 		return coachService.viewTeam(coachId);
 	}

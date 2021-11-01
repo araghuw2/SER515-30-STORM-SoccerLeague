@@ -13,7 +13,7 @@ public class UserEntity {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@Column
     private String role;
@@ -44,7 +44,7 @@ public class UserEntity {
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.id = (long) id;
 	}
 
 	public String getRole() {

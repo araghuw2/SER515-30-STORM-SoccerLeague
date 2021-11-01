@@ -79,12 +79,12 @@ public class CoachServiceImpl implements CoachService {
 		List<PlayerModel> playerModelList = new ArrayList<PlayerModel>();
 		
 		for(PlayerEntity player : players) {
-			UserEntity userEntity = userRepository.findByUserId(player.getId());
+			Optional<UserEntity> userEntity = userRepository.findById(player.getId());
 			PlayerModel playerModel = new PlayerModel();
 			playerModel.setAge(12);
-			playerModel.setEmail(userEntity.getEmail());
-			playerModel.setGender(userEntity.getGender());
-			playerModel.setPlayerName(userEntity.getFirst_name().concat(userEntity.getLast_name()));
+			playerModel.setEmail(userEntity.get().getEmail());
+			playerModel.setGender(userEntity.get().getGender());
+			playerModel.setPlayerName(userEntity.get().getFirst_name().concat(userEntity.get().getLast_name()));
 			
 			playerModelList.add(playerModel);
 		}
