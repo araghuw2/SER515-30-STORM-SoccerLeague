@@ -1,7 +1,7 @@
 
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { signIn } from '../actions'
+import { signIn, viewTeam } from '../actions'
 import { menuItems } from "./menuItems";
 import { NavLink } from "react-router-dom";
 import Joi from "joi";
@@ -121,4 +121,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {signIn})(LoginForm);
+export default connect(mapStateToProps, {signIn, viewTeam})(LoginForm);

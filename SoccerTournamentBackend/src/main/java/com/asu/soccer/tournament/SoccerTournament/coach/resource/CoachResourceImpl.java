@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +19,7 @@ import com.asu.soccer.tournament.SoccerTournament.coach.service.CoachService;
 import com.asu.soccer.tournament.SoccerTournament.common.entity.PlayerEntity;
 //import com.asu.soccer.tournament.SoccerTournament.coach.service.CoachService;
 import com.asu.soccer.tournament.SoccerTournament.common.entity.TeamEntity;
+import com.asu.soccer.tournament.SoccerTournament.common.entity.UserEntity;
 import com.asu.soccer.tournament.SoccerTournament.common.model.PlayerModel;
 import com.asu.soccer.tournament.SoccerTournament.common.model.SuccessErrorModel;
 import com.asu.soccer.tournament.SoccerTournament.common.model.TeamCreateModel;
@@ -62,10 +65,12 @@ public class CoachResourceImpl implements CoachResource {
 	}
 	
 	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping(path = "view/team", produces=MediaType.APPLICATION_JSON_VALUE)
-	public TeamCreateModel viewTeam(@Param("coachId") String coachId) {
+	public ResponseEntity<TeamCreateModel> viewTeam(@Param("coachId") String coachId) {
 		
-		return coachService.viewTeam(coachId);
+		TeamCreateModel team = coachService.viewTeam(coachId);
+		return new ResponseEntity<TeamCreateModel>(team, HttpStatus.OK);
 	}
 	
 }
