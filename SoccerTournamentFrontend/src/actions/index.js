@@ -35,8 +35,10 @@ export const signUp = formValues => async (dispatch, getState) => {
 
 export const registerTeam = formValues => async (dispatch, getState) => {
     try {
-        const json = JSON.stringify(formValues);
-        const response = await axios.post('http://localhost:8080/create/team', json, {
+        const result = Object.values(formValues.playerList);
+        formValues.coach_id = "1";
+        formValues.playerList = result;
+        const response = await axios.post('http://localhost:8080/create/team', formValues, {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             'Content-Type': 'application/json'
