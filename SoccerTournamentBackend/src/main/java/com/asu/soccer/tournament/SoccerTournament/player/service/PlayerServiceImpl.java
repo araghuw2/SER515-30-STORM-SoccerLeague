@@ -58,7 +58,7 @@ public class PlayerServiceImpl implements PlayerService {
 		//userEntity.setReg_date(formattedDate);
 		
 		
-		Integer id = (int)(Math.random() * 100000);
+	    Integer id = (int)(Math.random() * 100000);
 		while(userRepository.findById(id) != null)
 		{
 			id = (int)(Math.random() * 100000);
@@ -74,12 +74,12 @@ public class PlayerServiceImpl implements PlayerService {
 		}
 		
 		PlayerEntity playerEntity = new PlayerEntity();
-		playerEntity.setId(id); // same as the ID for userEntity
+		playerEntity.setId((int)id); // same as the ID for userEntity
 		playerEntity.setGames_played(0);
 		playerEntity.setRed_cards(0);
 		playerEntity.setSubs(0);
 		playerEntity.setTeam_details_id(null);
-		playerEntity.setUser_details_id(id);
+		playerEntity.setUser_details_id((int)id);
 	
 		PlayerEntity createdPlayer = playerRepository.save(playerEntity);
 		
