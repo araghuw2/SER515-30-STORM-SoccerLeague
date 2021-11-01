@@ -5,5 +5,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import com.asu.soccer.tournament.SoccerTournament.common.entity.TeamEntity;
 
 public interface TeamRepository extends PagingAndSortingRepository<TeamEntity,Long> {
-	TeamEntity findById(String id);
+	TeamEntity findById(int id);
 }
