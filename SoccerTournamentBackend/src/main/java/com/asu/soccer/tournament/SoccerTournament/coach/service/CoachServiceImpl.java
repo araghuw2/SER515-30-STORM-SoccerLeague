@@ -37,7 +37,7 @@ public class CoachServiceImpl implements CoachService {
 	UserRepository userRepository;
 
 	@Override
-	public TeamEntity createTeam(List<PlayerEntity> playerEntities, int coachId, String teamName) {
+	public TeamEntity createTeam(int coachId, String teamName) {
 		
 		TeamEntity teamEntity = new TeamEntity();
 		
@@ -45,6 +45,7 @@ public class CoachServiceImpl implements CoachService {
 		teamEntity.setGames_lost(0);
 		teamEntity.setGames_won(0);
 		teamEntity.setTotal_games(0);
+//		teamEntity.setUser_details_id(coachId);
 		
 		Date date = new Date();
 	    String strDateFormat = "hh:mm:ss a";
@@ -75,16 +76,17 @@ public class CoachServiceImpl implements CoachService {
 		TeamEntity teamEntity = teamRepository.findByCoachId(Integer.parseInt(coachId));
 		Long teamId = teamEntity.getId();
 		
-		List<PlayerEntity> players = playerRepository.findByTeamDetailsId(teamId);
+		List<PlayerEntity> players = playerRepository.findByTeamDetailsId(Integer.parseInt(teamId.toString()));
 		List<PlayerModel> playerModelList = new ArrayList<PlayerModel>();
 		
 		for(PlayerEntity player : players) {
-			Optional<UserEntity> userEntity = userRepository.findById(player.getId());
+//			int id = (int)player.getId();
+			UserEntity userEntity = userRepository.findByUserId(player.getUser_details_id());
 			PlayerModel playerModel = new PlayerModel();
 			playerModel.setAge(12);
-			playerModel.setEmail(userEntity.get().getEmail());
-			playerModel.setGender(userEntity.get().getGender());
-			playerModel.setPlayerName(userEntity.get().getFirst_name().concat(userEntity.get().getLast_name()));
+			playerModel.setEmail(userEntity.getEmail());
+			playerModel.setGender(userEntity.getGender());
+			playerModel.setPlayerName(userEntity.getFirst_name().concat(userEntity.getLast_name()));
 			
 			playerModelList.add(playerModel);
 		}

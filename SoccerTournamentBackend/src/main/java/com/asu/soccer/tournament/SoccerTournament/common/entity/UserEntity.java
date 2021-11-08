@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class UserEntity {
 	
 	@Id
-	private int id;
+	private Integer id;
 	
 	@Column
     private String role;
@@ -42,7 +42,7 @@ public class UserEntity {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

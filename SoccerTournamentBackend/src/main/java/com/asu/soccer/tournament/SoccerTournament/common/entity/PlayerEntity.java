@@ -16,7 +16,7 @@ public class PlayerEntity {
 	private Integer id;
 	
 	@Column
-    private String team_details_id;
+    private Integer team_details_id;
 	
 	@Column
     private Integer yellow_cards;
@@ -41,11 +41,11 @@ public class PlayerEntity {
 		this.id = id;
 	}
 
-	public String getTeam_details_id() {
+	public Integer getTeam_details_id() {
 		return team_details_id;
 	}
 
-	public void setTeam_details_id(String team_details_id) {
+	public void setTeam_details_id(Integer team_details_id) {
 		this.team_details_id = team_details_id;
 	}
 

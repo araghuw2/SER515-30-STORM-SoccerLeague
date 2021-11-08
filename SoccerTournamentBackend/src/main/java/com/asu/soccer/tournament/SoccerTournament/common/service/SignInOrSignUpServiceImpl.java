@@ -22,6 +22,12 @@ public class SignInOrSignUpServiceImpl implements SignInOrSignUpService {
 
 	@Override
 	public UserEntity signUp(UserEntity user) {
+		Integer id = (int) (Math.random() * 100000);
+		while(usersRepository.findById(id) != null)
+		{
+			id = (int) (Math.random() * 100000);
+		}
+		user.setId(id);
 		return usersRepository.save(user);
 	}
 	

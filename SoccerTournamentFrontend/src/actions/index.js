@@ -27,10 +27,10 @@ export const signUp = formValues => async (dispatch, getState) => {
     }
 }
 
-export const registerTeam = formValues => async (dispatch, getState) => {
+export const registerTeam = (formValues, id) => async (dispatch, getState) => {
     try {
         const result = Object.values(formValues.playerList);
-        formValues.coach_id = "1";
+        formValues.coach_id = id;
         formValues.playerList = result;
         const response = await axios.post('http://localhost:8080/create/team', formValues, {
           headers: {

@@ -9,5 +9,5 @@ public interface PlayerService {
 	
 	public List<PlayerEntity> getAllPlayers();
 	
-	public PlayerEntity getPlayerEntity(PlayerModel playerModel);
+	public PlayerEntity getPlayerEntity(PlayerModel playerModel, int teamId);
 }

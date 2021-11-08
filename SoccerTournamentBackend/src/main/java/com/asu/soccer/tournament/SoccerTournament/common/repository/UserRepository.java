@@ -21,8 +21,8 @@ public interface UserRepository extends PagingAndSortingRepository<UserEntity,Lo
 	@PersistenceContext
 
 	
-//	@Query(value = "SELECT * FROM user_details u WHERE u.id = ?1", nativeQuery = true)
-//	UserEntity findByUserId(Long id);
+	@Query(value = "SELECT * FROM user_details u WHERE u.id = ?1", nativeQuery = true)
+	UserEntity findByUserId(long id);
 	
     @Query(value = "SELECT * FROM user_details u WHERE u.email = ?1 and u.password = ?2", nativeQuery = true)
     UserEntity getUser(String username, String password);

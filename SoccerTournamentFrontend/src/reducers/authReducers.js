@@ -31,7 +31,6 @@ export default (state = INITIAL_STATE, action) => {
     case "SIGN_UP": 
         return {
             ...state,
-            id: action.payload.id,
             isSignedIn: false, 
             role: action.payload.role,
             reg_date: action.payload.reg_date,

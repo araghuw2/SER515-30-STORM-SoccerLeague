@@ -13,5 +13,5 @@ public interface PlayerRepository extends PagingAndSortingRepository<PlayerEntit
 	PlayerEntity findById(int id);
 	
 	@Query(value = "SELECT * FROM player_details u WHERE u.team_details_id = ?1", nativeQuery = true)
-	List<PlayerEntity> findByTeamDetailsId(Long teamId);
+	List<PlayerEntity> findByTeamDetailsId(Integer teamId);
 }
