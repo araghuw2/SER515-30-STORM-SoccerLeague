@@ -12,6 +12,8 @@ import Footer from "./components/footer";
 import MyProfile from "./components/myProfile";
 import CreateTeam from "./components/createTeam";
 import AboutUs from "./components/aboutUs";
+import ViewTeamDetails from "./components/viewTeamDetails";
+import LoanFields from "./components/loanFields";
 
 class App extends Component {
   render() {
@@ -29,11 +31,9 @@ class App extends Component {
               <Route path="/login" component={LoginForm} />
               <Route path="/signup" component={SignUp}/>
               <Route path="/myprofile" component={MyProfile}/>
-<<<<<<< HEAD
-=======
               <Route path="/createNewTeam" component={CreateTeam} />
-              <Route path="/viewteamdetails" component={ViewTeamDeatils}/>
->>>>>>> ca029a8f30a88e40781f8edd9e99157d4e7b6947
+              <Route path="/viewteamdetails" component={ViewTeamDetails}/>
+              <Route path="/loanFields" component={LoanFields} />
               <Route path="/signout" component={Home}/>
               <Route path="/" component={Home} />
             </Switch>
