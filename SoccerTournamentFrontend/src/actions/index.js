@@ -53,9 +53,9 @@ export const signOut = () => {
     };
 };
 
-export const viewTeam = formValues => async (dispatch, getState) => {
+export const viewTeam = (id) => async (dispatch, getState) => {
     try {
-        const response = await axios.get('http://localhost:8080/view/team?coachId=8', );
+        const response = await axios.get(`http://localhost:8080/view/team?coachId=${id}`, );
         if (response.status == 200) {
             dispatch({ type: "VIEW_TEAM", payload: response.data });
         }

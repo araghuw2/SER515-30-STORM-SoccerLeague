@@ -48,7 +48,7 @@ class LoginForm extends Component {
     }
     
     this.props.signIn(this.state.account)
-    this.props.viewTeam(this.props.email);
+    // this.props.viewTeam(this.props.email);
 
     console.log("Submitteed");
   };
@@ -100,8 +100,8 @@ class LoginForm extends Component {
           :
           null
         }
-        <NavLink to={menuItems[5].url}>
-                  {menuItems[5].title}
+        <NavLink to={menuItems[7].url}>
+                  {menuItems[7].title}
         </NavLink>
       </div>
     );
