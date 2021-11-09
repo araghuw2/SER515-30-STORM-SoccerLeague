@@ -11,7 +11,7 @@ class NavBar extends Component {
     return (
       <React.Fragment>
         <nav className="navBarItems">
-          <h1 className="navbar-logo">Soccer Tournament</h1>
+          <h1 className="navbar-logo">STORM-SoccerLeague</h1>
           <ul className="nav-menu">
           {
             this.props.isSignedIn==true?

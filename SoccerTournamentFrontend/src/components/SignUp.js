@@ -223,7 +223,7 @@ class SignUp extends React.Component {
               <label>
               <input 
                 value="field site manager"
-                name="gender"
+                name="role"
                 type="radio"
                 onChange={this.handleChangeRole}
               />

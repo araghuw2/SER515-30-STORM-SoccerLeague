@@ -58,4 +58,10 @@ export const menuItems = [
     url: "/myprofile",
     cName: "nav-links",
   },//9
+
+  {
+    title: "LoanFields",
+    url: "/loanFields",
+    cName: "nav-links",
+  }, //10
 ];

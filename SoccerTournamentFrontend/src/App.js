@@ -7,12 +7,13 @@ import News from "./components/news";
 import Video from "./components/video";
 import Rules from "./components/rules";
 import SignUp from "./components/SignUp";
-import ViewTeamDeatils from "./components/viewTeamDetails";
 import "./App.css";
 import Footer from "./components/footer";
 import MyProfile from "./components/myProfile";
 import CreateTeam from "./components/createTeam";
 import AboutUs from "./components/aboutUs";
+import ViewTeamDetails from "./components/viewTeamDetails";
+import LoanFields from "./components/loanFields";
 
 class App extends Component {
   render() {
@@ -31,7 +32,8 @@ class App extends Component {
               <Route path="/signup" component={SignUp}/>
               <Route path="/myprofile" component={MyProfile}/>
               <Route path="/createNewTeam" component={CreateTeam} />
-              <Route path="/viewteamdetails" component={ViewTeamDeatils}/>
+              <Route path="/viewteamdetails" component={ViewTeamDetails}/>
+              <Route path="/loanFields" component={LoanFields} />
               <Route path="/signout" component={Home}/>
               <Route path="/" component={Home} />
             </Switch>
