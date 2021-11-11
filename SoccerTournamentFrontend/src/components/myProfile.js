@@ -12,9 +12,16 @@ class MyProfile extends Component {
   createNewTeam = () => {
     history.push('/createNewTeam');
   };
+  generateSchedule = () => {
+    history.push('/generateSchedule');
+  };
 
   viewTeam = () => {
     history.push('/viewteamdetails');
+  };
+
+  loanFields = () => {
+    history.push('/loanFields');
   };
   
   render() {
@@ -25,8 +32,8 @@ class MyProfile extends Component {
             </h2>
         <table>
             <tr>
-                <td>Registration Date</td>
-                <td>{this.props.reg_date}</td>
+                <td>Role</td>
+                <td>{this.props.role}</td>
             </tr>
             <tr>
                 <td>Email Id</td>
@@ -47,12 +54,38 @@ class MyProfile extends Component {
         </table>
         <br/>
         <h3>
-            <button onClick={() => this.createNewTeam()}>Create New Team</button>
+        {
+          <div>
+            {(() => {
+
+          switch(this.props.role.toLowerCase()){
+            case 'coach':
+              return (<div><button onClick={() => this.createNewTeam()}>Create New Team</button>
+              <button onClick={() => this.viewTeam()}>View My Team</button></div>)
+            case 'tournamentManager':
+              return (<div><button onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
+            
+            case 'field site manager':
+              return (<div><button onClick={() => this.loanFields()}>Loan Fields</button></div>)
+
+            default : 
+              return (<div> Nothing </div>)
+          }
+        })()}
+        </div>
+        }     
         </h3>
+          
+        {/* // this.props.role=="TournamentManager"?
+        //     <button onClick={() => this.generateSchedule()}>Generate Schedule</button>
+        // :
+        //     <button onClick={() => this.createNewTeam()}>Create New Team</button>
+
+        // }
 
         <h3>
             <button onClick={() => this.viewTeam()}>View My Team</button>
-        </h3>
+        </h3>  */}
       </div>
     );
   }
