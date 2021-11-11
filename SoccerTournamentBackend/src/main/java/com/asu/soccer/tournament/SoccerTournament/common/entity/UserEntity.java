@@ -12,7 +12,6 @@ import javax.persistence.Table;
 public class UserEntity {
 	
 	@Id
-	@GeneratedValue
 	private int id;
 	
 	@Column
