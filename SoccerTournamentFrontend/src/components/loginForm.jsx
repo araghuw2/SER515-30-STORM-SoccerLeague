@@ -1,9 +1,11 @@
 
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { signIn } from '../actions'
+import { signIn, viewTeam } from '../actions'
 import { menuItems } from "./menuItems";
 import { NavLink } from "react-router-dom";
+import Joi from "joi";
+import { isValidElement } from "react";
 
 class LoginForm extends Component {
   state = {
@@ -46,6 +48,7 @@ class LoginForm extends Component {
     }
     
     this.props.signIn(this.state.account)
+    // this.props.viewTeam(this.props.email);
 
     console.log("Submitteed");
   };
@@ -97,8 +100,8 @@ class LoginForm extends Component {
           :
           null
         }
-        <NavLink to={menuItems[5].url}>
-                  {menuItems[5].title}
+        <NavLink to={menuItems[7].url}>
+                  {menuItems[7].title}
         </NavLink>
       </div>
     );
@@ -118,4 +121,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {signIn})(LoginForm);
+export default connect(mapStateToProps, {signIn, viewTeam})(LoginForm);

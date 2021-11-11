@@ -19,8 +19,7 @@ public interface UserRepository extends PagingAndSortingRepository<UserEntity,Lo
 	UserEntity findById(int id);
 	UserEntity save(UserEntity user);
 
-	@PersistenceContext
-	
+	@PersistenceContext	
     @Query(value = "SELECT * FROM user_details u WHERE u.email = ?1 and u.password = ?2", nativeQuery = true)
     UserEntity getUser(String username, String password);
 	

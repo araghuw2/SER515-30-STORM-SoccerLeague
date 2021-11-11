@@ -21,7 +21,7 @@ class Home extends React.Component {
               </div>
             </div>
             <div className="slideshow">
-              <div classname="0">
+              <div className="0">
                 <div className="image-article">
                   <img src="/images/image01.jpeg" alt="/"></img>
                 </div>
@@ -31,7 +31,7 @@ class Home extends React.Component {
                   </a>
                 </div>
               </div>
-              <div classname="1">
+              <div className="1">
                 <div className="image-article">
                   <img src="/images/image1.jpeg" alt="/"></img>
                 </div>
@@ -41,7 +41,7 @@ class Home extends React.Component {
                   </a>
                 </div>
               </div>
-              <div classname="2">
+              <div className="2">
                 <div className="image-article">
                   <img src="/images/image2.jpeg" alt="/"></img>
                 </div>
@@ -51,7 +51,7 @@ class Home extends React.Component {
                   </a>
                 </div>
               </div>
-              <div classname="3">
+              <div className="3">
                 <div className="image-article">
                   <img src="/images/image4.jpeg" alt="/"></img>
                 </div>

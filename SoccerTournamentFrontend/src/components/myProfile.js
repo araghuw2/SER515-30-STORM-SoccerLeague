@@ -1,16 +1,27 @@
-import react from "react";
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import Joi from "joi";
-import { isValidElement } from "react";
-import { signIn } from '../actions'
-import axios from 'axios';
-import history from '../history'
+import history from '../history';
+import { viewTeam } from '../actions'
 
 class MyProfile extends Component {
 
+    componentWillMount() {
+        this.props.viewTeam(this.props.id);
+    }
+
   createNewTeam = () => {
     history.push('/createNewTeam');
+  };
+  generateSchedule = () => {
+    history.push('/generateSchedule');
+  };
+
+  viewTeam = () => {
+    history.push('/viewteamdetails');
+  };
+
+  loanFields = () => {
+    history.push('/loanFields');
   };
   
   render() {
@@ -21,8 +32,8 @@ class MyProfile extends Component {
             </h2>
         <table>
             <tr>
-                <td>Registration Date</td>
-                <td>{this.props.reg_date}</td>
+                <td>Role</td>
+                <td>{this.props.role}</td>
             </tr>
             <tr>
                 <td>Email Id</td>
@@ -43,8 +54,38 @@ class MyProfile extends Component {
         </table>
         <br/>
         <h3>
-            <button onClick={() => this.createNewTeam()}>Create New Team</button>
+        {
+          <div>
+            {(() => {
+
+          switch(this.props.role.toLowerCase()){
+            case 'coach':
+              return (<div><button onClick={() => this.createNewTeam()}>Create New Team</button>
+              <button onClick={() => this.viewTeam()}>View My Team</button></div>)
+            case 'tournamentManager':
+              return (<div><button onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
+            
+            case 'field site manager':
+              return (<div><button onClick={() => this.loanFields()}>Loan Fields</button></div>)
+
+            default : 
+              return (<div> Nothing </div>)
+          }
+        })()}
+        </div>
+        }     
         </h3>
+          
+        {/* // this.props.role=="TournamentManager"?
+        //     <button onClick={() => this.generateSchedule()}>Generate Schedule</button>
+        // :
+        //     <button onClick={() => this.createNewTeam()}>Create New Team</button>
+
+        // }
+
+        <h3>
+            <button onClick={() => this.viewTeam()}>View My Team</button>
+        </h3>  */}
       </div>
     );
   }
@@ -52,6 +93,7 @@ class MyProfile extends Component {
 
 const mapStateToProps = (state) => {
     return { 
+        id: state.auth.id,
         role: state.auth.role,
         reg_date: state.auth.reg_date,
         email: state.auth.email,
@@ -62,4 +104,4 @@ const mapStateToProps = (state) => {
     }
   }
 
-export default connect(mapStateToProps, null)(MyProfile);
+export default connect(mapStateToProps, {viewTeam})(MyProfile);
