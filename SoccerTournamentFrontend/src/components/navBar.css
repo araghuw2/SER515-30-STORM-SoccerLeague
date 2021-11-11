@@ -2,7 +2,7 @@
   background-color: black;
   height: 80;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
   margin-top: 12px;
