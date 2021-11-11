@@ -72,5 +72,13 @@ public class CoachResourceImpl implements CoachResource {
 		TeamCreateModel team = coachService.viewTeam(coachId);
 		return new ResponseEntity<TeamCreateModel>(team, HttpStatus.OK);
 	}
+
+	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping(path = "hasteam", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Boolean> hasTeam(String coachId) {
+		Boolean hasTeam = coachService.hasTeam(coachId);
+		return new ResponseEntity<Boolean>(hasTeam, HttpStatus.OK);
+	}
 	
 }

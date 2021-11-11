@@ -13,4 +13,6 @@ public interface CoachService {
 	public TeamEntity createTeam(List<PlayerEntity> playerEntities, int coachId, String teamName);
 	
 	public TeamCreateModel viewTeam(String coachId);
+	
+	public Boolean hasTeam(String coachId);
 }

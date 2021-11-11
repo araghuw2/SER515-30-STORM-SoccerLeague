@@ -99,6 +99,10 @@ public class CoachServiceImpl implements CoachService {
 		
 	}
 
-//	@Autowired(required=true)
-//    UserRepository usersRepository;
+	@Override
+	public Boolean hasTeam(String coachId) {
+		TeamEntity teamEntity = teamRepository.findByCoachId(Integer.parseInt(coachId));
+		return teamEntity != null;
+	}
+
 }
