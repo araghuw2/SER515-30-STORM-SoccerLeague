@@ -14,6 +14,8 @@ import CreateTeam from "./components/createTeam";
 import AboutUs from "./components/aboutUs";
 import ViewTeamDetails from "./components/viewTeamDetails";
 import LoanFields from "./components/loanFields";
+import Email from "./components/Email";
+
 
 class App extends Component {
   render() {
@@ -34,6 +36,7 @@ class App extends Component {
               <Route path="/createNewTeam" component={CreateTeam} />
               <Route path="/viewteamdetails" component={ViewTeamDetails}/>
               <Route path="/loanFields" component={LoanFields} />
+              <Route path="/Email" component={Email} />
               <Route path="/signout" component={Home}/>
               <Route path="/" component={Home} />
             </Switch>
