@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { send } from "emailjs-com";
 import{ init } from 'emailjs-com';
+import { Alert } from 'react-alert';
+
 init("user_QTZCB98LDM5l2yKtPDwAe");
 
 function Email() {
     const[toSend, setToSend] = useState({
         from_name: '',
-        to_name: '',
         message: '',
         reply_to: '',
     });
@@ -27,6 +28,9 @@ function Email() {
         .catch((err) => {
             console.log('FAILED', err);
         });
+        alert("An email has been sent.")
+
+        
     };
 
     const handleChange = (e) => {
@@ -36,37 +40,39 @@ function Email() {
 
     return (
         <div>
+            <center>
+            <h1>Contact</h1>
             <form onSubmit={onSubmit}>
-                <input 
+            <div className="form-group">
+                <input className="form-control"
                     type='text'
                     name='from_name'
-                    placeholder='from name'
+                    placeholder='Name'
                     value={toSend.from_name}
                     onChange={handleChange}
                 />
-                <input 
-                    type='text'
-                    name='to_name'
-                    placeholder='to name'
-                    value={toSend.to_name}
-                    onChange={handleChange}
-                />
-                <input 
+            </div>
+            <div className="form-group">
+                <input className="form-control" 
                     type='text'
                     name='message'
-                    placeholder='Your message'
+                    placeholder='Message'
                     value={toSend.message}
                     onChange={handleChange}
                 />
-                <input
+            </div>
+            <div className="form-group">
+                <input className="form-control"
                     type='text'
                     name='reply_to'
-                    placeholder='Your email'
+                    placeholder='Email'
                     value={toSend.reply_to}
                     onChange={handleChange}
                 />
-                <button type='submit'>Submit</button>
+            </div>
+                <h4><button type='submit'>Submit</button></h4>
             </form>
+            </center>
         </div>
     )
 }

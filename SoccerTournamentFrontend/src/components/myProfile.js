@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import history from '../history'
+import history from '../history';
+import { viewTeam } from '../actions'
 
 class MyProfile extends Component {
+
+    componentWillMount() {
+        this.props.viewTeam(this.props.id);
+    }
 
   createNewTeam = () => {
     history.push('/createNewTeam');
@@ -53,11 +58,11 @@ class MyProfile extends Component {
           <div>
             {(() => {
 
-          switch(this.props.role.toLowerCase()){
-            case 'coach':
+          switch(this.props.role){
+            case 'Coach':
               return (<div><button onClick={() => this.createNewTeam()}>Create New Team</button>
               <button onClick={() => this.viewTeam()}>View My Team</button></div>)
-            case 'tournamentManager':
+            case 'TournamentManager':
               return (<div><button onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
             
             case 'field site manager':
@@ -88,6 +93,7 @@ class MyProfile extends Component {
 
 const mapStateToProps = (state) => {
     return { 
+        id: state.auth.id,
         role: state.auth.role,
         reg_date: state.auth.reg_date,
         email: state.auth.email,
@@ -98,4 +104,4 @@ const mapStateToProps = (state) => {
     }
   }
 
-export default connect(mapStateToProps, null)(MyProfile);
+export default connect(mapStateToProps, {viewTeam})(MyProfile);

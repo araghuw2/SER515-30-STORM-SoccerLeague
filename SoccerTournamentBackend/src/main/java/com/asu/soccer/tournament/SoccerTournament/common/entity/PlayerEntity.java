@@ -13,7 +13,6 @@ import javax.persistence.Table;
 public class PlayerEntity {
 	
 	@Id
-	@GeneratedValue
 	private Integer id;
 	
 	@Column

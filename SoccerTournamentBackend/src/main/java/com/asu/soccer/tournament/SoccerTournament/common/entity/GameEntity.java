@@ -11,7 +11,6 @@ import javax.persistence.Table;
 public class GameEntity {
 	
 	@Id
-	@GeneratedValue
 	private long id;
 	
 	@Column(nullable=false)

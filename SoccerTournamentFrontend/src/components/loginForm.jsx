@@ -48,7 +48,7 @@ class LoginForm extends Component {
     }
     
     this.props.signIn(this.state.account)
-    this.props.viewTeam(this.props.email);
+    // this.props.viewTeam(this.props.email);
 
     console.log("Submitteed");
   };
