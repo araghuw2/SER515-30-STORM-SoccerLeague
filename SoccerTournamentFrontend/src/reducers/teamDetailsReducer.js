@@ -37,7 +37,7 @@ export default (state = INITIAL_STATE, action) => {
             team_details: {
                 team_name: action.payload.team_name,
                 coach_id: action.payload.coach_id,
-                player_details: action.payload.player_details,
+                player_details: action.payload.playerList,
                 team_id: action.payload.team_id,
             }
          };
