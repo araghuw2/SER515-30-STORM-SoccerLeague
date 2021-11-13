@@ -30,7 +30,7 @@ class CreateTeam extends Component {
       this.setState({teamDetail:temp_teamDetail});
     }*/
     
-    this.props.registerTeam(this.state.teamDetail);
+    this.props.registerTeam(this.state.teamDetail, this.props.id);
 
     console.log("New Team details submitted");
   };
@@ -261,7 +261,7 @@ class CreateTeam extends Component {
 
 const mapStateToProps = (state) => {
   return { 
-      
+      id: state.auth.id
   }
 }
 

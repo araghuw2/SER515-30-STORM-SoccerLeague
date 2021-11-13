@@ -33,7 +33,7 @@ public class PlayerEntity {
 	@Column
     private Integer user_details_id;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 

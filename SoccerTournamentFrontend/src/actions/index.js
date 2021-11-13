@@ -27,10 +27,11 @@ export const signUp = formValues => async (dispatch, getState) => {
     }
 }
 
-export const registerTeam = formValues => async (dispatch, getState) => {
+export const registerTeam = (formValues, id) => async (dispatch, getState) => {
     try {
         const result = Object.values(formValues.playerList);
-        formValues.coach_id = "1";
+        console.log(formValues);
+        formValues.coach_id =id;
         formValues.playerList = result;
         const response = await axios.post('http://localhost:8080/create/team', formValues, {
           headers: {
@@ -55,9 +56,20 @@ export const signOut = () => {
 
 export const viewTeam = (id) => async (dispatch, getState) => {
     try {
-        const response = await axios.get(`http://localhost:8080/view/team?coachId=${id}`, );
+         const response = await axios.get(`http://localhost:8080/view/team?coachId=${id}`, );
+         if (response.status == 200) {
+             dispatch({ type: "VIEW_TEAM", payload: response.data });
+         }
+     } catch (error) {
+        // dispatch({ type: "SIGN_IN_ERROR" });
+     }
+}
+
+export const hasTeam = (id) => async (dispatch, getState) => {
+    try {
+        const response = await axios.get(`http://localhost:8080/hasteam?coachId=${id}`, );
         if (response.status == 200) {
-            dispatch({ type: "VIEW_TEAM", payload: response.data });
+            dispatch({ type: "HAS_TEAM", payload: response.data });
         }
     } catch (error) {
        // dispatch({ type: "SIGN_IN_ERROR" });

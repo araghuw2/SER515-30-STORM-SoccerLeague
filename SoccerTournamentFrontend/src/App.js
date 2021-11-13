@@ -12,7 +12,7 @@ import MyProfile from "./components/myProfile";
 import CreateTeam from "./components/createTeam";
 import AboutUs from "./components/aboutUs";
 import ViewTeamDetails from "./components/viewTeamDetails";
-import LoanFields from "./components/loanFields";
+
 import RaiseQuery from "./raiseQuery";
 
 class App extends Component {
@@ -33,7 +33,7 @@ class App extends Component {
               <Route path="/myprofile" component={MyProfile} />
               <Route path="/createNewTeam" component={CreateTeam} />
               <Route path="/viewteamdetails" component={ViewTeamDetails} />
-              <Route path="/loanFields" component={LoanFields} />
+              
               <Route path="/signout" component={Home} />
               <Route path="/" component={Home} />
             </Switch>
