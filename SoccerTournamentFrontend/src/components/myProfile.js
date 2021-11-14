@@ -4,10 +4,12 @@ import history from '../history';
 import { viewTeam, hasTeam } from '../actions'
 
 class MyProfile extends Component {
-    showViewButton = false;
     componentWillMount() {
-      this.showViewButton =this.props.hasTeam(this.props.id)
-      if(this.showViewButton) {
+      this.props.hasTeam(this.props.id);
+    }
+
+    componentDidUpdate() {
+      if(this.props.showViewButton) {
         this.props.viewTeam(this.props.id);
       }
     }
@@ -63,7 +65,7 @@ class MyProfile extends Component {
 
           switch(this.props.role.toLowerCase()){
             case 'coach':
-              return (this.showViewButton==true ? 
+              return (this.props.showViewButton===false ? 
               <div><button onClick={() => this.createNewTeam()}>Create New Team</button></div>
               : <div><button onClick={() => this.viewTeam()}>View My Team</button></div>)
               // return (<div><button onClick={() => this.createNewTeam()}>Create New Team</button>
@@ -106,7 +108,8 @@ const mapStateToProps = (state) => {
         gender: state.auth.gender,
         first_name: state.auth.first_name,
         last_name: state.auth.last_name,
-        withdraw_flag: state.auth.withdraw_flag
+        withdraw_flag: state.auth.withdraw_flag,
+        showViewButton: state.team.has_team 
     }
   }
 

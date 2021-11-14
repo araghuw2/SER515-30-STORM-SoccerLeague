@@ -38,7 +38,7 @@ class App extends Component {
               
               {/* <Route path="/loanFields" component={LoanFields} /> */}
               <Route path="/signout" component={Home} />
-              <Route path="/loanFields" component={LoanFields} />
+              {/* <Route path="/loanFields" component={LoanFields} /> */}
               <Route path="/Email" component={Email} />
               <Route path="/signout" component={Home}/>
               <Route path="/" component={Home} />

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { send } from "emailjs-com";
 import{ init } from 'emailjs-com';
-import { Alert } from 'react-alert';
+// import { Alert } from 'react-alert';
 
 init("user_QTZCB98LDM5l2yKtPDwAe");
 
