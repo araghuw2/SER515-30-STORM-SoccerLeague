@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import "./footer.css";
+import history from '../history'
+
 class Footer extends React.Component {
+  Email = () => {
+    history.push('/Email');
+  };
+
   render() {
     return (
       <div className="main-footer">
@@ -63,6 +69,7 @@ class Footer extends React.Component {
               </div>
             </div>
             <hr />
+            <div><button onClick={() => this.Email()}>Contact Us</button></div>
             <div className="row">
               <p className="col-sm">
                 &copy;{new Date().getFullYear()} PROJECT30 | ALL RIGHTS RESERVED
