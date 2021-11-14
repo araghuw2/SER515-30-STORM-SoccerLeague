@@ -1,9 +1,11 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import authReducer from './authReducers';
-import teamDetailsReducer from './teamDetailsReducer';
+import authReducer from "./authReducers";
+import scheduleReducer from "./scheduleReducer";
+import teamDetailsReducer from "./teamDetailsReducer";
 
 export default combineReducers({
-    auth : authReducer,
-    team : teamDetailsReducer
+  auth: authReducer,
+  team: teamDetailsReducer,
+  schedule: scheduleReducer,
 });
