@@ -101,4 +101,51 @@ public class CoachServiceImpl implements CoachService {
 
 //	@Autowired(required=true)
 //    UserRepository usersRepository;
+	
+
+	/*
+	
+	public List<Match> scheduleTournament(List<Integer> teamList)
+	{
+	
+		//15 games allowed per 24 hours per ground. Consideration made for extra time per game.
+		
+		int groupCount;
+		int requiredGrounds = 1;
+		
+		
+		
+		
+		List<Match> matchList = new ArrayList<>();
+		
+		for(int index=0;index<teamList.size()-1;index++)
+		{
+			
+			increment
+			Match match = new Match(teamList.get(index), teamList.get(++index), Math.random());
+			matchList.add(match);
+		}
+		
+		return MatchList
+	}
+	
+	class Match
+	{
+		Integer teamId1;
+		Integer teamId2;
+		Integer winner;
+		String dateTime;
+		int groundId;
+		
+		public Match(int teamId1, int teamId2, int randomNumber, String dateTime, int groundId)
+		{
+			this.teamId1 = teamId1;
+			this.teamId2 = teamId2;
+			
+			winner = randomNumber < 0.5? teamId1: teamId2;
+		}
+		
+	}
+	
+	*/
 }
