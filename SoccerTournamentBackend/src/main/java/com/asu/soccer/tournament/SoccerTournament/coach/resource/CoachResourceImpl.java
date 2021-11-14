@@ -39,15 +39,15 @@ public class CoachResourceImpl implements CoachResource {
 	@PostMapping(path = "create/team",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
 	public SuccessErrorModel createTeam(@RequestBody TeamCreateModel teamCreateModel) {
 		
+		TeamEntity teamEntity = coachService.createTeam(teamCreateModel.getCoach_id(), teamCreateModel.getTeam_name());
+		
 		List<PlayerEntity> playerEntities = new ArrayList<>();
 		
 		for(PlayerModel playerModel: teamCreateModel.getPlayerList())
 		{
-			PlayerEntity playerEntity = playerService.getPlayerEntity(playerModel);
+			PlayerEntity playerEntity = playerService.getPlayerEntity(playerModel, teamEntity.getId());
 			playerEntities.add(playerEntity);
 		}
-		
-		TeamEntity teamEntity = coachService.createTeam(playerEntities, teamCreateModel.getCoach_id(), teamCreateModel.getTeam_name());
 		
 		SuccessErrorModel successErrorModel = new SuccessErrorModel();
 		if(teamEntity == null)
@@ -71,6 +71,14 @@ public class CoachResourceImpl implements CoachResource {
 		
 		TeamCreateModel team = coachService.viewTeam(coachId);
 		return new ResponseEntity<TeamCreateModel>(team, HttpStatus.OK);
+	}
+
+	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping(path = "hasteam", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Boolean> hasTeam(String coachId) {
+		Boolean hasTeam = coachService.hasTeam(coachId);
+		return new ResponseEntity<Boolean>(hasTeam, HttpStatus.OK);
 	}
 	
 }

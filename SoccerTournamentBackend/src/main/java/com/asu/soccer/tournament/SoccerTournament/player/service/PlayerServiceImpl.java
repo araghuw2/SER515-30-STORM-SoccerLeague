@@ -31,7 +31,7 @@ public class PlayerServiceImpl implements PlayerService {
 	}
 
 	@Override
-	public PlayerEntity getPlayerEntity(PlayerModel playerModel) {
+	public PlayerEntity getPlayerEntity(PlayerModel playerModel, long teamId) {
 		
 		UserEntity userEntity = new UserEntity();
 
@@ -78,7 +78,7 @@ public class PlayerServiceImpl implements PlayerService {
 		playerEntity.setGames_played(0);
 		playerEntity.setRed_cards(0);
 		playerEntity.setSubs(0);
-		playerEntity.setTeam_details_id(null);
+		playerEntity.setTeam_details_id(teamId+"");
 		playerEntity.setUser_details_id((int)id);
 	
 		PlayerEntity createdPlayer = playerRepository.save(playerEntity);

@@ -10,7 +10,9 @@ import com.asu.soccer.tournament.SoccerTournament.common.model.TeamCreateModel;
 
 public interface CoachService {
 	
-	public TeamEntity createTeam(List<PlayerEntity> playerEntities, int coachId, String teamName);
+	public TeamEntity createTeam(int coachId, String teamName);
 	
 	public TeamCreateModel viewTeam(String coachId);
+	
+	public Boolean hasTeam(String coachId);
 }
