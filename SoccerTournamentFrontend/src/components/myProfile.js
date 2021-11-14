@@ -58,11 +58,11 @@ class MyProfile extends Component {
           <div>
             {(() => {
 
-          switch(this.props.role.toLowerCase()){
-            case 'coach':
+          switch(this.props.role){
+            case 'Coach':
               return (<div><button onClick={() => this.createNewTeam()}>Create New Team</button>
               <button onClick={() => this.viewTeam()}>View My Team</button></div>)
-            case 'tournamentManager':
+            case 'TournamentManager':
               return (<div><button onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
             
             case 'field site manager':
