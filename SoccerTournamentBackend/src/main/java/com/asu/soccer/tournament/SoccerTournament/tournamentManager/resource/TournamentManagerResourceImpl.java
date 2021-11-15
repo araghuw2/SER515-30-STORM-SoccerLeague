@@ -3,7 +3,6 @@ package com.asu.soccer.tournament.SoccerTournament.tournamentManager.resource;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,12 +18,16 @@ import com.asu.soccer.tournament.SoccerTournament.common.entity.GameEntity;
 import com.asu.soccer.tournament.SoccerTournament.common.model.ScheduleModel;
 import com.asu.soccer.tournament.SoccerTournament.common.model.ScheduleModelReturn;
 import com.asu.soccer.tournament.SoccerTournament.common.repository.GameRepository;
+import com.asu.soccer.tournament.SoccerTournament.tournamenManager.service.TournamentManagerService;
 
 @RestController
 public class TournamentManagerResourceImpl implements TournamentManagerResource {
 
 	@Autowired
 	GameRepository gameRepository;
+	
+	@Autowired
+	TournamentManagerService tournamentManagerService;
 	
 	@Override
 	@PostMapping(path = "/schedule",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
@@ -104,6 +108,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setTeam_name_2(teams.get(0));
 				gameEntity.setGroup(groupNumber);
 				
+				gameRepository.save(gameEntity);
 				scheduledMatches.add(gameEntity);
 				
 			}
@@ -139,8 +144,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			
 			scheduleModelReturn.setScheduledMatches(scheduledMatches);
 			scheduleModelReturn.setTeamList(teamList);
-			scheduleModelReturn.setGroudsRequired(1);
-			scheduleModelReturn.setNumberOfGroups(1);
+			scheduleModelReturn.setGroudsRequired(groundsRequired);
+			scheduleModelReturn.setNumberOfGroups((int)numberOfGroups);
 			scheduleModelReturn.setPlayersPerGroup((int)playersPerGroup);	
 			
 		}
@@ -214,6 +219,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setTeam_name_2(teams.get(0));
 				gameEntity.setGroup(groupNumber);
 				
+				gameRepository.save(gameEntity);
 				scheduledMatches.add(gameEntity);
 				
 			}
@@ -248,8 +254,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			
 			scheduleModelReturn.setScheduledMatches(scheduledMatches);
 			scheduleModelReturn.setTeamList(teamList);
-			scheduleModelReturn.setGroudsRequired(1);
-			scheduleModelReturn.setNumberOfGroups(1);
+			scheduleModelReturn.setGroudsRequired(groundsRequired);
+			scheduleModelReturn.setNumberOfGroups((int)numberOfGroups);
 			scheduleModelReturn.setPlayersPerGroup((int)playersPerGroup);	
 			
 		}
@@ -323,5 +329,13 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 		        + formatter.format(minutesInDisplay);
 		return display + " " + postfix;
 	}
+
+	@Override
+	@PutMapping(path = "/addwinner",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
+	public void addWinner(@RequestBody GameEntity game) {
+		tournamentManagerService.addWinner(game);
+	}
+	
+	
 
 }
