@@ -8,7 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +35,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 	TournamentManagerService tournamentManagerService;
 	
 	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping(path = "/schedule",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
 	public ScheduleModelReturn schedule(@RequestBody ScheduleModel scheduleModel) throws Exception {
 		
@@ -331,9 +337,21 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 	}
 
 	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PutMapping(path = "/addwinner",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
 	public void addWinner(@RequestBody GameEntity game) {
 		tournamentManagerService.addWinner(game);
+	}
+
+	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping(path = "/schedule",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ScheduleModelReturn> getFilteredSchedule(@Param("day") String day) {
+		ScheduleModelReturn scheduleModelReturn = tournamentManagerService.getFilteredSchdule(day);
+		if (scheduleModelReturn != null) {
+            return new ResponseEntity<ScheduleModelReturn>(scheduleModelReturn, HttpStatus.OK);
+        }
+        return new ResponseEntity<ScheduleModelReturn>(HttpStatus.NOT_FOUND);
 	}
 	
 	

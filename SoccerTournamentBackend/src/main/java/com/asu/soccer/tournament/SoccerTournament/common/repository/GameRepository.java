@@ -1,5 +1,7 @@
 package com.asu.soccer.tournament.SoccerTournament.common.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -20,4 +22,7 @@ public interface GameRepository extends PagingAndSortingRepository<GameEntity,Lo
 	@Transactional
 	@Query(value = "update game_details set winning_team = ?1 where id = ?2", nativeQuery = true)
 	void updateGameDetails(String winner, int id); 
+	
+	@Query(value = "SELECT * FROM game_details u WHERE u.day = ?1", nativeQuery = true)
+	List<GameEntity> findGameByDay(int day);
 }
