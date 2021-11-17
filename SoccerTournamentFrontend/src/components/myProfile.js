@@ -68,8 +68,6 @@ class MyProfile extends Component {
               return (this.props.showViewButton===false ? 
               <div><button onClick={() => this.createNewTeam()}>Create New Team</button></div>
               : <div><button onClick={() => this.viewTeam()}>View My Team</button></div>)
-              // return (<div><button onClick={() => this.createNewTeam()}>Create New Team</button>
-              //   <button onClick={() => this.viewTeam()}>View My Team</button></div>)
             case 'tournamentManager':
               return (<div><button onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
             
