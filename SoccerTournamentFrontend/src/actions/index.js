@@ -1,7 +1,7 @@
 import axios from "axios";
 import history from "../history";
 
-export const signIn = (formValues) => async (dispatch, getState) => {
+export const signIn = (formValues) => async (dispatch) => {
   try {
     const response = await axios.post("http://localhost:8080/signin", {
       ...formValues,
@@ -15,7 +15,7 @@ export const signIn = (formValues) => async (dispatch, getState) => {
   }
 };
 
-export const signUp = (formValues) => async (dispatch, getState) => {
+export const signUp = (formValues) => async (dispatch) => {
   try {
     const response = await axios.post("http://localhost:8080/signup", {
       ...formValues,
@@ -29,10 +29,9 @@ export const signUp = (formValues) => async (dispatch, getState) => {
   }
 };
 
-export const registerTeam = (formValues, id) => async (dispatch, getState) => {
+export const registerTeam = (formValues, id) => async (dispatch) => {
     try {
         const result = Object.values(formValues.playerList);
-        console.log(formValues);
         formValues.coach_id =id;
         formValues.playerList = result;
         const response = await axios.post('http://localhost:8080/create/team', formValues, {
@@ -56,7 +55,7 @@ export const signOut = () => {
   };
 };
 
-export const viewTeam = (id) => async (dispatch, getState) => {
+export const viewTeam = (id) => async (dispatch) => {
     try {
          const response = await axios.get(`http://localhost:8080/view/team?coachId=${id}`, );
          if (response.status == 200) {
@@ -67,7 +66,7 @@ export const viewTeam = (id) => async (dispatch, getState) => {
      }
 }
 
-export const hasTeam = (id) => async (dispatch, getState) => {
+export const hasTeam = (id) => async (dispatch) => {
     try {
         const response = await axios.get(`http://localhost:8080/hasteam?coachId=${id}`, );
         if (response.status == 200) {
@@ -78,7 +77,7 @@ export const hasTeam = (id) => async (dispatch, getState) => {
     }
 };
 
-export const schedule = () => async (dispatch, getState) => {
+export const schedule = () => async (dispatch) => {
   const response = {
     scheduledMatches: [
       {
@@ -668,4 +667,26 @@ export const schedule = () => async (dispatch, getState) => {
   // } catch (error) {
   //   dispatch({ type: "PAGE NOT FOUND" });
   // }
+};
+
+export const selectGameId = (id) => (dispatch) => {
+
+  dispatch({ type: "SELECT_GAME_ID", payload: id });
+  history.push('/addResult');
+};
+
+export const submitGameDetails = (gameId, gameDetails) => (dispatch) => {
+  // try {
+  //   const response = await axios.post("http://localhost:8080/addResult", {
+  //     gameId,
+  //     ...gameDetails,
+  //   });
+  //   if (response.status == 200) {
+  //     history.push("/schedule"); //Redirect from Login Page to Home page after successful login
+  //   }
+  // } catch (error) {
+  //   dispatch({ type: "SIGN_UP_ERROR" });
+  // }
+  dispatch({ type: "SUBMIT_GAME_DETAILS", payload: gameDetails });
+  history.push('/schedule');
 };
