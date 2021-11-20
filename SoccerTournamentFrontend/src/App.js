@@ -35,7 +35,6 @@ class App extends Component {
               <Route path="/viewteamdetails" component={ViewTeamDetails} />
               <Route path="/signout" component={Home} />
               <Route path="/Email" component={Email} />
-              <Route path="/signout" component={Home} />
               <Route path="/" component={Home} />
             </Switch>
           </div>
