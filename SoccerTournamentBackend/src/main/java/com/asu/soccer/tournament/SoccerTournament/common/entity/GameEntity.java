@@ -38,7 +38,7 @@ public class GameEntity {
     private Integer field_site;
 	
 	@Column
-	private Integer group;
+	private Integer group_no;
 	
 	@Column
 	private Integer red_cards_team1;
@@ -57,6 +57,9 @@ public class GameEntity {
 	
 	@Column
 	private Integer injuries_team2;
+	
+	@Column
+	private Integer day;
 
 	public int getId() {
 		return id;
@@ -130,12 +133,12 @@ public class GameEntity {
 		this.field_site = field_site;
 	}
 
-	public Integer getGroup() {
-		return group;
+	public Integer getGroup_no() {
+		return group_no;
 	}
 
-	public void setGroup(Integer group) {
-		this.group = group;
+	public void setGroup_no(Integer group_no) {
+		this.group_no = group_no;
 	}
 
 	public Integer getRed_cards_team1() {
@@ -186,7 +189,15 @@ public class GameEntity {
 		this.injuries_team2 = injuries_team2;
 	}
 
+	public Integer getDay() {
+		return day;
+	}
 
+	public void setDay(Integer day) {
+		this.day = day;
+	}
+
+	
 	
 	
 }

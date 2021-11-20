@@ -85,7 +85,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 					gameEntity.setId(id);
 					gameEntity.setTeam_name_1(teams.get(i));
 					gameEntity.setTeam_name_2(teams.get(i+1));
-					gameEntity.setGroup(groupNumber);
+					gameEntity.setGroup_no(groupNumber);
+					gameEntity.setDay(scheduleModel.getDay());
 					
 					scheduledMatches.add(gameEntity);
 				}
@@ -102,7 +103,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setId(id);
 				gameEntity.setTeam_name_1(teams.get(teams.size()-1));
 				gameEntity.setTeam_name_2(teams.get(0));
-				gameEntity.setGroup(groupNumber);
+				gameEntity.setGroup_no(groupNumber);
+				gameEntity.setDay(scheduleModel.getDay());
 				
 				scheduledMatches.add(gameEntity);
 				
@@ -195,7 +197,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 					gameEntity.setId(id);
 					gameEntity.setTeam_name_1(teams.get(i));
 					gameEntity.setTeam_name_2(teams.get(i+1));
-					gameEntity.setGroup(groupNumber);
+					gameEntity.setGroup_no(groupNumber);
+					gameEntity.setDay(scheduleModel.getDay());
 					
 					scheduledMatches.add(gameEntity);
 				}
@@ -212,7 +215,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setId(id);
 				gameEntity.setTeam_name_1(teams.get(teams.size()-1));
 				gameEntity.setTeam_name_2(teams.get(0));
-				gameEntity.setGroup(groupNumber);
+				gameEntity.setGroup_no(groupNumber);
+				gameEntity.setDay(scheduleModel.getDay());
 				
 				scheduledMatches.add(gameEntity);
 				
@@ -249,7 +253,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			scheduleModelReturn.setScheduledMatches(scheduledMatches);
 			scheduleModelReturn.setTeamList(teamList);
 			scheduleModelReturn.setGroudsRequired(1);
-			scheduleModelReturn.setNumberOfGroups(1);
+			scheduleModelReturn.setNumberOfGroups((int)numberOfGroups);
 			scheduleModelReturn.setPlayersPerGroup((int)playersPerGroup);	
 			
 		}
@@ -292,7 +296,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 					gameEntity.setId(id);
 					gameEntity.setTeam_name_1(teams.get(i));
 					gameEntity.setTeam_name_2(teams.get(i+1));
-					gameEntity.setGroup(groupNumber);
+					gameEntity.setGroup_no(groupNumber);
+					gameEntity.setDay(scheduleModel.getDay());
 					
 					scheduledMatches.add(gameEntity);
 				}
@@ -305,10 +310,12 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			scheduleModelReturn.setPlayersPerGroup((int)playersPerGroup);	
 		}
 		
-		
+		for(GameEntity gameEntity: scheduleModelReturn.getScheduledMatches())
+		{
+			gameRepository.save(gameEntity);
+		}
 		
 		return scheduleModelReturn;
-		
 	}
 	
 	private String convertMinutesto24Hour(int minutes)
