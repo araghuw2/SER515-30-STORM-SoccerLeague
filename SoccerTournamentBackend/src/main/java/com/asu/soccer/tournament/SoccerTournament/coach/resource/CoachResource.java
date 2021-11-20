@@ -11,4 +11,6 @@ public interface CoachResource {
 	
 	public ResponseEntity<TeamCreateModel>  viewTeam(String coachId);
 	
+	public ResponseEntity<Boolean> hasTeam(String coachId);
+	
 }

@@ -36,10 +36,10 @@ class ViewTeamDetails extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        teamName: state.team.team_name,
-        coachId: state.team.coach_id,
-        playerDetails: state.team.player_details,
-        teamId: state.team.team_id,
+        teamName: state.team.team_details.team_name,
+        coachId: state.team.team_details.coach_id,
+        playerDetails: state.team.team_details.player_details,
+        teamId: state.team.team_details.team_id,
     }
   }
   

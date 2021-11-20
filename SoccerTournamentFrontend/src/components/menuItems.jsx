@@ -6,8 +6,8 @@ export const menuItems = [
   }, //0
 
   {
-    title: "News",
-    url: "/news",
+    title: "Schedule",
+    url: "/schedule",
     cName: "nav-links",
   }, //1
 
