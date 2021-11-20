@@ -63,4 +63,10 @@ export const menuItems = [
     url: "/loanFields",
     cName: "nav-links",
   }, //10
+
+  {
+    title: "RaiseQuery",
+    url: "/query",
+    cName: "nav-links",
+  }, //11
 ];
