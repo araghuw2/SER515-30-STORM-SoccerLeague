@@ -14,7 +14,7 @@ import ViewTeamDetails from "./components/viewTeamDetails";
 import RaiseQuery from "./raiseQuery";
 import scheduleTable from "./components/scheduleTable";
 import Email from "./components/Email";
-
+// import LoanFields from "./components/loanFields";
 class App extends Component {
   render() {
     return (
@@ -36,6 +36,7 @@ class App extends Component {
               <Route path="/signout" component={Home} />
               <Route path="/Email" component={Email} />
               <Route path="/" component={Home} />
+              {/* <Route path="/loanFields" component={LoanFields} /> */}
             </Switch>
           </div>
           <Footer />
