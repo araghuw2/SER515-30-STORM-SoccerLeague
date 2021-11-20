@@ -30,6 +30,14 @@ class NavBar extends Component {
               );
             })}
 
+            {
+              <li>
+                <NavLink className={menuItems[11].cName} to={menuItems[11].url}>
+                  {menuItems[11].title}
+                </NavLink>
+              </li>
+            }
+
             {this.props.isSignedIn == true ? (
               <li>
                 <NavLink className={menuItems[11].cName} to={menuItems[11].url}>

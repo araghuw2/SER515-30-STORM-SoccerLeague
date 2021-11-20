@@ -25,7 +25,7 @@ class App extends Component {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/schedule" component={scheduleTable} />
-              <Route path="/raise" component={RaiseQuery} />
+              <Route path="/query" component={RaiseQuery} />
               <Route path="/rules" component={Rules} />
               <Route path="/aboutus" component={AboutUs} />
               <Route path="/login" component={LoginForm} />
