@@ -11,11 +11,6 @@ import MyProfile from "./components/myProfile";
 import CreateTeam from "./components/createTeam";
 import AboutUs from "./components/aboutUs";
 import ViewTeamDetails from "./components/viewTeamDetails";
-<<<<<<< HEAD
-=======
-
->>>>>>> 08caee6ea8449782168406e552ee7da5b3074ed1
-// import LoanFields from "./components/loanFields";
 import RaiseQuery from "./raiseQuery";
 import scheduleTable from "./components/scheduleTable";
 import Email from "./components/Email";
@@ -29,8 +24,6 @@ class App extends Component {
             <NavBar />
             <Switch>
               <Route path="/home" component={Home} />
-              <Route path="/news" component={News} />
-              <Route path="/query" component={RaiseQuery} />
               <Route path="/schedule" component={scheduleTable} />
               <Route path="/raise" component={RaiseQuery} />
               <Route path="/rules" component={Rules} />
@@ -42,7 +35,7 @@ class App extends Component {
               <Route path="/viewteamdetails" component={ViewTeamDetails} />
               <Route path="/signout" component={Home} />
               <Route path="/Email" component={Email} />
-              <Route path="/signout" component={Home}/>
+              <Route path="/signout" component={Home} />
               <Route path="/" component={Home} />
             </Switch>
           </div>
