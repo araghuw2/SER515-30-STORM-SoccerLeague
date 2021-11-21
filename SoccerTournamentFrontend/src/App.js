@@ -28,7 +28,7 @@ class App extends Component {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/schedule" component={scheduleTable} />
-              <Route path="/raiseQuery" component={RaiseQuery} />
+              <Route path="/query" component={RaiseQuery} />
               <Route path="/rules" component={Rules} />
               <Route path="/aboutus" component={AboutUs} />
               <Route path="/login" component={LoginForm} />
@@ -43,6 +43,7 @@ class App extends Component {
               <Route path="/addVolunteers" component={AddVolunteers} />
               <Route path="/signout" component={Home}/>
               <Route path="/" component={Home} />
+              {/* <Route path="/loanFields" component={LoanFields} /> */}
             </Switch>
           </div>
           <Footer />
