@@ -11,14 +11,16 @@ import com.asu.soccer.tournament.SoccerTournament.common.repository.GameReposito
 
 @Service
 public class TournamentManagerServiceImpl implements TournamentManagerService {
-	
+
 	@Autowired
 	GameRepository gameRepository;
 
 	@Override
 	public void addWinner(GameEntity game) {
-//		gameRepository.updateGameDetails(game.getWinning_team(), game.getRed_cards_team1(), game.getRed_cards_team2(), game.getYellow_cards_team1(), game.getYellow_cards_team1(), game.getInjuries_team1(), game.getInjuries_team2(), game.getId());
-		gameRepository.updateGameDetails(game.getWinning_team(), game.getId());
+		gameRepository.updateGameDetails(game.getWinning_team(), game.getRed_cards_team1(), game.getRed_cards_team2(),
+				game.getYellow_cards_team1(), game.getYellow_cards_team1(), game.getInjuries_team1(),
+				game.getInjuries_team2(), game.getGoals_team1(), game.getGoals_team2(), game.getId());
+//		gameRepository.updateGameDetails(game.getWinning_team(), game.getId());
 	}
 
 	@Override
