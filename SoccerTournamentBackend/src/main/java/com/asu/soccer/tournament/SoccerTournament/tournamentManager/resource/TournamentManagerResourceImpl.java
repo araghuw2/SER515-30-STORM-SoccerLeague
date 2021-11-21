@@ -114,7 +114,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setTeam_name_2(teams.get(0));
 				gameEntity.setGroup(groupNumber);
 				
-				gameRepository.save(gameEntity);
+//				gameRepository.save(gameEntity);
 				scheduledMatches.add(gameEntity);
 				
 			}
@@ -225,7 +225,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setTeam_name_2(teams.get(0));
 				gameEntity.setGroup(groupNumber);
 				
-				gameRepository.save(gameEntity);
+//				gameRepository.save(gameEntity);
 				scheduledMatches.add(gameEntity);
 				
 			}
@@ -338,7 +338,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 
 	@Override
 	@CrossOrigin(origins = "http://localhost:3000")
-	@PutMapping(path = "/addwinner",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/addwinner",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
 	public void addWinner(@RequestBody GameEntity game) {
 		tournamentManagerService.addWinner(game);
 	}

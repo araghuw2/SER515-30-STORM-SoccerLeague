@@ -13,10 +13,11 @@ import AboutUs from "./components/aboutUs";
 import ViewTeamDetails from "./components/viewTeamDetails";
 import AddResult from "./components/addResult";
 
-// import LoanFields from "./components/loanFields";
+import LoanFields from "./components/loanFields";
 import RaiseQuery from "./raiseQuery";
 import scheduleTable from "./components/scheduleTable";
 import Email from "./components/Email";
+import AddVolunteers from "./components/addVolunteers";
 
 class App extends Component {
   render() {
@@ -28,7 +29,7 @@ class App extends Component {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/schedule" component={scheduleTable} />
-              <Route path="/raiseQuery" component={RaiseQuery} />
+              <Route path="/query" component={RaiseQuery} />
               <Route path="/rules" component={Rules} />
               <Route path="/aboutus" component={AboutUs} />
               <Route path="/login" component={LoginForm} />
@@ -38,12 +39,13 @@ class App extends Component {
               <Route path="/viewteamdetails" component={ViewTeamDetails} />
               <Route path="/addResult" component={AddResult} />
               
-              {/* <Route path="/loanFields" component={LoanFields} /> */}
+              <Route path="/loanFields" component={LoanFields} />
               <Route path="/signout" component={Home} />
-              {/* <Route path="/loanFields" component={LoanFields} /> */}
               <Route path="/Email" component={Email} />
+              <Route path="/addVolunteers" component={AddVolunteers} />
               <Route path="/signout" component={Home}/>
               <Route path="/" component={Home} />
+              {/* <Route path="/loanFields" component={LoanFields} /> */}
             </Switch>
           </div>
           <Footer />

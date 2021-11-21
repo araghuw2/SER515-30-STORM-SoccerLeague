@@ -675,18 +675,18 @@ export const selectGameId = (id) => (dispatch) => {
   history.push('/addResult');
 };
 
-export const submitGameDetails = (gameId, gameDetails) => (dispatch) => {
-  // try {
-  //   const response = await axios.post("http://localhost:8080/addResult", {
-  //     gameId,
-  //     ...gameDetails,
-  //   });
-  //   if (response.status == 200) {
-  //     history.push("/schedule"); //Redirect from Login Page to Home page after successful login
-  //   }
-  // } catch (error) {
-  //   dispatch({ type: "SIGN_UP_ERROR" });
-  // }
+export const submitGameDetails = (gameId, gameDetails) => async (dispatch) => {
+  try {
+    const response = await axios.post("http://localhost:8080/addwinner", {
+      gameId,
+      ...gameDetails,
+    });
+    if (response.status == 200) {
+      history.push("/schedule"); //Redirect from Login Page to Home page after successful login
+    }
+  } catch (error) {
+    dispatch({ type: "SIGN_UP_ERROR" });
+  }
   dispatch({ type: "SUBMIT_GAME_DETAILS", payload: gameDetails });
   history.push('/schedule');
 };
