@@ -110,3 +110,15 @@ export const submitGameDetails = (gameId, gameDetails) => async (dispatch) => {
   dispatch({ type: "SUBMIT_GAME_DETAILS", payload: gameDetails });
   history.push('/schedule');
 };
+
+export const selectScheduleDate = (day) => async (dispatch, getState) => {
+  //try {
+  //     const response = await await axios.get(`http://localhost:8080/schedule/?day=${day}`);
+  //     if (response.status == 200) {
+           dispatch({ type: "SELECT_DAY", payload: day });
+           //dispatch({ type: "SCHEDULE", payload: response.data });
+  //     }
+  // } catch (error) {
+      // dispatch({ type: "SIGN_IN_ERROR" });
+  // }
+}
