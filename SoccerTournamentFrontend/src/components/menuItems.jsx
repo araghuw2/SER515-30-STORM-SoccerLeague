@@ -7,7 +7,7 @@ export const menuItems = [
 
   {
     title: "Schedule",
-    url: "/schedule",
+    url: "/filterDate",
     cName: "nav-links",
   }, //1
 
