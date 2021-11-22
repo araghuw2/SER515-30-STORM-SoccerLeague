@@ -17,6 +17,7 @@ import RaiseQuery from "./raiseQuery";
 import scheduleTable from "./components/scheduleTable";
 import Email from "./components/Email";
 import AddVolunteers from "./components/addVolunteers";
+import FilterDate from "./components/filterDate";
 
 class App extends Component {
   render() {
@@ -42,6 +43,7 @@ class App extends Component {
               <Route path="/Email" component={Email} />
               <Route path="/addVolunteers" component={AddVolunteers} />
               <Route path="/signout" component={Home}/>
+              <Route path="/filterDate" component={FilterDate}/>
               <Route path="/" component={Home} />
               {/* <Route path="/loanFields" component={LoanFields} /> */}
             </Switch>
