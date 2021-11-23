@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.asu.soccer.tournament.SoccerTournament.common.entity.GameEntity;
@@ -456,8 +457,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 
 	@Override
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping(path = "/schedule",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ScheduleModelReturn> getFilteredSchedule(@Param("day") String day) {
+	@GetMapping(path = "/schedule", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ScheduleModelReturn> getFilteredSchedule(@RequestParam("day") String day) {
 		ScheduleModelReturn scheduleModelReturn = tournamentManagerService.getFilteredSchdule(day);
 		if (scheduleModelReturn != null) {
             return new ResponseEntity<ScheduleModelReturn>(scheduleModelReturn, HttpStatus.OK);

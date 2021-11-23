@@ -112,13 +112,13 @@ export const submitGameDetails = (gameId, gameDetails) => async (dispatch) => {
 };
 
 export const selectScheduleDate = (day) => async (dispatch, getState) => {
-  //try {
-  //     const response = await await axios.get(`http://localhost:8080/schedule/?day=${day}`);
-  //     if (response.status == 200) {
+  try {
+      const response = await await axios.get(`http://localhost:8080/schedule?day=${day}`);
+      if (response.status == 200) {
            dispatch({ type: "SELECT_DAY", payload: day });
-           //dispatch({ type: "SCHEDULE", payload: response.data });
-  //     }
-  // } catch (error) {
-      // dispatch({ type: "SIGN_IN_ERROR" });
-  // }
+           dispatch({ type: "SCHEDULE", payload: response.data });
+      }
+  } catch (error) {
+      dispatch({ type: "SIGN_IN_ERROR" });
+  }
 }
