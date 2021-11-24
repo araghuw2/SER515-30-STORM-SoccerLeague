@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { send } from "emailjs-com";
 import{ init } from 'emailjs-com';
-// import { Alert } from 'react-alert';
 
 init("user_QTZCB98LDM5l2yKtPDwAe");
 
@@ -28,7 +27,7 @@ function Email() {
         .catch((err) => {
             console.log('FAILED', err);
         });
-        alert("An email has been sent.")
+        alert("An email has been sent to the officials.")
 
         
     };
@@ -47,7 +46,7 @@ function Email() {
                 <input className="form-control"
                     type='text'
                     name='from_name'
-                    placeholder='Name'
+                    placeholder='Full Name'
                     value={toSend.from_name}
                     onChange={handleChange}
                 />
@@ -56,7 +55,7 @@ function Email() {
                 <input className="form-control" 
                     type='text'
                     name='message'
-                    placeholder='Message'
+                    placeholder='Your Message'
                     value={toSend.message}
                     onChange={handleChange}
                 />
@@ -65,7 +64,7 @@ function Email() {
                 <input className="form-control"
                     type='text'
                     name='reply_to'
-                    placeholder='Email'
+                    placeholder='Email Address'
                     value={toSend.reply_to}
                     onChange={handleChange}
                 />

@@ -28,6 +28,10 @@ class MyProfile extends Component {
   loanFields = () => {
     history.push('/loanFields');
   };
+
+  addVolunteers = () => {
+    history.push('/addVolunteers');
+  };
   
   render() {
     return (
@@ -72,7 +76,10 @@ class MyProfile extends Component {
               return (<div><button onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
             
             case 'field site manager':
-              return (<div><button onClick={() => this.loanFields()}>Loan Fields</button></div>)
+              return (
+              <div><button onClick={() => this.loanFields()}>Loan Fields</button>
+              <button onClick={() => this.addVolunteers()}> Add Volunteers</button></div>
+              )
 
             default : 
               return (<div> Nothing </div>)
