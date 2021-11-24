@@ -95,10 +95,10 @@ export const selectGameId = (id) => (dispatch) => {
   history.push('/addResult');
 };
 
-export const submitGameDetails = (gameId, gameDetails) => async (dispatch) => {
+export const submitGameDetails = (id, gameDetails) => async (dispatch) => {
   try {
     const response = await axios.post("http://localhost:8080/addwinner", {
-      gameId,
+      id,
       ...gameDetails,
     });
     if (response.status == 200) {

@@ -6,75 +6,75 @@ class AddResult extends Component {
 
   state = {
     gameDetails: { 
-      winningTeam: "", 
-      goalsTeam1: "", 
-      goalsTeam2: "", 
-      redCardsTeam1: "", 
-      redCardsTeam2:"", 
-      yellowCardsTeam1:"", 
-      yellowCardsTeam2:"",
-      injuriesTeam1:"",
-      injuriesTeam2:"",
+      winning_team: "", 
+      goals_team1: "", 
+      goals_team2: "", 
+      red_cards_team1: "", 
+      red_cards_team2:"", 
+      yellow_cards_team1:"", 
+      yellow_cards_team2:"",
+      injuries_team1:"",
+      injuries_team2:"",
     },
     error: {},
   };
 
   handleChangeWinningTeam = (e) => {
     const gameDetails = { ...this.state.gameDetails };
-    gameDetails.winningTeam = e.currentTarget.value;
+    gameDetails.winning_team = e.currentTarget.value;
     this.setState({ gameDetails });
   };
 
   handleChangeGoalsTeam1 = (e) => {
     const gameDetails = { ...this.state.gameDetails };
-    gameDetails.goalsTeam1 = e.currentTarget.value;
+    gameDetails.goals_team1 = e.currentTarget.value;
     this.setState({ gameDetails });
   };
 
   handleChangeGoalsTeam2 = (e) => {
     const gameDetails = { ...this.state.gameDetails };
-    gameDetails.goalsTeam2 = e.currentTarget.value;
+    gameDetails.goals_team2 = e.currentTarget.value;
     this.setState({ gameDetails });
   };
 
   handleChangeYellowCardsTeam1 = (e) => {
     const gameDetails = { ...this.state.gameDetails };
-    gameDetails.yellowCardsTeam1 = e.currentTarget.value;
+    gameDetails.yellow_cards_team1 = e.currentTarget.value;
     this.setState({ gameDetails });
   };
 
   handleChangeYellowCardsTeam2 = (e) => {
     const gameDetails = { ...this.state.gameDetails };
-    gameDetails.yellowCardsTeam2 = e.currentTarget.value;
+    gameDetails.yellow_cards_team2 = e.currentTarget.value;
     this.setState({ gameDetails });
   };
 
   handleChangeRedCardsTeam1 = (e) => {
     const gameDetails = { ...this.state.gameDetails };
-    gameDetails.redCardsTeam1 = e.currentTarget.value;
+    gameDetails.red_cards_team1 = e.currentTarget.value;
     this.setState({ gameDetails });
   };
 
   handleChangeRedCardsTeam2 = (e) => {
     const gameDetails = { ...this.state.gameDetails };
-    gameDetails.redCardsTeam2 = e.currentTarget.value;
+    gameDetails.red_cards_team2 = e.currentTarget.value;
     this.setState({ gameDetails });
   };
 
   handleChangeInjuriesTeam1 = (e) => {
     const gameDetails = { ...this.state.gameDetails };
-    gameDetails.injuriesTeam1 = e.currentTarget.value;
+    gameDetails.injuries_team1 = e.currentTarget.value;
     this.setState({ gameDetails });
   };
 
   handleChangeInjuriesTeam2 = (e) => {
     const gameDetails = { ...this.state.gameDetails };
-    gameDetails.injuriesTeam2 = e.currentTarget.value;
+    gameDetails.injuries_team2 = e.currentTarget.value;
     this.setState({ gameDetails });
   };
 
   submitResult = () => {
-    this.props.submitGameDetails(this.props.gameId, this.state.gameDetails);
+    this.props.submitGameDetails(this.props.id, this.state.gameDetails);
   };
   
   render() {
@@ -92,7 +92,7 @@ class AddResult extends Component {
             <th>
             <input
               autoFocus
-              value={this.state.gameDetails.winningTeam}
+              value={this.state.gameDetails.winning_Team}
               onChange={this.handleChangeWinningTeam}
               id="winningTeam"
               type="text"
@@ -104,7 +104,7 @@ class AddResult extends Component {
             <th>
             <input
               autoFocus
-              value={this.state.gameDetails.goalsTeam1}
+              value={this.state.gameDetails.goals_Team1}
               onChange={this.handleChangeGoalsTeam1}
               id="goalsTeam1"
               type="text"
@@ -116,7 +116,7 @@ class AddResult extends Component {
             <th>
             <input
               autoFocus
-              value={this.state.gameDetails.goalsTeam2}
+              value={this.state.gameDetails.goals_Team2}
               onChange={this.handleChangeGoalsTeam2}
               id="goalsTeam2"
               type="text"
@@ -128,7 +128,7 @@ class AddResult extends Component {
             <th>
             <input
               autoFocus
-              value={this.state.gameDetails.redCardsTeam1}
+              value={this.state.gameDetails.red_Cards_Team1}
               onChange={this.handleChangeRedCardsTeam1}
               id="redCardsTeam1"
               type="text"
@@ -140,7 +140,7 @@ class AddResult extends Component {
             <th>
             <input
               autoFocus
-              value={this.state.gameDetails.redCardsTeam2}
+              value={this.state.gameDetails.red_Cards_Team2}
               onChange={this.handleChangeRedCardsTeam2}
               id="redCardsTeam2"
               type="text"
@@ -152,7 +152,7 @@ class AddResult extends Component {
             <th>
             <input
               autoFocus
-              value={this.state.gameDetails.yellowCardsTeam1}
+              value={this.state.gameDetails.yellow_Cards_Team1}
               onChange={this.handleChangeYellowCardsTeam1}
               id="yellowCardsTeam1"
               type="text"
@@ -164,7 +164,7 @@ class AddResult extends Component {
             <th>
             <input
               autoFocus
-              value={this.state.gameDetails.yellowCardsTeam2}
+              value={this.state.gameDetails.yellow_Cards_Team2}
               onChange={this.handleChangeYellowCardsTeam2}
               id="yellowCardsTeam2"
               type="text"
@@ -176,7 +176,7 @@ class AddResult extends Component {
             <th>
             <input
               autoFocus
-              value={this.state.gameDetails.injuriesTeam1}
+              value={this.state.gameDetails.injuries_Team1}
               onChange={this.handleChangeInjuriesTeam1}
               id="injuriesTeam1"
               type="text"
@@ -188,7 +188,7 @@ class AddResult extends Component {
             <th>
             <input
               autoFocus
-              value={this.state.gameDetails.injuriesTeam2}
+              value={this.state.gameDetails.injuries_Team2}
               onChange={this.handleChangeInjuriesTeam2}
               id="injuriesTeam2"
               type="text"
@@ -207,7 +207,7 @@ class AddResult extends Component {
 
 const mapStateToProps = (state) => {
     return { 
-        gameId: state.schedule.selected_game_id
+        id: state.schedule.selected_game_id
     }
   }
 

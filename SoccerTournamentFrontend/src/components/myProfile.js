@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import history from '../history';
-import { viewTeam, hasTeam } from '../actions'
+import { schedule, viewTeam, hasTeam } from '../actions'
 
 class MyProfile extends Component {
     componentWillMount() {
@@ -18,6 +18,7 @@ class MyProfile extends Component {
     history.push('/createNewTeam');
   };
   generateSchedule = () => {
+    this.props.schedule();
     history.push('/generateSchedule');
   };
 
@@ -72,7 +73,9 @@ class MyProfile extends Component {
               return (this.props.showViewButton===false ? 
               <div><button onClick={() => this.createNewTeam()}>Create New Team</button></div>
               : <div><button onClick={() => this.viewTeam()}>View My Team</button></div>)
+            case 'tournamentmanager':
             case 'tournamentManager':
+            case 'tournament Manager':
               return (<div><button onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
             
             case 'field site manager':
@@ -118,4 +121,4 @@ const mapStateToProps = (state) => {
     }
   }
 
-export default connect(mapStateToProps, {viewTeam, hasTeam})(MyProfile);
+export default connect(mapStateToProps, {viewTeam, hasTeam, schedule})(MyProfile);
