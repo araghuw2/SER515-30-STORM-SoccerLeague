@@ -23,8 +23,8 @@ export const menuItems = [
   }, //3
 
   {
-    title: "Players",
-    url: "/players",
+    title: "Photos",
+    url: "/photos",
     cName: "nav-links",
   }, //4
 

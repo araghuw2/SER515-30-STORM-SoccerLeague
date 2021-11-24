@@ -1,12 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { schedule, selectGameId } from "../actions";
-import history from '../history';
 
 class scheduleTable extends React.Component {
-  componentWillMount() {
-    this.props.schedule();
-  }
 
   addResult = (id) => {
     this.props.selectGameId(id);
@@ -61,10 +57,10 @@ class scheduleTable extends React.Component {
                     <td>{item.winning_team}</td>
                     <td>{item.goals_team1}</td>
                     <td>{item.goals_team2}</td>
-                    <td>{item.red_card_team1}</td>
-                    <td>{item.red_card_team2}</td>
-                    <td>{item.yellow_card_team1}</td>
-                    <td>{item.yellow_card_team2}</td>
+                    <td>{item.red_cards_team1}</td>
+                    <td>{item.red_cards_team2}</td>
+                    <td>{item.yellow_cards_team1}</td>
+                    <td>{item.yellow_cards_team2}</td>
                     <td>{item.injuries_team1}</td>
                     <td>{item.injuries_team2}</td>
                   </div>
