@@ -22,7 +22,7 @@ class scheduleTable extends React.Component {
             <th>GROUP</th>
             {
               this.props.scheduleData[0] && this.props.scheduleData[0].winning_team!=null?
-              <div>
+              <>
                   <th>WINNING TEAM</th>
                   <th>GOALS TEAM 1</th>
                   <th>GOALS TEAM 2</th>
@@ -32,7 +32,7 @@ class scheduleTable extends React.Component {
                   <th>YELLOW CARDS TEAM2</th>
                   <th>INJURIES TEAM1</th>
                   <th>INJURIES TEAM2</th>
-              </div>
+              </>
               :
               ""
             }
@@ -53,7 +53,7 @@ class scheduleTable extends React.Component {
                 <td>{item.group}</td>
                 {
                   item.winning_team!=null?
-                  <div>
+                  <>
                     <td>{item.winning_team}</td>
                     <td>{item.goals_team1}</td>
                     <td>{item.goals_team2}</td>
@@ -63,7 +63,7 @@ class scheduleTable extends React.Component {
                     <td>{item.yellow_cards_team2}</td>
                     <td>{item.injuries_team1}</td>
                     <td>{item.injuries_team2}</td>
-                  </div>
+                  </>
                   :
                   ""
                 }
