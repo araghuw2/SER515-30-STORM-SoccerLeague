@@ -55,7 +55,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			
 			for(GameEntity gameEntity: gameEntityList)
 			{	
-				if(gameEntity.getDay() != 2)
+				if(gameEntity.getDay() != 1)
 					continue;
 				
 				List<String> winningTeamList = groupWinningTeamMap.getOrDefault(gameEntity.getGroup_no(),new ArrayList<>());
@@ -67,7 +67,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			{
 				Map<String,Integer> teamWinMap = new LinkedHashMap<>();
 				
-				List<String> winningTeams = new ArrayList<>();
+				List<String> winningTeams = entry.getValue();
 				for(String team: winningTeams)
 				{
 					int wins = teamWinMap.getOrDefault(team, 0);
@@ -94,7 +94,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			
 			for(GameEntity gameEntity: gameEntityList)
 			{	
-				if(gameEntity.getDay() != 3)
+				if(gameEntity.getDay() != 2)
 					continue;
 				
 				List<String> winningTeamList = groupWinningTeamMap.getOrDefault(gameEntity.getGroup_no(),new ArrayList<>());
@@ -106,7 +106,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			{
 				Map<String,Integer> teamWinMap = new LinkedHashMap<>();
 				
-				List<String> winningTeams = new ArrayList<>();
+				List<String> winningTeams = entry.getValue();
 				for(String team: winningTeams)
 				{
 					int wins = teamWinMap.getOrDefault(team, 0);
@@ -126,6 +126,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				teamNameList.add(groupWinningTeam);
 			}
 		}
+		
+		scheduleModel.setTeamList(teamNameList);
 			
 		return scheduleSolve(scheduleModel);
 	}
