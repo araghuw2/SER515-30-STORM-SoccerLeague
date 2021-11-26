@@ -8,6 +8,10 @@ class scheduleTable extends React.Component {
     this.props.selectGameId(id);
   };
 
+  componentWillMount() {
+    this.props.schedule();
+  }
+
   render() {
     return (
       <div>
@@ -87,7 +91,7 @@ class scheduleTable extends React.Component {
 const mapStateToProps = (state) => {
   return {
     scheduleData: state.schedule.schedule,
-    role: "TournamentManager",
+    role: state.auth.role,
   };
 };
 
