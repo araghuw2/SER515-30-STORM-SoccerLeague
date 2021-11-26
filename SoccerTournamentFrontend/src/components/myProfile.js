@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import history from '../history';
-import { schedule, viewTeam, hasTeam } from '../actions'
+import { getTournamentDay, schedule, viewTeam, hasTeam } from '../actions'
 
 class MyProfile extends Component {
     componentWillMount() {
       this.props.hasTeam(this.props.id);
+      this.props.getTournamentDay();
     }
 
     componentDidUpdate() {
@@ -18,7 +19,7 @@ class MyProfile extends Component {
     history.push('/createNewTeam');
   };
   generateSchedule = () => {
-    this.props.schedule();
+    this.props.schedule(this.props.day);
     history.push('/generateSchedule');
   };
 
@@ -117,8 +118,9 @@ const mapStateToProps = (state) => {
         first_name: state.auth.first_name,
         last_name: state.auth.last_name,
         withdraw_flag: state.auth.withdraw_flag,
-        showViewButton: state.team.has_team 
+        showViewButton: state.team.has_team,
+        day: state.schedule.schedule_day
     }
   }
 
-export default connect(mapStateToProps, {viewTeam, hasTeam, schedule})(MyProfile);
+export default connect(mapStateToProps, {viewTeam, hasTeam, schedule, getTournamentDay})(MyProfile);

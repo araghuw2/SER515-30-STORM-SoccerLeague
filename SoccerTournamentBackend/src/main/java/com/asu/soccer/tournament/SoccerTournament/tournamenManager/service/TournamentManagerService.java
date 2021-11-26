@@ -8,4 +8,6 @@ public interface TournamentManagerService {
 	public void addWinner(GameEntity game);
 	
 	public ScheduleModelReturn getFilteredSchdule(String day);
+	
+	public int getTournamentDay();
 }

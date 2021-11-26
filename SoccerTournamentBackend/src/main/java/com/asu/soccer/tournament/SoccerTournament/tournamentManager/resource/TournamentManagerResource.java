@@ -15,5 +15,7 @@ public interface TournamentManagerResource {
 
 	public ScheduleModelReturn scheduleSolve(ScheduleModel scheduleModel) throws Exception;
 	public ScheduleModelReturn schedule(ScheduleModelNew scheduleModelNew) throws Exception;
+	
+	public int getTournamentDay();
 
 }

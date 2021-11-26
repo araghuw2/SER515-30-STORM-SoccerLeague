@@ -66,7 +66,9 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			
 			for(GameEntity gameEntity: gameEntityList)
 			{	
-				if(gameEntity.getDay() != 2)
+//				if(gameEntity.getDay() != 2)
+//					continue;
+				if(gameEntity.getDay() != 1)
 					continue;
 				
 				List<String> winningTeamList = groupWinningTeamMap.getOrDefault(gameEntity.getGroup_no(),new ArrayList<>());
@@ -220,7 +222,6 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setGroup_no(groupNumber);
 				gameEntity.setDay(scheduleModel.getDay());
 				
-//				gameRepository.save(gameEntity);
 				scheduledMatches.add(gameEntity);
 				
 			}
@@ -333,7 +334,6 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setGroup_no(groupNumber);
 				gameEntity.setDay(scheduleModel.getDay());
 				
-//				gameRepository.save(gameEntity);
 				scheduledMatches.add(gameEntity);
 				
 			}
@@ -464,6 +464,13 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
             return new ResponseEntity<ScheduleModelReturn>(scheduleModelReturn, HttpStatus.OK);
         }
         return new ResponseEntity<ScheduleModelReturn>(HttpStatus.NOT_FOUND);
+	}
+
+	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping(path = "/schedule/day", produces=MediaType.APPLICATION_JSON_VALUE)
+	public int getTournamentDay() {
+		return tournamentManagerService.getTournamentDay();
 	}
 	
 
