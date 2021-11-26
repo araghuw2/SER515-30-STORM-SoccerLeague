@@ -34,7 +34,7 @@ public class VolunteerServiceImpl implements VolunteerService{
              */
             userEntity.setPassword("NOPASSWORD");
             
-            userEntity.setWithdraw_flag("Yes");
+            userEntity.setWithdraw_flag("No");
             userEntity.setRole("Volunteer");
             
             Date date = new Date();
