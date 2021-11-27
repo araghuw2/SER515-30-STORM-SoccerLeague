@@ -77,7 +77,7 @@ class MyProfile extends Component {
             case 'tournamentmanager':
             case 'tournamentManager':
             case 'tournament Manager':
-              return (<div><button onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
+              return (<div><button disabled={this.props.day == 3} onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
             
             case 'field site manager':
               return (
@@ -92,17 +92,6 @@ class MyProfile extends Component {
         </div>
         }     
         </h3>
-          
-        {/* // this.props.role=="TournamentManager"?
-        //     <button onClick={() => this.generateSchedule()}>Generate Schedule</button>
-        // :
-        //     <button onClick={() => this.createNewTeam()}>Create New Team</button>
-
-        // }
-
-        <h3>
-            <button onClick={() => this.viewTeam()}>View My Team</button>
-        </h3>  */}
       </div>
     );
   }

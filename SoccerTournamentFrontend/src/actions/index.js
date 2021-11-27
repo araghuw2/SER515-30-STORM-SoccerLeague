@@ -104,13 +104,13 @@ export const submitGameDetails = (id, gameDetails) => async (dispatch) => {
       ...gameDetails,
     });
     if (response.status == 200) {
-      history.push("/schedule"); //Redirect from Login Page to Home page after successful login
+      history.push("/filterDate"); //Redirect from Login Page to Home page after successful login
     }
   } catch (error) {
     dispatch({ type: "SIGN_UP_ERROR" });
   }
   dispatch({ type: "SUBMIT_GAME_DETAILS", payload: gameDetails });
-  history.push('/schedule');
+  // history.push('/schedule');
 };
 
 export const selectScheduleDate = (day) => async (dispatch, getState) => {
