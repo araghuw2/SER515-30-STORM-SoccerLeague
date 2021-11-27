@@ -2,19 +2,28 @@ package com.asu.soccer.tournament.SoccerTournament.common.model;
 
 public class VolunteerModel {
 
-    private String volunteerName;
+    private String firstName;
+    private String lastName;
 	
 	
 	private String email;
 	
 	private String gender;
 
-	public String getVolunteerName() {
-		return volunteerName;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setVolunteerName(String volunteerName) {
-		this.volunteerName = volunteerName;
+	public void setFirstName(String firstname) {
+		this.firstName = firstname;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastname) {
+		this.lastName = lastname;
 	}
 
 

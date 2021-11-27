@@ -24,9 +24,10 @@ public class VolunteerServiceImpl implements VolunteerService{
 
             userEntity.setEmail(volunteerModel.getEmail());
             
-            String[] combinedName = volunteerModel.getVolunteerName().split(" ");
-            userEntity.setFirst_name(combinedName[0]);
-            if(combinedName.length>1) userEntity.setLast_name(combinedName[1]);
+            
+            userEntity.setFirst_name(volunteerModel.getFirstName());
+            userEntity.setLast_name(volunteerModel.getLastName());
+            
             
             userEntity.setGender(volunteerModel.getGender());
             
@@ -38,11 +39,11 @@ public class VolunteerServiceImpl implements VolunteerService{
             userEntity.setWithdraw_flag("No");
             userEntity.setRole("Volunteer");
             
-            Date date = new Date();
-            String strDateFormat = "hh:mm:ss a";
-            DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
-            String formattedDate= dateFormat.format(date);    
-            //userEntity.setReg_date(formattedDate);
+            // Date date = new Date();
+            // String strDateFormat = "hh:mm:ss a";
+            // DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
+            // String formattedDate= dateFormat.format(date);    
+            // //userEntity.setReg_date(formattedDate);
             
             
             Integer id = (int)(Math.random() * 100000);
@@ -72,7 +73,8 @@ public class VolunteerServiceImpl implements VolunteerService{
             {
                 VolunteerModel volunteerModel = new VolunteerModel();
 
-                volunteerModel.setVolunteerName(vol_user.getFirst_name());
+                volunteerModel.setFirstName(vol_user.getFirst_name());
+                volunteerModel.setLastName(vol_user.getLast_name());
                 volunteerModel.setEmail(vol_user.getEmail());
                 volunteerModel.setGender(vol_user.getGender());
 
