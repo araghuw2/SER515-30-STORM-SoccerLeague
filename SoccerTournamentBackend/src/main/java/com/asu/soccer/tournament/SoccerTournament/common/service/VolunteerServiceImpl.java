@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -62,5 +63,22 @@ public class VolunteerServiceImpl implements VolunteerService{
             return createdUser;
         }
 
+        @Override
+        public List<VolunteerModel> getVolunteersList(){
+            List<VolunteerModel> volunteerList = new ArrayList<VolunteerModel>();
+            List<UserEntity> volunteerUsers = userRepository.getVolunteers();
+
+            for(UserEntity vol_user : volunteerUsers)
+            {
+                VolunteerModel volunteerModel = new VolunteerModel();
+
+                volunteerModel.setVolunteerName(vol_user.getFirst_name());
+                volunteerModel.setEmail(vol_user.getEmail());
+                volunteerModel.setGender(vol_user.getGender());
+
+                volunteerList.add(volunteerModel);
+            }
+            return volunteerList;
+        }
     
 }
