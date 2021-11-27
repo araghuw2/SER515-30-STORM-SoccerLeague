@@ -3,21 +3,31 @@ package com.asu.soccer.tournament.SoccerTournament.tournamentManager.resource;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.asu.soccer.tournament.SoccerTournament.common.entity.GameEntity;
+import com.asu.soccer.tournament.SoccerTournament.common.entity.TeamEntity;
 import com.asu.soccer.tournament.SoccerTournament.common.model.ScheduleModel;
+import com.asu.soccer.tournament.SoccerTournament.common.model.ScheduleModelNew;
 import com.asu.soccer.tournament.SoccerTournament.common.model.ScheduleModelReturn;
 import com.asu.soccer.tournament.SoccerTournament.common.repository.GameRepository;
+import com.asu.soccer.tournament.SoccerTournament.tournamenManager.service.TournamentManagerService;
+import com.asu.soccer.tournament.SoccerTournament.common.repository.TeamRepository;
 
 @RestController
 public class TournamentManagerResourceImpl implements TournamentManagerResource {
@@ -25,9 +35,113 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 	@Autowired
 	GameRepository gameRepository;
 	
+	@Autowired
+	TournamentManagerService tournamentManagerService;
+
+	@Autowired
+	TeamRepository teamRepository;
+	
 	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping(path = "/schedule",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
-	public ScheduleModelReturn schedule(@RequestBody ScheduleModel scheduleModel) throws Exception {
+	public ScheduleModelReturn schedule(@RequestBody ScheduleModelNew scheduleModelNew) throws Exception {
+		ScheduleModel scheduleModel = new ScheduleModel();
+		int day = Integer.valueOf(scheduleModelNew.getDay());
+		scheduleModel.setDay(day);
+		Iterable<TeamEntity> teamEntityIterator = teamRepository.findAll();
+		List<String> teamNameList = new ArrayList<>();
+		
+		
+		if(day == 1)
+		{		
+			for(TeamEntity teamEntity: teamEntityIterator)
+				teamNameList.add(teamEntity.getTeam_name());
+			
+			scheduleModel.setTeamList(teamNameList);
+		}
+		else if(day == 2)
+		{
+			Iterable<GameEntity> gameEntityList = gameRepository.findAll();
+			Map<Integer,List<String>> groupWinningTeamMap = new LinkedHashMap<>();
+			
+			for(GameEntity gameEntity: gameEntityList)
+			{	
+				if(gameEntity.getDay() != 2)
+					continue;
+				
+				List<String> winningTeamList = groupWinningTeamMap.getOrDefault(gameEntity.getGroup_no(),new ArrayList<>());
+				winningTeamList.add(gameEntity.getWinning_team());
+				groupWinningTeamMap.put(gameEntity.getGroup_no(),new ArrayList<>(winningTeamList));
+			}
+			
+			for(Map.Entry<Integer,List<String>> entry: groupWinningTeamMap.entrySet())
+			{
+				Map<String,Integer> teamWinMap = new LinkedHashMap<>();
+				
+				List<String> winningTeams = new ArrayList<>();
+				for(String team: winningTeams)
+				{
+					int wins = teamWinMap.getOrDefault(team, 0);
+					teamWinMap.put(team, wins + 1);
+				}
+				
+				String groupWinningTeam = "";
+				int maxWins = 0;
+				for(Map.Entry<String, Integer> subEntry: teamWinMap.entrySet())
+				{
+					if(subEntry.getValue() > maxWins)
+					{
+						groupWinningTeam = subEntry.getKey();
+						maxWins = subEntry.getValue();
+					}
+				}
+				teamNameList.add(groupWinningTeam);
+			}
+		}
+		else if(day == 3)
+		{
+			Iterable<GameEntity> gameEntityList = gameRepository.findAll();
+			Map<Integer,List<String>> groupWinningTeamMap = new LinkedHashMap<>();
+			
+			for(GameEntity gameEntity: gameEntityList)
+			{	
+				if(gameEntity.getDay() != 3)
+					continue;
+				
+				List<String> winningTeamList = groupWinningTeamMap.getOrDefault(gameEntity.getGroup_no(),new ArrayList<>());
+				winningTeamList.add(gameEntity.getWinning_team());
+				groupWinningTeamMap.put(gameEntity.getGroup_no(),new ArrayList<>(winningTeamList));
+			}
+			
+			for(Map.Entry<Integer,List<String>> entry: groupWinningTeamMap.entrySet())
+			{
+				Map<String,Integer> teamWinMap = new LinkedHashMap<>();
+				
+				List<String> winningTeams = new ArrayList<>();
+				for(String team: winningTeams)
+				{
+					int wins = teamWinMap.getOrDefault(team, 0);
+					teamWinMap.put(team, wins + 1);
+				}
+				
+				String groupWinningTeam = "";
+				int maxWins = 0;
+				for(Map.Entry<String, Integer> subEntry: teamWinMap.entrySet())
+				{
+					if(subEntry.getValue() > maxWins)
+					{
+						groupWinningTeam = subEntry.getKey();
+						maxWins = subEntry.getValue();
+					}
+				}
+				teamNameList.add(groupWinningTeam);
+			}
+		}
+			
+		return scheduleSolve(scheduleModel);
+	}
+	
+	public ScheduleModelReturn scheduleSolve(ScheduleModel scheduleModel) throws Exception {
 		
 		ScheduleModelReturn scheduleModelReturn = new ScheduleModelReturn();
 		List<GameEntity> scheduledMatches = new ArrayList<>();
@@ -85,7 +199,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 					gameEntity.setId(id);
 					gameEntity.setTeam_name_1(teams.get(i));
 					gameEntity.setTeam_name_2(teams.get(i+1));
-					gameEntity.setGroup(groupNumber);
+					gameEntity.setGroup_no(groupNumber);
+					gameEntity.setDay(scheduleModel.getDay());
 					
 					scheduledMatches.add(gameEntity);
 				}
@@ -102,8 +217,10 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setId(id);
 				gameEntity.setTeam_name_1(teams.get(teams.size()-1));
 				gameEntity.setTeam_name_2(teams.get(0));
-				gameEntity.setGroup(groupNumber);
+				gameEntity.setGroup_no(groupNumber);
+				gameEntity.setDay(scheduleModel.getDay());
 				
+//				gameRepository.save(gameEntity);
 				scheduledMatches.add(gameEntity);
 				
 			}
@@ -139,8 +256,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			
 			scheduleModelReturn.setScheduledMatches(scheduledMatches);
 			scheduleModelReturn.setTeamList(teamList);
-			scheduleModelReturn.setGroudsRequired(1);
-			scheduleModelReturn.setNumberOfGroups(1);
+			scheduleModelReturn.setGroudsRequired(groundsRequired);
+			scheduleModelReturn.setNumberOfGroups((int)numberOfGroups);
 			scheduleModelReturn.setPlayersPerGroup((int)playersPerGroup);	
 			
 		}
@@ -195,7 +312,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 					gameEntity.setId(id);
 					gameEntity.setTeam_name_1(teams.get(i));
 					gameEntity.setTeam_name_2(teams.get(i+1));
-					gameEntity.setGroup(groupNumber);
+					gameEntity.setGroup_no(groupNumber);
+					gameEntity.setDay(scheduleModel.getDay());
 					
 					scheduledMatches.add(gameEntity);
 				}
@@ -212,8 +330,10 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setId(id);
 				gameEntity.setTeam_name_1(teams.get(teams.size()-1));
 				gameEntity.setTeam_name_2(teams.get(0));
-				gameEntity.setGroup(groupNumber);
+				gameEntity.setGroup_no(groupNumber);
+				gameEntity.setDay(scheduleModel.getDay());
 				
+//				gameRepository.save(gameEntity);
 				scheduledMatches.add(gameEntity);
 				
 			}
@@ -248,8 +368,9 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			
 			scheduleModelReturn.setScheduledMatches(scheduledMatches);
 			scheduleModelReturn.setTeamList(teamList);
+			scheduleModelReturn.setGroudsRequired(groundsRequired);
 			scheduleModelReturn.setGroudsRequired(1);
-			scheduleModelReturn.setNumberOfGroups(1);
+			scheduleModelReturn.setNumberOfGroups((int)numberOfGroups);
 			scheduleModelReturn.setPlayersPerGroup((int)playersPerGroup);	
 			
 		}
@@ -292,7 +413,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 					gameEntity.setId(id);
 					gameEntity.setTeam_name_1(teams.get(i));
 					gameEntity.setTeam_name_2(teams.get(i+1));
-					gameEntity.setGroup(groupNumber);
+					gameEntity.setGroup_no(groupNumber);
+					gameEntity.setDay(scheduleModel.getDay());
 					
 					scheduledMatches.add(gameEntity);
 				}
@@ -305,10 +427,12 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			scheduleModelReturn.setPlayersPerGroup((int)playersPerGroup);	
 		}
 		
-		
+		for(GameEntity gameEntity: scheduleModelReturn.getScheduledMatches())
+		{
+			gameRepository.save(gameEntity);
+		}
 		
 		return scheduleModelReturn;
-		
 	}
 	
 	private String convertMinutesto24Hour(int minutes)
@@ -323,5 +447,24 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 		        + formatter.format(minutesInDisplay);
 		return display + " " + postfix;
 	}
+
+	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
+	@PostMapping(path = "/addwinner",consumes = MediaType.APPLICATION_JSON_VALUE,  produces=MediaType.APPLICATION_JSON_VALUE)
+	public void addWinner(@RequestBody GameEntity game) {
+		tournamentManagerService.addWinner(game);
+	}
+
+	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping(path = "/schedule", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ScheduleModelReturn> getFilteredSchedule(@RequestParam("day") String day) {
+		ScheduleModelReturn scheduleModelReturn = tournamentManagerService.getFilteredSchdule(day);
+		if (scheduleModelReturn != null) {
+            return new ResponseEntity<ScheduleModelReturn>(scheduleModelReturn, HttpStatus.OK);
+        }
+        return new ResponseEntity<ScheduleModelReturn>(HttpStatus.NOT_FOUND);
+	}
+	
 
 }

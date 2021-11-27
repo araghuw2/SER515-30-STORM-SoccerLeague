@@ -1,78 +1,81 @@
-import React, { Component } from "react";
-class RaiseQuery extends Component {
-  state = {
-    account: {
-      firstname: "",
-      lastname: "",
-    },
-    error: {},
+import React from "react";
+import { useState } from "react";
+import { send } from "emailjs-com";
+import { init } from "emailjs-com";
+// import { Alert } from 'react-alert';
+
+init("user_QTZCB98LDM5l2yKtPDwAe");
+
+function RaiseQuery() {
+  const [toSend, setToSend] = useState({
+    from_name: "",
+    message: "",
+    reply_to: "",
+  });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    send(
+      "service_9h3s38o",
+      "template_kfb68gi",
+      toSend,
+      "user_QTZCB98LDM5l2yKtPDwAe"
+    )
+      .then((response) => {
+        console.log("SUCCESS", response.status, response.text);
+      })
+      .catch((err) => {
+        console.log("FAILED", err);
+      });
+    alert("An email has been sent.");
   };
 
-  validate = () => {
-    let account = this.state.account;
-    let isValid = true;
-    let error = {};
-    if (!account["firstname"]) {
-      isValid = false;
-      error["firstname"] = "Firstname is mandatory";
-    }
-    if (!account["lastname"]) {
-      isValid = false;
-      error["lastname"] = "Lastname is mandatory";
-    }
-
-    this.setState({
-      error: error,
-    });
-    return isValid;
-  };
-  handleSubmit = (e) => {
-    e.preventDefault(); //For stopping the whole reload of page
-    const error = this.validate();
-    console.log(error);
-
-    //if (error) return;
-    if (error) {
-      let account = {};
-      account["firstname"] = "";
-      account["lastname"] = "";
-      this.setState({ account: account });
-    }
-
-    console.log("Submitteed");
+  const handleChange = (e) => {
+    setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
 
-  render() {
-    return (
-      //<Popup position="right center">
-      <form onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <label>
-            <b>First Name*</b>
-          </label>
-          <input type="text" className="form-control" />
-          <div className="text-danger">{this.state.error.firstname}</div>
-        </div>
-
-        <div className="form-group">
-          <label>
-            <b>Last Name*</b>
-          </label>
-          <input type="text" className="form-control" />
-          <div className="text-danger">{this.state.error.lastname}</div>
-        </div>
-
-        <div className="form-group">
-          <label>
-            <b>Message*</b>
-          </label>
-          <input type="msg" className="form-control" />
-        </div>
-        <button className="btn btn-primary m-2">Submit</button>
-      </form>
-      //</Popup>
-    );
-  }
+  return (
+    <div>
+      <center>
+        <h1>Query</h1>
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="text"
+              name="from_name"
+              placeholder="Name"
+              value={toSend.from_name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="text"
+              name="message"
+              placeholder="Message"
+              value={toSend.message}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="text"
+              name="reply_to"
+              placeholder="Email"
+              value={toSend.reply_to}
+              onChange={handleChange}
+            />
+          </div>
+          <h4>
+            <button type="submit">Submit</button>
+          </h4>
+        </form>
+      </center>
+    </div>
+  );
 }
 
 export default RaiseQuery;

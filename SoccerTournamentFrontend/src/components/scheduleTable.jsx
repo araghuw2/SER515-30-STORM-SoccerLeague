@@ -1,7 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { schedule } from "../actions";
+import { schedule, selectGameId } from "../actions";
+
 class scheduleTable extends React.Component {
+
+  addResult = (id) => {
+    this.props.selectGameId(id);
+  };
+
   componentWillMount() {
     this.props.schedule();
   }
@@ -17,20 +23,20 @@ class scheduleTable extends React.Component {
             <th>TEAM 1</th>
             <th>TEAM 2</th>
             <th>FIELD</th>
+            <th>GROUP</th>
             {
-              this.props.scheduleData.winning_team!=null?
-              <div>
+              this.props.scheduleData[0] && this.props.scheduleData[0].winning_team!=null?
+              <>
                   <th>WINNING TEAM</th>
                   <th>GOALS TEAM 1</th>
                   <th>GOALS TEAM 2</th>
-                  <th>GROUP</th>
                   <th>RED CARDS TEAM1</th>
                   <th>RED CARDS TEAM2</th>
                   <th>YELLOW CARDS TEAM1</th>
                   <th>YELLOW CARDS TEAM2</th>
                   <th>INJURIES TEAM1</th>
                   <th>INJURIES TEAM2</th>
-              </div>
+              </>
               :
               ""
             }
@@ -48,27 +54,27 @@ class scheduleTable extends React.Component {
                 <td>{item.team_name_1}</td>
                 <td>{item.team_name_2}</td>
                 <td>{item.field_site}</td>
+                <td>{item.group}</td>
                 {
                   item.winning_team!=null?
-                  <div>
+                  <>
                     <td>{item.winning_team}</td>
                     <td>{item.goals_team1}</td>
                     <td>{item.goals_team2}</td>
-                    <td>{item.group}</td>
-                    <td>{item.red_card_team1}</td>
-                    <td>{item.red_card_team2}</td>
-                    <td>{item.yellow_card_team1}</td>
-                    <td>{item.yellow_card_team2}</td>
+                    <td>{item.red_cards_team1}</td>
+                    <td>{item.red_cards_team2}</td>
+                    <td>{item.yellow_cards_team1}</td>
+                    <td>{item.yellow_cards_team2}</td>
                     <td>{item.injuries_team1}</td>
                     <td>{item.injuries_team2}</td>
-                  </div>
+                  </>
                   :
                   ""
                 }
 
                 { this.props.role=="TournamentManager" && item.winning_team==null?
                     <td>
-                      <button className="btn-primary btn-small">Add Result</button>
+                      <button onClick={() => this.addResult(item.id)} className="btn-primary btn-small">Add Result</button>
                     </td>
                   :
                   ""
@@ -89,4 +95,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { schedule })(scheduleTable);
+export default connect(mapStateToProps, { schedule, selectGameId })(scheduleTable);
