@@ -130,4 +130,4 @@ const mapStateToProps = (state) => {
     }
   }
 
-  export default connect(mapStateToProps, {viewTeam, hasTeam, schedule, getTournamentDay})(MyProfile);
+export default connect(mapStateToProps, {viewTeam, hasTeam, schedule, getTournamentDay})(MyProfile);
