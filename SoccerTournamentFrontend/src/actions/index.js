@@ -122,3 +122,17 @@ export const selectScheduleDate = (day) => async (dispatch, getState) => {
       dispatch({ type: "SIGN_IN_ERROR" });
   }
 }
+
+export const addVolunteers = (formValues) => async (dispatch) => {
+  try {
+    const response = await axios.post("http://localhost:8080/addVolunteer", {
+      ...formValues,
+    });
+    if (response.status == 200) {
+      dispatch({ type: "ADD_VOLUNTEERS", payload: response.data });
+      history.push("/home"); //Redirect from Login Page to Home page after successful login
+    }
+  } catch (error) {
+    dispatch({ type: "SIGN_UP_ERROR" });
+  }
+};
