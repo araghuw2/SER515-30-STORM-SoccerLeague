@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import history from '../history';
-import { getTournamentDay, schedule, viewTeam, hasTeam } from '../actions'
+import { viewTeam, hasTeam } from '../actions'
 
 class MyProfile extends Component {
     componentWillMount() {
       this.props.hasTeam(this.props.id);
-      this.props.getTournamentDay();
     }
 
     componentDidUpdate() {
@@ -19,7 +18,6 @@ class MyProfile extends Component {
     history.push('/createNewTeam');
   };
   generateSchedule = () => {
-    this.props.schedule(this.props.day);
     history.push('/generateSchedule');
   };
 
@@ -34,7 +32,15 @@ class MyProfile extends Component {
   addVolunteers = () => {
     history.push('/addVolunteers');
   };
+
+  viewVolunteers = () => {
+    history.push('/viewVolunteers');
+  };
   
+  Email = () => {
+    history.push('/Email');
+  };
+
   render() {
     return (
         <div>
@@ -74,15 +80,24 @@ class MyProfile extends Component {
               return (this.props.showViewButton===false ? 
               <div><button onClick={() => this.createNewTeam()}>Create New Team</button></div>
               : <div><button onClick={() => this.viewTeam()}>View My Team</button></div>)
-            case 'tournamentmanager':
             case 'tournamentManager':
-            case 'tournament Manager':
-              return (<div><button disabled={this.props.day == 3} onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
+              return (<div><button onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
             
             case 'field site manager':
               return (
               <div><button onClick={() => this.loanFields()}>Loan Fields</button>
-              <button onClick={() => this.addVolunteers()}> Add Volunteers</button></div>
+              <button onClick={() => this.addVolunteers()}>Add Volunteers</button>
+              <button onClick={() => this.viewVolunteers()}>View Volunteers</button></div>
+              )
+
+            case 'Player':
+              return (
+                <div><button onClick={() => this.Email()}>Request Withdraw</button></div>
+              )
+            
+            case 'referee':
+              return (
+                <div><button onClick={() => this.Email()}>Request Withdraw</button></div>
               )
 
             default : 
@@ -92,6 +107,17 @@ class MyProfile extends Component {
         </div>
         }     
         </h3>
+          
+        {/* // this.props.role=="TournamentManager"?
+        //     <button onClick={() => this.generateSchedule()}>Generate Schedule</button>
+        // :
+        //     <button onClick={() => this.createNewTeam()}>Create New Team</button>
+
+        // }
+
+        <h3>
+            <button onClick={() => this.viewTeam()}>View My Team</button>
+        </h3>  */}
       </div>
     );
   }
@@ -107,9 +133,8 @@ const mapStateToProps = (state) => {
         first_name: state.auth.first_name,
         last_name: state.auth.last_name,
         withdraw_flag: state.auth.withdraw_flag,
-        showViewButton: state.team.has_team,
-        day: state.schedule.schedule_day
+        showViewButton: state.team.has_team 
     }
   }
 
-export default connect(mapStateToProps, {viewTeam, hasTeam, schedule, getTournamentDay})(MyProfile);
+export default connect(mapStateToProps, {viewTeam, hasTeam})(MyProfile);
