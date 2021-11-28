@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { schedule, selectGameId } from "../actions";
+import { selectScheduleDate, schedule, selectGameId } from "../actions";
 
 class scheduleTable extends React.Component {
 
@@ -8,8 +8,16 @@ class scheduleTable extends React.Component {
     this.props.selectGameId(id);
   };
 
-  componentWillMount() {
-    this.props.schedule();
+  // componentDidMount() {
+  //   this.props.selectScheduleDate(this.props.selectedDay);
+  // }
+
+  checkWinnerExist() {
+    this.props.scheduleData.map((item) => {
+      if(item.winning_team != null)
+        return true;
+    });
+    return false;
   }
 
   render() {
@@ -23,10 +31,10 @@ class scheduleTable extends React.Component {
             <th>TEAM 1</th>
             <th>TEAM 2</th>
             <th>FIELD</th>
-            <th>GROUP</th>
-            {
+            <th>AGE GROUP</th>
+            {/* {
               this.props.scheduleData[0] && this.props.scheduleData[0].winning_team!=null?
-              <>
+              <> */}
                   <th>WINNING TEAM</th>
                   <th>GOALS TEAM 1</th>
                   <th>GOALS TEAM 2</th>
@@ -36,11 +44,11 @@ class scheduleTable extends React.Component {
                   <th>YELLOW CARDS TEAM2</th>
                   <th>INJURIES TEAM1</th>
                   <th>INJURIES TEAM2</th>
-              </>
+              {/* </>
               :
               ""
-            }
-            { this.props.role=="TournamentManager"?
+            } */}
+            { (this.props.role=="TournamentManager" || this.props.role=="tournamentmanager" || this.props.role=="Tournament Manager") && this.checkWinnerExist()?
                   <th>Enter Winner Details</th>
                   :
                   ""
@@ -54,7 +62,7 @@ class scheduleTable extends React.Component {
                 <td>{item.team_name_1}</td>
                 <td>{item.team_name_2}</td>
                 <td>{item.field_site}</td>
-                <td>{item.group}</td>
+                <td>{item.group_no}</td>
                 {
                   item.winning_team!=null?
                   <>
@@ -72,7 +80,7 @@ class scheduleTable extends React.Component {
                   ""
                 }
 
-                { this.props.role=="TournamentManager" && item.winning_team==null?
+                { (this.props.role=="TournamentManager" || this.props.role=="tournamentmanager" || this.props.role=="Tournament Manager") && item.winning_team==null?
                     <td>
                       <button onClick={() => this.addResult(item.id)} className="btn-primary btn-small">Add Result</button>
                     </td>
@@ -92,7 +100,8 @@ const mapStateToProps = (state) => {
   return {
     scheduleData: state.schedule.schedule,
     role: state.auth.role,
+    selectedDay: state.schedule.day
   };
 };
 
-export default connect(mapStateToProps, { schedule, selectGameId })(scheduleTable);
+export default connect(mapStateToProps, { schedule, selectGameId, selectScheduleDate })(scheduleTable);

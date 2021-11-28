@@ -1,5 +1,7 @@
 package com.asu.soccer.tournament.SoccerTournament.common.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -22,5 +24,9 @@ public interface UserRepository extends PagingAndSortingRepository<UserEntity,Lo
 	@PersistenceContext	
     @Query(value = "SELECT * FROM user_details u WHERE u.email = ?1 and u.password = ?2", nativeQuery = true)
     UserEntity getUser(String username, String password);
+
+	@PersistenceContext
+	@Query(value = "SELECT * FROM user_details u where u.role = 'Volunteer'", nativeQuery = true)
+	List<UserEntity> getVolunteers();
 	
 }

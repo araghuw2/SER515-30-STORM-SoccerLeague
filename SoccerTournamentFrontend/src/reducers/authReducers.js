@@ -94,8 +94,8 @@ export default (state = INITIAL_STATE, action) => {
             ...state,
             email: action.payload.email,
             gender: action.payload.gender,
-            volunteerName: action.payload.volunteerName,
-            // last_name: action.payload.last_name,
+            firstName: action.payload.firstName,
+            lastName: action.payload.lastName,
          };
 
     default: 

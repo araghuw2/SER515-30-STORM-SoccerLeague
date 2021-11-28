@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,9 +24,10 @@ public class VolunteerServiceImpl implements VolunteerService{
 
             userEntity.setEmail(volunteerModel.getEmail());
             
-            String[] combinedName = volunteerModel.getVolunteerName().split(" ");
-            userEntity.setFirst_name(combinedName[0]);
-            if(combinedName.length>1) userEntity.setLast_name(combinedName[1]);
+            
+            userEntity.setFirst_name(volunteerModel.getFirstName());
+            userEntity.setLast_name(volunteerModel.getLastName());
+            
             
             userEntity.setGender(volunteerModel.getGender());
             
@@ -37,11 +39,11 @@ public class VolunteerServiceImpl implements VolunteerService{
             userEntity.setWithdraw_flag("No");
             userEntity.setRole("Volunteer");
             
-            Date date = new Date();
-            String strDateFormat = "hh:mm:ss a";
-            DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
-            String formattedDate= dateFormat.format(date);    
-            //userEntity.setReg_date(formattedDate);
+            // Date date = new Date();
+            // String strDateFormat = "hh:mm:ss a";
+            // DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
+            // String formattedDate= dateFormat.format(date);    
+            // //userEntity.setReg_date(formattedDate);
             
             
             Integer id = (int)(Math.random() * 100000);
@@ -62,5 +64,23 @@ public class VolunteerServiceImpl implements VolunteerService{
             return createdUser;
         }
 
+        @Override
+        public List<VolunteerModel> getVolunteersList(){
+            List<VolunteerModel> volunteerList = new ArrayList<VolunteerModel>();
+            List<UserEntity> volunteerUsers = userRepository.getVolunteers();
+
+            for(UserEntity vol_user : volunteerUsers)
+            {
+                VolunteerModel volunteerModel = new VolunteerModel();
+
+                volunteerModel.setFirstName(vol_user.getFirst_name());
+                volunteerModel.setLastName(vol_user.getLast_name());
+                volunteerModel.setEmail(vol_user.getEmail());
+                volunteerModel.setGender(vol_user.getGender());
+
+                volunteerList.add(volunteerModel);
+            }
+            return volunteerList;
+        }
     
 }

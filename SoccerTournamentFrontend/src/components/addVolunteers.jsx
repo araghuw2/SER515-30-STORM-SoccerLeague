@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 class AddVolunteers extends React.Component{
     state = {
-        account: { volunteerName: "", email: "", gender:""},
+        account: { firstName: "", lastName: "", email: "", gender:""},
         error: {},
       };
       
@@ -14,16 +14,16 @@ class AddVolunteers extends React.Component{
         let account = this.state.account;
         let isValid = true;
         let error = {};
-        if(!account["volunteerName"])
+        if(!account["firstName"])
         {
           isValid = false;
-          error["volunteerName"] = "Firstname is mandatory";
+          error["firstName"] = "Firstname is mandatory";
         }
-        // if(!account["last_name"])
-        // {
-        //   isValid = false;
-        //   error["last_name"] = "Lastname is mandatory";
-        // }
+        if(!account["lastName"])
+        {
+          isValid = false;
+          error["lastName"] = "Lastname is mandatory";
+        }
         if(!account["email"])
         {
           isValid = false;
@@ -48,8 +48,8 @@ class AddVolunteers extends React.Component{
         if(error)
         {
           let account = {};
-          account["volunteerName"]="";
-          //account["last_name"]="";
+          account["firstName"]="";
+          account["lastName"]="";
           account["email"]="";
           account["gender"]="";
           this.setState({account:account});
@@ -59,17 +59,17 @@ class AddVolunteers extends React.Component{
         console.log("Submitteed");
       };
 
-      handleChangeVolunteerName = (e) => {
+      handleChangeFirstName = (e) => {
         const account = { ...this.state.account };
-        account.volunteerName = e.currentTarget.value;
+        account.firstName = e.currentTarget.value;
         this.setState({ account });
       };
     
-      // handleChangeLastName = (e) => {
-      //   const account = { ...this.state.account };
-      //   account.last_name = e.currentTarget.value;
-      //   this.setState({ account });
-      // };
+      handleChangeLastName = (e) => {
+        const account = { ...this.state.account };
+        account.lastName = e.currentTarget.value;
+        this.setState({ account });
+      };
     
       handleChangeEmail = (e) => {
         const account = { ...this.state.account };
@@ -89,15 +89,15 @@ class AddVolunteers extends React.Component{
             <form onSubmit={this.handleSubmit}>
             <div className="form-group">
                 <label><b>First Name*</b></label>
-                <input type="text" className="form-control" onChange={this.handleChangeVolunteerName} />
-                <div className="text-danger">{this.state.error.volunteerName}</div>
+                <input type="text" className="form-control" onChange={this.handleChangeFirstName} />
+                <div className="text-danger">{this.state.error.firstName}</div>
             </div>
 
-            {/* <div className="form-group">
+            <div className="form-group">
                 <label><b>Last Name*</b></label>
                 <input type="text" className="form-control" onChange={this.handleChangeLastName} />
-                <div className="text-danger">{this.state.error.last_name}</div>
-            </div> */}
+                <div className="text-danger">{this.state.error.lastName}</div>
+            </div>
 
             <div className="form-group">
                 <label><b>Email Address*</b></label>
@@ -153,11 +153,9 @@ const mapStateToProps = (state) => {
   return { 
       email: state.auth.email,
       gender: state.auth.gender,
-      volunteerName: state.auth.volunteerName,
-      //last_name: state.auth.last_name,
+      firstName: state.auth.firstName,
+      lastName: state.auth.lastName,
   }
 }
 
 export default connect(mapStateToProps, {addVolunteers})(AddVolunteers);
-
-//export default AddVolunteers;
