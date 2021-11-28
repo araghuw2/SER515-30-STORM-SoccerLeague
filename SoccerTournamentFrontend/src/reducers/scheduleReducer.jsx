@@ -24,6 +24,12 @@ export default (state = INITIAL_STATE, action) => {
         selected_game_id: action.payload,
       };
 
+    case "SCHEDULE_DAY":
+      return {
+        ...state,
+        schedule_day: action.payload,
+      };
+
     default:
       return state;
   }

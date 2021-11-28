@@ -27,4 +27,7 @@ public interface GameRepository extends PagingAndSortingRepository<GameEntity,Lo
 	
 	@Query(value = "SELECT * FROM game_details u WHERE u.day = ?1", nativeQuery = true)
 	List<GameEntity> findGameByDay(int day);
+	
+	@Query(value = "SELECT distinct day FROM game_details ", nativeQuery = true)
+	List<Integer> findDays();
 }

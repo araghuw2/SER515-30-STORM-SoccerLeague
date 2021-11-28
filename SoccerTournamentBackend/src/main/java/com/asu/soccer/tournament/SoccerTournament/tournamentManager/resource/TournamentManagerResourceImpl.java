@@ -8,14 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -66,7 +64,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			
 			for(GameEntity gameEntity: gameEntityList)
 			{	
-				if(gameEntity.getDay() != 2)
+				if(gameEntity.getDay() != 1)
 					continue;
 				
 				List<String> winningTeamList = groupWinningTeamMap.getOrDefault(gameEntity.getGroup_no(),new ArrayList<>());
@@ -78,7 +76,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			{
 				Map<String,Integer> teamWinMap = new LinkedHashMap<>();
 				
-				List<String> winningTeams = new ArrayList<>();
+				List<String> winningTeams = entry.getValue();
 				for(String team: winningTeams)
 				{
 					int wins = teamWinMap.getOrDefault(team, 0);
@@ -105,7 +103,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			
 			for(GameEntity gameEntity: gameEntityList)
 			{	
-				if(gameEntity.getDay() != 3)
+				if(gameEntity.getDay() != 2)
 					continue;
 				
 				List<String> winningTeamList = groupWinningTeamMap.getOrDefault(gameEntity.getGroup_no(),new ArrayList<>());
@@ -117,7 +115,7 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 			{
 				Map<String,Integer> teamWinMap = new LinkedHashMap<>();
 				
-				List<String> winningTeams = new ArrayList<>();
+				List<String> winningTeams = entry.getValue();
 				for(String team: winningTeams)
 				{
 					int wins = teamWinMap.getOrDefault(team, 0);
@@ -137,6 +135,8 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				teamNameList.add(groupWinningTeam);
 			}
 		}
+		
+		scheduleModel.setTeamList(teamNameList);
 			
 		return scheduleSolve(scheduleModel);
 	}
@@ -220,7 +220,6 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setGroup_no(groupNumber);
 				gameEntity.setDay(scheduleModel.getDay());
 				
-//				gameRepository.save(gameEntity);
 				scheduledMatches.add(gameEntity);
 				
 			}
@@ -333,7 +332,6 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
 				gameEntity.setGroup_no(groupNumber);
 				gameEntity.setDay(scheduleModel.getDay());
 				
-//				gameRepository.save(gameEntity);
 				scheduledMatches.add(gameEntity);
 				
 			}
@@ -464,6 +462,13 @@ public class TournamentManagerResourceImpl implements TournamentManagerResource 
             return new ResponseEntity<ScheduleModelReturn>(scheduleModelReturn, HttpStatus.OK);
         }
         return new ResponseEntity<ScheduleModelReturn>(HttpStatus.NOT_FOUND);
+	}
+
+	@Override
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping(path = "/schedule/day", produces=MediaType.APPLICATION_JSON_VALUE)
+	public int getTournamentDay() {
+		return tournamentManagerService.getTournamentDay();
 	}
 	
 

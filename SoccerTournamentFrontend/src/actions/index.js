@@ -77,9 +77,11 @@ export const hasTeam = (id) => async (dispatch) => {
     }
 };
 
-export const schedule = () => async (dispatch) => {
+export const schedule = (day) => async (dispatch) => {
   try {
-    const response = await axios.post("http://localhost:8080/schedule", {"day": "1"});
+    const response = await axios.post("http://localhost:8080/schedule",  {
+      day
+    });
     if (response.status == 200) {
   dispatch({ type: "SCHEDULE", payload: response.data });
       // history.push("/home"); //Redirect from Login Page to Home page after successful login
@@ -102,13 +104,13 @@ export const submitGameDetails = (id, gameDetails) => async (dispatch) => {
       ...gameDetails,
     });
     if (response.status == 200) {
-      history.push("/schedule"); //Redirect from Login Page to Home page after successful login
+      history.push("/filterDate"); //Redirect from Login Page to Home page after successful login
     }
   } catch (error) {
     dispatch({ type: "SIGN_UP_ERROR" });
   }
   dispatch({ type: "SUBMIT_GAME_DETAILS", payload: gameDetails });
-  history.push('/schedule');
+  // history.push('/schedule');
 };
 
 export const selectScheduleDate = (day) => async (dispatch, getState) => {
@@ -120,5 +122,16 @@ export const selectScheduleDate = (day) => async (dispatch, getState) => {
       }
   } catch (error) {
       dispatch({ type: "SIGN_IN_ERROR" });
+  }
+}
+
+export const getTournamentDay = () => async (dispatch, getState) => {
+  try {
+      const response = await await axios.get(`http://localhost:8080/schedule/day`);
+      if (response.status == 200) {
+           dispatch({ type: "SCHEDULE_DAY", payload: response.data });
+      }
+  } catch (error) {
+      dispatch({ type: "SCHEDULE_DAY_ERROR" });
   }
 }
