@@ -34,7 +34,15 @@ class MyProfile extends Component {
   addVolunteers = () => {
     history.push('/addVolunteers');
   };
+
+  viewVolunteers = () => {
+    history.push('/viewVolunteers');
+  };
   
+  Email = () => {
+    history.push('/Email');
+  };
+
   render() {
     return (
         <div>
@@ -74,15 +82,25 @@ class MyProfile extends Component {
               return (this.props.showViewButton===false ? 
               <div><button onClick={() => this.createNewTeam()}>Create New Team</button></div>
               : <div><button onClick={() => this.viewTeam()}>View My Team</button></div>)
-            case 'tournamentmanager':
+
             case 'tournamentManager':
-            case 'tournament Manager':
               return (<div><button disabled={this.props.day == 3} onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
             
             case 'field site manager':
               return (
               <div><button onClick={() => this.loanFields()}>Loan Fields</button>
-              <button onClick={() => this.addVolunteers()}> Add Volunteers</button></div>
+              <button onClick={() => this.addVolunteers()}>Add Volunteers</button>
+              <button onClick={() => this.viewVolunteers()}>View Volunteers</button></div>
+              )
+
+            case 'Player':
+              return (
+                <div><button onClick={() => this.Email()}>Request Withdraw</button></div>
+              )
+            
+            case 'referee':
+              return (
+                <div><button onClick={() => this.Email()}>Request Withdraw</button></div>
               )
 
             default : 
