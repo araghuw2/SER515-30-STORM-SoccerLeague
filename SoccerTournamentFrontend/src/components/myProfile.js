@@ -125,8 +125,9 @@ const mapStateToProps = (state) => {
         first_name: state.auth.first_name,
         last_name: state.auth.last_name,
         withdraw_flag: state.auth.withdraw_flag,
-        showViewButton: state.team.has_team 
+        showViewButton: state.team.has_team,
+        day: state.schedule.schedule_day
     }
   }
 
-export default connect(mapStateToProps, {viewTeam, hasTeam})(MyProfile);
+  export default connect(mapStateToProps, {viewTeam, hasTeam, schedule, getTournamentDay})(MyProfile);
