@@ -125,6 +125,19 @@ export const selectScheduleDate = (day) => async (dispatch, getState) => {
   }
 }
 
+export const addVolunteers = (formValues) => async (dispatch) => {
+  try {
+    const response = await axios.post("http://localhost:8080/addVolunteer", {
+      ...formValues,
+    });
+    if (response.status == 200) {
+      dispatch({ type: "ADD_VOLUNTEERS", payload: response.data });
+      history.push("/home"); //Redirect from Login Page to Home page after successful login
+    }
+  } catch (error) {
+    dispatch({ type: "SIGN_UP_ERROR" });
+  }
+};
 export const getTournamentDay = () => async (dispatch, getState) => {
   try {
       const response = await await axios.get(`http://localhost:8080/schedule/day`);
