@@ -138,6 +138,18 @@ export const addVolunteers = (formValues) => async (dispatch) => {
     dispatch({ type: "SIGN_UP_ERROR" });
   }
 };
+
+export const viewVolunteers = (id) => async (dispatch) => {
+  try {
+       const response = await axios.get(`http://localhost:8080/getVolunteers`, );
+       if (response.status == 200) {
+           dispatch({ type: "VIEW_VOLUNTEERS", payload: response.data });
+       }
+   } catch (error) {
+      // dispatch({ type: "SIGN_IN_ERROR" });
+   }
+}
+
 export const getTournamentDay = () => async (dispatch, getState) => {
   try {
       const response = await await axios.get(`http://localhost:8080/schedule/day`);

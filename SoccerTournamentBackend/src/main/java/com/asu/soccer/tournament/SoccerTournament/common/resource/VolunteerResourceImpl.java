@@ -46,7 +46,7 @@ public class VolunteerResourceImpl implements VolunteerResource{
 
 	@Override
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping(path = "getVolunteers")
+	@GetMapping(path = "/getVolunteers")
 	public ResponseEntity<List<VolunteerModel>> viewVolunteers() {
 		
 		List<VolunteerModel> volunteers = volunteerService.getVolunteersList();
