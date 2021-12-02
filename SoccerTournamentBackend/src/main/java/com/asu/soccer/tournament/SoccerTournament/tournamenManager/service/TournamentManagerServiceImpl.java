@@ -35,11 +35,11 @@ public class TournamentManagerServiceImpl implements TournamentManagerService {
 	@Override
 	public int getTournamentDay() {
 		List<Integer> days = gameRepository.findDays(); 
-		int max = 1;
+		int max = 0;
 		for(int day: days) {
 			max = Math.max(day, max);
 		}
-		return max;
+		return max+1;
 	}
 	
 }

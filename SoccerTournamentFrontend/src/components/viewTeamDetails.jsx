@@ -20,7 +20,7 @@ class ViewTeamDetails extends React.Component {
             { this.props.playerDetails.map((item, index) => {
               return (
                 <tr key={index}>
-                  <td>{item.name}</td>
+                  <td>{item.playerName}</td>
                   <td>{item.email}</td>
                   <td>{item.age}</td>
                   <td>{item.gender}</td>

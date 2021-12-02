@@ -48,7 +48,7 @@ class scheduleTable extends React.Component {
               :
               ""
             } */}
-            { (this.props.role=="TournamentManager" || this.props.role=="tournamentmanager" || this.props.role=="Tournament Manager") && this.checkWinnerExist()?
+            { (this.props.role=="tournamentManager" || this.props.role=="tournamentmanager" || this.props.role=="Tournament Manager") && this.checkWinnerExist()?
                   <th>Enter Winner Details</th>
                   :
                   ""
@@ -80,7 +80,7 @@ class scheduleTable extends React.Component {
                   ""
                 }
 
-                { (this.props.role=="TournamentManager" || this.props.role=="tournamentmanager" || this.props.role=="Tournament Manager") && item.winning_team==null?
+                { (this.props.role=="tournamentManager" || this.props.role=="tournamentmanager" || this.props.role=="Tournament Manager") && item.winning_team==null?
                     <td>
                       <button onClick={() => this.addResult(item.id)} className="btn-primary btn-small">Add Result</button>
                     </td>

@@ -83,8 +83,8 @@ class MyProfile extends Component {
               <div><button onClick={() => this.createNewTeam()}>Create New Team</button></div>
               : <div><button onClick={() => this.viewTeam()}>View My Team</button></div>)
 
-            case 'tournamentManager':
-              return (<div><button disabled={this.props.day == 3} onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
+            case 'tournamentmanager':
+              return (<div><button disabled={this.props.day > 3} onClick={() => this.generateSchedule()}>Generate Schedule</button></div>)
             
             case 'field site manager':
               return (
@@ -93,7 +93,7 @@ class MyProfile extends Component {
               <button onClick={() => this.viewVolunteers()}>View Volunteers</button></div>
               )
 
-            case 'Player':
+            case 'player':
               return (
                 <div><button onClick={() => this.Email()}>Request Withdraw</button></div>
               )

@@ -22,7 +22,7 @@ class ViewVolunteers extends React.Component {
                 <th>Email</th>
                 <th>Gender</th>
             </tr>
-            { this.props.volunteers.map((item, index) => {
+            { this.props.volunteers && this.props.volunteers.map((item, index) => {
               return (
                 <tr key={index}>
                   <td>{item.firstName}</td>
