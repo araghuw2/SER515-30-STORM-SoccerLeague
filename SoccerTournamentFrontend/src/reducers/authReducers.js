@@ -89,6 +89,26 @@ export default (state = INITIAL_STATE, action) => {
             sign_in_error: true
         };
 
+        case "ADD_VOLUNTEERS": 
+        return {
+            ...state,
+            email: action.payload.email,
+            gender: action.payload.gender,
+            firstName: action.payload.firstName,
+            lastName: action.payload.lastName,
+         };
+
+         case "VIEW_VOLUNTEERS": 
+        return {
+            ...state,
+            volunteers: action.payload,
+            email: action.payload.email,
+            gender: action.payload.gender,
+            firstName: action.payload.firstName,
+            lastName: action.payload.lastName,
+         };
+
+         
 
     default: 
         return state;

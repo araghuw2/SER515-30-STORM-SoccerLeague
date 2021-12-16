@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 import LoginForm from "./loginForm";
@@ -13,16 +13,14 @@ class NavBar extends Component {
         <nav className="navBarItems">
           <h1 className="navbar-logo">STORM-SoccerLeague</h1>
           <ul className="nav-menu">
-          {
-            this.props.isSignedIn==true?
+            {this.props.isSignedIn == true ? (
               <li>
                 <NavLink className={menuItems[9].cName} to={menuItems[9].url}>
                   {menuItems[9].title}
                 </NavLink>
               </li>
-              : null
-          }
-            { menuItems.slice(0,5).map((item, index) => {
+            ) : null}
+            {menuItems.slice(0, 5).map((item, index) => {
               return (
                 <li key={index}>
                   <NavLink className={item.cName} to={item.url}>
@@ -31,20 +29,31 @@ class NavBar extends Component {
                 </li>
               );
             })}
-            {
-            this.props.isSignedIn==true?
+
+            {this.props.isSignedIn == true ? (
               <li>
-                <NavLink onClick={this.props.signOut} className={menuItems[8].cName} to={menuItems[8].url}>
+                <NavLink className={menuItems[11].cName} to={menuItems[11].url}>
+                  {menuItems[11].title}
+                </NavLink>
+              </li>
+            ) : null}
+            {this.props.isSignedIn == true ? (
+              <li>
+                <NavLink
+                  onClick={this.props.signOut}
+                  className={menuItems[8].cName}
+                  to={menuItems[8].url}
+                >
                   {menuItems[8].title}
                 </NavLink>
               </li>
-              :
+            ) : (
               <li>
                 <NavLink className={menuItems[5].cName} to={menuItems[5].url}>
                   {menuItems[5].title}
                 </NavLink>
-              </li>             
-          }
+              </li>
+            )}
           </ul>
         </nav>
       </React.Fragment>
@@ -53,9 +62,9 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { 
+  return {
     isSignedIn: state.auth.isSignedIn,
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, { signOut })(NavBar);

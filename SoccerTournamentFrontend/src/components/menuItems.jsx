@@ -7,7 +7,7 @@ export const menuItems = [
 
   {
     title: "Schedule",
-    url: "/schedule",
+    url: "/filterDate",
     cName: "nav-links",
   }, //1
 
@@ -23,8 +23,8 @@ export const menuItems = [
   }, //3
 
   {
-    title: "Players",
-    url: "/players",
+    title: "Photos",
+    url: "/photos",
     cName: "nav-links",
   }, //4
 
@@ -63,4 +63,16 @@ export const menuItems = [
     url: "/loanFields",
     cName: "nav-links",
   }, //10
+
+  {
+    
+    title: "RaiseQuery",
+    url: "/query",
+    cName: "nav-links",
+  }, //11
+  {
+    title: "AddVolunteers",
+    url: "/addVolunteers",
+    cName: "nav-links",
+  }, //12
 ];
